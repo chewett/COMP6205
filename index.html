@@ -155,7 +155,7 @@ We shall be looking to enhance our knowledge of Role based authentication and lo
 </ul>
 
 <h2>Description of Web Application</h2>
-<p> The app will have basic banking features</p>
+<p> The app will have basic banking features:</p>
 <ul>
   <li>Log in</li>
   <li>Register</li>
@@ -179,6 +179,24 @@ We shall be looking to enhance our knowledge of Role based authentication and lo
 <p>The roles will be organised in hierarchical manner, so that admins will be able to promote or demote people to be clerks or bank managers. Clerks will be able to view customer transactions and eventually resolve issues. Bank managers will be able to disable accounts and fire clerks</p>
 
 <h2>User Stories</h2>
+
+<ol>
+	<ul>
+		A user will want to create an account. Once created they should be able to login and create an account.
+		For the purposes of this prototype accounts are created automatically and need no further approval.
+		If we were to continue working with this we will ensure that bank managers approve account creation.
+	</ul>
+	<ul>
+		A clerk will want to add and remove money from an account. They will be using the interface in branch and as people present money to be cashed they will add this into the account.
+		In a real situation this would be patrolled and properly dealt with but we are not concerning ourselves with this.
+	</ul>
+	<ul>
+		A bank manager will want to be able to do all that a Clerk can do but also have the ability to disable accounts for users that are not using their account properly and also register clerks.
+	</ul>
+	<ul>
+		An admin should be able to access the entire system and perform all actions that any other level of access can perform.
+	</ul>
+</ol>
 
 <h2>Implementation Schedule</h2>
 
