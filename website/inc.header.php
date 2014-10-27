@@ -5,7 +5,7 @@
 //Settable Variables:
 //$pageTitle = "title of the page in header
 
-if(unset($pageTitle)) {
+if(!isset($pageTitle)) {
     $pageTitle = "Unset, needs to be set";
 }
 
@@ -24,7 +24,7 @@ if(unset($pageTitle)) {
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- CSS for the assignment Brief -->
-	<link href="css/brief.css" rel="stylesheet">
+	<link href="css/website.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
