@@ -9,6 +9,12 @@
 
 </div><!-- /.container -->
 
+<div class="footer">
+	<div class="container">
+		<p class="text-muted">Our Bank Copyright 2014 Christopher Hewett, Georgi Tsonev</p>
+	</div>
+</div>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
