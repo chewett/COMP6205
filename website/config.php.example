@@ -1,0 +1,9 @@
+<?php
+
+// the connection configuration
+$dbParams = array(
+	'driver'   => 'pdo_mysql',
+	'user'     => '',
+	'password' => '',
+	'dbname'   => '',
+);
