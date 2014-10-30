@@ -134,5 +134,39 @@ class Users
 		$this->lastname = $lastname;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getPassword()
+	{
+		return $this->password;
+	}
+
+	/**
+	 * @param string $password
+	 */
+	public function setPassword($password)
+	{
+		$this->password = $password;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSalt()
+	{
+		return $this->salt;
+	}
+
+	/**
+	 * @param string $salt
+	 */
+	public function setSalt($salt)
+	{
+		$this->salt = $salt;
+	}
+
+
+
 
 }
