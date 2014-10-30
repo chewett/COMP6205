@@ -20,6 +20,13 @@ class Users
        /**
      * @var string
      *
+     * @Column(name="salt", type="string", length=45, nullable=false)
+     */
+    private $salt;
+
+       /**
+     * @var string
+     *
      * @Column(name="password", type="string", length=45, nullable=false)
      */
     private $password;
