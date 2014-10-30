@@ -1,3 +1,10 @@
-{"require":
-    {"doctrine/orm": "*"}
+{
+	"require":
+		{
+			"doctrine/orm": "*"
+		},
+	"autoload": {
+		"psr-0": {"": "Entity/"}
+	}
+
 }
