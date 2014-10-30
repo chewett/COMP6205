@@ -11,10 +11,4 @@ $isDevMode = true;
 require_once 'config.php';
 
 $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-$entityManager = EntityManager::create($dbParams, $config);
-
-function GetEntityManager() {
-	global $entityManager;
-
-	return $entityManager;
-}
+$em = EntityManager::create($dbParams, $config);
