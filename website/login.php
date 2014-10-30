@@ -1,7 +1,9 @@
 <?php
 
+require_once 'doctrine_setup.php'; //default doctrine loader code
 $pageTitle = 'Login';
 require_once 'inc.header.php';
+
 
 ?>
 
