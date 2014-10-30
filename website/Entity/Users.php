@@ -45,6 +45,15 @@ class Users
      */
     private $lastname;
 
+
+    /**
+     * @var string
+     *
+     * @Column(name="username", type="string", length=45, nullable=false, unique=true)
+     */
+    private $username;
+
+
     /**
      * @var integer
      *
