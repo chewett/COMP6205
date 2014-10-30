@@ -1,7 +1,7 @@
 <?php
 
 $pageTitle = 'About Us';
-require_once 'inc.header.php';
+require_once 'inc/header.php';
 
 ?>
 
@@ -12,4 +12,4 @@ require_once 'inc.header.php';
 <p>You can contact us by going into one of our branch offices.</p>
 
 <?php
-require_once 'inc.footer.php';
+require_once 'inc/footer.php';

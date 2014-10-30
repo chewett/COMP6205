@@ -1,7 +1,7 @@
 <?php
 
 $pageTitle = 'View Statement X';
-require_once 'inc.header.php';
+require_once 'inc/header.php';
 
 ?>
 
@@ -43,4 +43,4 @@ Here is your statement for month ???.
 <button class="button">PDF Print</button>
 
 <?php
-require_once 'inc.footer.php';
+require_once 'inc/footer.php';

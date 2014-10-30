@@ -1,7 +1,7 @@
 <?php
 
 $pageTitle = 'Bank Account Overview';
-require_once 'inc.header.php';
+require_once 'inc/header.php';
 
 ?>
 
@@ -41,4 +41,4 @@ Here is a last of the last X transactions.
 </table>
 
 <?php
-require_once 'inc.footer.php';
+require_once 'inc/footer.php';

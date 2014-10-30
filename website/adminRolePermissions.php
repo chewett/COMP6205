@@ -1,9 +1,9 @@
 <?php
 
-require_once "doctrine_setup.php";
+require_once "inc/doctrine_setup.php";
 
 $pageTitle = 'Admin Role Permissions';
-require_once 'inc.header.php';
+require_once 'inc/header.php';
 
 $allRoles = $em->getRepository("Role")->findAll();
 
@@ -38,4 +38,4 @@ This allows you to change what permissions different roles have.
 
 
 <?php
-require_once 'inc.footer.php';
+require_once 'inc/footer.php';

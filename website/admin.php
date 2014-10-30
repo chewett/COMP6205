@@ -1,7 +1,7 @@
 <?php
 
 $pageTitle = 'Admin Page';
-require_once 'inc.header.php';
+require_once 'inc/header.php';
 
 ?>
 
@@ -22,4 +22,4 @@ To change the permissions roles have access to, go <a href="adminRolePermissions
 To see all concerns go to <a href="adminAllConcerns.php">the concerns list</a>
 
 <?php
-require_once 'inc.footer.php';
+require_once 'inc/footer.php';

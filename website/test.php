@@ -1,6 +1,6 @@
 <?php
 
-require_once 'doctrine_setup.php';
+require_once 'inc/doctrine_setup.php';
 
 $a = new Role();
 

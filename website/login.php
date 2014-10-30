@@ -4,7 +4,7 @@ require_once 'setup.php';
 
 require_once 'inc/auth.php';
 $pageTitle = 'Login';
-require_once 'inc.header.php';
+require_once 'inc/header.php';
 
 if(isset($_POST['username'])) {
 
@@ -49,4 +49,4 @@ if(isset($_POST['username'])) {
 
 
 <?php
-require_once 'inc.footer.php';
+require_once 'inc/footer.php';

@@ -1,7 +1,7 @@
 <?php
 
 $pageTitle = 'Admin User Roles';
-require_once 'inc.header.php';
+require_once 'inc/header.php';
 
 ?>
 
@@ -44,4 +44,4 @@ This allows you to change what roles a user has. E.g. promoting a user from a no
 
 
 <?php
-require_once 'inc.footer.php';
+require_once 'inc/footer.php';

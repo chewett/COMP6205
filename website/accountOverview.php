@@ -3,7 +3,7 @@
 require_once 'setup.php';
 
 $pageTitle = 'Account Overview';
-require_once 'inc.header.php';
+require_once 'inc/header.php';
 
 
 if(isset($_SESSION['id_user'])) {
@@ -47,4 +47,4 @@ if(isset($_SESSION['id_user'])) {
 
 
 <?php
-require_once 'inc.footer.php';
+require_once 'inc/footer.php';

@@ -1,7 +1,7 @@
 <?php
 
 $pageTitle = 'View All Concerns';
-require_once 'inc.header.php';
+require_once 'inc/header.php';
 
 ?>
 
@@ -47,4 +47,4 @@ This allows you to view all concerns
 Similar table above
 
 <?php
-require_once 'inc.footer.php';
+require_once 'inc/footer.php';
