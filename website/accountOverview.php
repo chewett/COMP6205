@@ -1,7 +1,14 @@
 <?php
 
+require_once 'setup.php';
+
 $pageTitle = 'Account Overview';
 require_once 'inc.header.php';
+
+
+if(isset($_SESSION['id_user'])) {
+	echo $_SESSION['id_user'];
+}
 
 ?>
 
