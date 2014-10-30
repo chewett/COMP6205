@@ -20,9 +20,9 @@ class Accountreport
     /**
      * @var string
      *
-     * @Column(name="decription", type="text", nullable=false)
+     * @Column(name="description", type="text", nullable=false)
      */
-    private $decription;
+    private $description;
 
     /**
      * @var boolean
@@ -45,17 +45,17 @@ class Accountreport
 	/**
 	 * @return string
 	 */
-	public function getDecription()
+	public function getDescription()
 	{
-		return $this->decription;
+		return $this->description;
 	}
 
 	/**
-	 * @param string $decription
+	 * @param string $description
 	 */
-	public function setDecription($decription)
+	public function setDescription($description)
 	{
-		$this->decription = $decription;
+		$this->description = $description;
 	}
 
 	/**
