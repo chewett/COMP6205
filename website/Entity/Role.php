@@ -20,7 +20,7 @@ class Role
     /**
      * @var string
      *
-     * @Column(name="roleName", type="string", length=45, nullable=false)
+     * @Column(name="roleName", type="string", length=45, nullable=false, unique=true)
      */
     private $rolename;
 
