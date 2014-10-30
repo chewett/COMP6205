@@ -17,17 +17,10 @@ class Users
      */
     private $idUser;
 
-       /**
+     /**
      * @var string
      *
-     * @Column(name="salt", type="string", length=45, nullable=false)
-     */
-    private $salt;
-
-       /**
-     * @var string
-     *
-     * @Column(name="password", type="string", length=45, nullable=false)
+     * @Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
 
@@ -162,17 +155,17 @@ class Users
 	/**
 	 * @return string
 	 */
-	public function getSalt()
+	public function getUsername()
 	{
-		return $this->salt;
+		return $this->username;
 	}
 
 	/**
-	 * @param string $salt
+	 * @param string $username
 	 */
-	public function setSalt($salt)
+	public function setUsername($username)
 	{
-		$this->salt = $salt;
+		$this->username = $username;
 	}
 
 
