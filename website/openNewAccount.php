@@ -1,5 +1,8 @@
 <?php
 
+$pageRequiresLogin = true;
+require_once "setup.php";
+
 $pageTitle = 'Open New Bank Account';
 require_once 'inc/header.php';
 

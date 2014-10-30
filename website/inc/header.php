@@ -21,15 +21,15 @@ if(!isset($pageTitle)) {
 	<title><?=$pageTitle?> - Our Bank</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- CSS for the assignment Brief -->
-	<link href="../css/website.css" rel="stylesheet">
+	<link href="css/website.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	<script src="../js/html5shiv.min.js"></script>
-	<script src="../js/respond.min.js"></script>
+	<script src="js/html5shiv.min.js"></script>
+	<script src="js/respond.min.js"></script>
 	<![endif]-->
 </head>
 <body>
@@ -43,22 +43,28 @@ if(!isset($pageTitle)) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand active" href="../login.php">Main Page</a>
+			<a class="navbar-brand active" href="login.php">Main Page</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a class="navbar-brand active" href="../accountOverview.php">Account Overview</a></li>
-				<li><a class="navbar-brand active" href="../bankOverview.php">Bank Overview</a></li>
-				<li><a class="navbar-brand active" href="../openNewAccount.php">New Bank Account</a></li>
-				<li><a class="navbar-brand active" href="../transferMoney.php">Transfer Money</a></li>
-				<li><a class="navbar-brand active" href="../viewStatement.php">View Statement</a></li>
-				<li><a class="navbar-brand active" href="../aboutUs.php">About Us</a></li>
-				<li><a class="navbar-brand active" href="../admin.php">Admin</a></li>
+				<li><a class="navbar-brand active" href="accountOverview.php">Account Overview</a></li>
+				<li><a class="navbar-brand active" href="bankOverview.php">Bank Overview</a></li>
+				<li><a class="navbar-brand active" href="openNewAccount.php">New Bank Account</a></li>
+				<li><a class="navbar-brand active" href="transferMoney.php">Transfer Money</a></li>
+				<li><a class="navbar-brand active" href="viewStatement.php">View Statement</a></li>
+				<li><a class="navbar-brand active" href="aboutUs.php">About Us</a></li>
+				<li><a class="navbar-brand active" href="admin.php">Admin</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
 
 <div class="container">
-
 	<div class="main_content">
+
+		<?php
+		if(isset($user)) {
+			?>
+			<div>User Details: <?=$user->getUsername();?><br />
+				<a href="login.php?logout=true">Logout</a> </div>
+		<?php } ?>

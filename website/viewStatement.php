@@ -1,5 +1,8 @@
 <?php
 
+$pageRequiresLogin = true;
+require_once "setup.php";
+
 $pageTitle = 'View Statement X';
 require_once 'inc/header.php';
 

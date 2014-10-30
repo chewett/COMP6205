@@ -1,5 +1,10 @@
 <?php
 
+if(isset($_GET['logout']) && $_GET['logout'] == true) {
+	session_start();
+	session_destroy();
+}
+
 require_once 'setup.php';
 
 require_once 'inc/auth.php';

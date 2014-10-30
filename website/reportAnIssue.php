@@ -1,5 +1,8 @@
 <?php
 
+$pageRequiresLogin = true;
+require_once "setup.php";
+
 $pageTitle = 'Report an issue';
 require_once 'inc/header.php';
 
