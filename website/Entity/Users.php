@@ -17,6 +17,13 @@ class Users
      */
     private $idUser;
 
+       /**
+     * @var string
+     *
+     * @Column(name="password", type="string", length=45, nullable=false)
+     */
+    private $password;
+
     /**
      * @var string
      *
