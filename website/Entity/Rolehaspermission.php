@@ -1,33 +1,28 @@
 <?php
 
-namespace Entity;
-
-
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Rolehaspermission
  *
- * @ORM\Table(name="roleHasPermission", indexes={@ORM\Index(name="fk_roleHasPermission_1_idx", columns={"id_permission"}), @ORM\Index(name="fk_roleHasPermission_2_idx", columns={"id_role"})})
- * @ORM\Entity
+ * @Table(name="roleHasPermission", indexes={@Index(name="fk_roleHasPermission_1_idx", columns={"id_permission"}), @Index(name="fk_roleHasPermission_2_idx", columns={"id_role"})})
+ * @Entity
  */
 class Rolehaspermission
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="idroleHasPermission", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="idroleHasPermission", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $idrolehaspermission;
 
     /**
      * @var \Permission
      *
-     * @ORM\ManyToOne(targetEntity="Permission")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_permission", referencedColumnName="idpermission")
+     * @ManyToOne(targetEntity="Permission")
+     * @JoinColumns({
+     *   @JoinColumn(name="id_permission", referencedColumnName="idpermission")
      * })
      */
     private $idPermission;
@@ -35,9 +30,9 @@ class Rolehaspermission
     /**
      * @var \Role
      *
-     * @ORM\ManyToOne(targetEntity="Role")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_role", referencedColumnName="id_role")
+     * @ManyToOne(targetEntity="Role")
+     * @JoinColumns({
+     *   @JoinColumn(name="id_role", referencedColumnName="id_role")
      * })
      */
     private $idRole;

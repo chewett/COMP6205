@@ -1,37 +1,33 @@
 <?php
 
-namespace Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Role
  *
- * @ORM\Table(name="role")
- * @ORM\Entity
+ * @Table(name="role")
+ * @Entity
  */
 class Role
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_role", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id_role", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $idRole;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="roleName", type="string", length=45, nullable=false)
+     * @Column(name="roleName", type="string", length=45, nullable=false)
      */
     private $rolename;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     * @Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
 

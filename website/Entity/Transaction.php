@@ -1,47 +1,42 @@
 <?php
 
-namespace Entity;
-
-
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Transaction
  *
- * @ORM\Table(name="transaction", uniqueConstraints={@ORM\UniqueConstraint(name="id_transaction_UNIQUE", columns={"id_transaction"})}, indexes={@ORM\Index(name="fk_transaction_1_idx", columns={"id_bankAccount_from"}), @ORM\Index(name="fk_transaction_2_idx", columns={"id_bankAccount_to"})})
- * @ORM\Entity
+ * @Table(name="transaction", uniqueConstraints={@UniqueConstraint(name="id_transaction_UNIQUE", columns={"id_transaction"})}, indexes={@Index(name="fk_transaction_1_idx", columns={"id_bankAccount_from"}), @Index(name="fk_transaction_2_idx", columns={"id_bankAccount_to"})})
+ * @Entity
  */
 class Transaction
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_transaction", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id_transaction", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $idTransaction;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     * @Column(name="description", type="string", length=45, nullable=true)
      */
     private $description;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="time", type="datetime", nullable=false)
+     * @Column(name="time", type="datetime", nullable=false)
      */
     private $time;
 
     /**
      * @var \Bankaccount
      *
-     * @ORM\ManyToOne(targetEntity="Bankaccount")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_bankAccount_from", referencedColumnName="id_bankAccount")
+     * @ManyToOne(targetEntity="Bankaccount")
+     * @JoinColumns({
+     *   @JoinColumn(name="id_bankAccount_from", referencedColumnName="id_bankAccount")
      * })
      */
     private $idBankaccountFrom;
@@ -49,9 +44,9 @@ class Transaction
     /**
      * @var \Bankaccount
      *
-     * @ORM\ManyToOne(targetEntity="Bankaccount")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_bankAccount_to", referencedColumnName="id_bankAccount")
+     * @ManyToOne(targetEntity="Bankaccount")
+     * @JoinColumns({
+     *   @JoinColumn(name="id_bankAccount_to", referencedColumnName="id_bankAccount")
      * })
      */
     private $idBankaccountTo;

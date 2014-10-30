@@ -1,54 +1,49 @@
 <?php
 
-namespace Entity;
-
-
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Users
  *
- * @ORM\Table(name="users", uniqueConstraints={@ORM\UniqueConstraint(name="id_user_UNIQUE", columns={"id_user"})}, indexes={@ORM\Index(name="fk_users_1_idx", columns={"id_role"})})
- * @ORM\Entity
+ * @Table(name="users", uniqueConstraints={@UniqueConstraint(name="id_user_UNIQUE", columns={"id_user"})}, indexes={@Index(name="fk_users_1_idx", columns={"id_role"})})
+ * @Entity
  */
 class Users
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id_user", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $idUser;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=45, nullable=false)
+     * @Column(name="firstName", type="string", length=45, nullable=false)
      */
     private $firstname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=45, nullable=false)
+     * @Column(name="lastName", type="string", length=45, nullable=false)
      */
     private $lastname;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="bankAccount", type="integer", nullable=true)
+     * @Column(name="bankAccount", type="integer", nullable=true)
      */
     private $bankaccount;
 
     /**
      * @var \Role
      *
-     * @ORM\ManyToOne(targetEntity="Role")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_role", referencedColumnName="id_role")
+     * @ManyToOne(targetEntity="Role")
+     * @JoinColumns({
+     *   @JoinColumn(name="id_role", referencedColumnName="id_role")
      * })
      */
     private $idRole;

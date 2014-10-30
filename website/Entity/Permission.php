@@ -1,38 +1,33 @@
 <?php
 
-namespace Entity;
-
-
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Permission
  *
- * @ORM\Table(name="permission", uniqueConstraints={@ORM\UniqueConstraint(name="name_UNIQUE", columns={"name"})})
- * @ORM\Entity
+ * @Table(name="permission", uniqueConstraints={@UniqueConstraint(name="name_UNIQUE", columns={"name"})})
+ * @Entity
  */
 class Permission
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="idpermission", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="idpermission", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $idpermission;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     * @Column(name="name", type="string", length=45, nullable=false)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     * @Column(name="description", type="string", length=255, nullable=false)
      */
     private $description;
 

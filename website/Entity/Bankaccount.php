@@ -1,40 +1,35 @@
 <?php
 
-namespace Entity;
-
-
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Bankaccount
  *
- * @ORM\Table(name="bankAccount", indexes={@ORM\Index(name="fk_bankAccount_1_idx", columns={"id_user"})})
- * @ORM\Entity
+ * @Table(name="bankAccount", indexes={@Index(name="fk_bankAccount_1_idx", columns={"id_user"})})
+ * @Entity
  */
 class Bankaccount
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_bankAccount", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id_bankAccount", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $idBankaccount;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="balance", type="integer", nullable=true)
+     * @Column(name="balance", type="integer", nullable=true)
      */
     private $balance;
 
     /**
      * @var \Users
      *
-     * @ORM\ManyToOne(targetEntity="Users")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
+     * @ManyToOne(targetEntity="Users")
+     * @JoinColumns({
+     *   @JoinColumn(name="id_user", referencedColumnName="id_user")
      * })
      */
     private $idUser;

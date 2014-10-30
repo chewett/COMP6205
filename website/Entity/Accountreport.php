@@ -1,47 +1,42 @@
 <?php
 
-namespace Entity;
-
-
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Accountreport
  *
- * @ORM\Table(name="accountReport", indexes={@ORM\Index(name="fk_accountReport_1_idx", columns={"id_bankAccount"})})
- * @ORM\Entity
+ * @Table(name="accountReport", indexes={@Index(name="fk_accountReport_1_idx", columns={"id_bankAccount"})})
+ * @Entity
  */
 class Accountreport
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_accountReport", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id_accountReport", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $idAccountreport;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="decription", type="text", nullable=false)
+     * @Column(name="decription", type="text", nullable=false)
      */
     private $decription;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="open", type="boolean", nullable=false)
+     * @Column(name="open", type="boolean", nullable=false)
      */
     private $open;
 
     /**
      * @var \Bankaccount
      *
-     * @ORM\ManyToOne(targetEntity="Bankaccount")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_bankAccount", referencedColumnName="id_bankAccount")
+     * @ManyToOne(targetEntity="Bankaccount")
+     * @JoinColumns({
+     *   @JoinColumn(name="id_bankAccount", referencedColumnName="id_bankAccount")
      * })
      */
     private $idBankaccount;
