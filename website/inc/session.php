@@ -14,6 +14,7 @@ if(!isset($_SESSION['id_user']) && $pageRequiresLogin) {
 
 //get user object and log them out if that user is not in the database
 if(isset($_SESSION['id_user'])) {
+	/** @var Users $user */
 	$user = $em->getRepository("Users")->find($_SESSION['id_user']);
 	if(!$user) {
 		session_destroy();
