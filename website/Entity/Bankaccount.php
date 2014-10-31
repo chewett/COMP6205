@@ -17,6 +17,23 @@ class Bankaccount
      */
     private $idBankaccount;
 
+
+    /**
+     * @var string
+     *
+     * @Column(name="type", type="string", length=45, nullable=false)
+     */
+    private $type;
+
+
+     /**
+     * @var string
+     *
+     * @Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+
     /**
      * @var integer
      *
