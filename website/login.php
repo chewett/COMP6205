@@ -17,15 +17,10 @@ if(isset($_POST['username'])) {
 
 	if($user == NULL) {
 		$errorMsg = "User or password invalid";
-	}else{
-		echo $_POST['password'] . "<br />";
-		echo $user->getPassword()  . "<br />";
-		var_dump(getHash($_POST['password'], $user->getPassword()));
-
+	}else {
 		if(!verifyLoginPassword($_POST['password'], $user->getPassword())){
-			$errorMsg = "User or password invalid";
-        } 
-        else{
+			$errorMsg = "User or password invalid";  
+  		}else{
         	$_SESSION['id_user'] = $user->getIdUser();
 			$_SESSION['logged_in'] = time();
 			header("Location: accountOverview.php");
