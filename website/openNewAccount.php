@@ -3,16 +3,23 @@
 $pageRequiresLogin = true;
 require_once "setup.php";
 
-$pageTitle = 'Open New Bank Account';
+$pageTitle = 'Open New Account';
 require_once 'inc/header.php';
 
 ?>
 
-<form class="form-signin" role="form">
-	<h3 class="form-signin-heading">Open a new bank account</h3>
-	Since you are a customer you are permitted to open a new account. <br /><br />
-	<input type="input" class="form-control" placeholder="Account Name" required autofocus>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Create new account</button>
+<h1>Open New Account</h1>
+
+<form id="openAccount" method="post">
+	Account Name: <input type="text" name="name"> <br />
+	Account Type: <select name="accountType">
+						<option value="current">Current Account</option>
+						<option value="personal">Personal Account</option>
+						<option value="savings">Savings Account</option>
+						<option value="loan">Loan Account</option>
+						<option value="joint">Joint Account</option>
+					</select> <br />
+	<input type="submit" value="Submit" / >
 </form>
 
 
