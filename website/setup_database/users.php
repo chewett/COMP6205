@@ -13,3 +13,5 @@ $bob->setUsername("bob");
 
 $em->persist($bob);
 $em->flush();
+
+echo "If there are no errors then this was setup properly";
