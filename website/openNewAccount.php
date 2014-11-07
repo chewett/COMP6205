@@ -23,7 +23,7 @@ if(isset($_POST['name']) && $_POST['name'] != '' && isset($_POST['accountType'])
 	header("Location: accountOverview.php");
 	die();
 
-} else{
+}else{
 	$err="Account Name or Type not set";
 }
 
@@ -38,17 +38,24 @@ if(isset($_POST['name']) && $_POST['name'] != '' && isset($_POST['accountType'])
 	}
 ?>
 
+<form role="form" id="openAccount" method="post">
+    <div class="form-group">
+        <label for="name">Account Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label for="accountType">Account Type</label>
+        <select class="form-control" id="accountType" name="accountType">
+            <option value="current">Current Account</option>
+            <option value="personal">Personal Account</option>
+            <option value="savings">Savings Account</option>
+            <option value="loan">Loan Account</option>
+            <option value="joint">Joint Account</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
 
-<form id="openAccount" method="post">
-	Account Name: <input type="text" name="name"> <br />
-	Account Type: <select name="accountType">
-						<option value="current">Current Account</option>
-						<option value="personal">Personal Account</option>
-						<option value="savings">Savings Account</option>
-						<option value="loan">Loan Account</option>
-						<option value="joint">Joint Account</option>
-					</select> <br />
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 </form>
 
 
