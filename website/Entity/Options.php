@@ -1,37 +1,33 @@
 <?php
 
-
-
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Options
  *
- * @ORM\Table(name="options", uniqueConstraints={@ORM\UniqueConstraint(name="key_UNIQUE", columns={"key"})})
- * @ORM\Entity
+ * @Table(name="options", uniqueConstraints={@UniqueConstraint(name="key_UNIQUE", columns={"keyname"})})
+ * @Entity
  */
 class Options
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_options", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id_options", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $idOptions;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="key", type="string", length=45, nullable=false)
+     * @Column(name="keyname", type="string", length=45, nullable=false)
      */
-    private $key;
+    private $keyname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="value", type="string", length=45, nullable=false)
+     * @Column(name="value", type="string", length=45, nullable=false)
      */
     private $value;
 
@@ -54,17 +50,17 @@ class Options
     /**
      * @return string
      */
-    public function getKey()
+    public function getKeyname()
     {
-        return $this->key;
+        return $this->keyname;
     }
 
     /**
-     * @param string $key
+     * @param string $keyname
      */
-    public function setKey($key)
+    public function setKeyname($keyname)
     {
-        $this->key = $key;
+        $this->keyname = $keyname;
     }
 
     /**
