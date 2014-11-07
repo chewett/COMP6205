@@ -3,6 +3,10 @@
 $pageRequiresLogin = true;
 require_once "inc/setup.php";
 
+if(!userHasPermission("open_bank_account")) {
+    die("You cannot access this page");
+}
+
 $pageTitle = 'Open New Account';
 require_once 'inc/header.php';
 

@@ -3,6 +3,10 @@
 $pageRequiresLogin = true;
 require_once "inc/setup.php";
 
+if(!userHasPermission("transfer_money")) {
+    die("You cannot access this page");
+}
+
 $pageTitle = 'Transfer Money';
 require_once 'inc/header.php';
 

@@ -3,6 +3,10 @@
 $pageRequiresLogin = true;
 require_once "inc/setup.php";
 
+if(!userHasPermission("admin_view_concerns")) {
+    die("You cannot access this page");
+}
+
 $pageTitle = 'View All Concerns';
 require_once 'inc/header.php';
 

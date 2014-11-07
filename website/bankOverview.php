@@ -3,6 +3,10 @@
 $pageRequiresLogin = true;
 require_once "inc/setup.php";
 
+if(!userHasPermission("view_bank_account")) {
+    die("You cannot access this page");
+}
+
 $pageTitle = 'Bank Account Overview';
 require_once 'inc/header.php';
 

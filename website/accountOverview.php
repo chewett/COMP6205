@@ -3,6 +3,10 @@
 $pageRequiresLogin = true;
 require_once "inc/setup.php";
 
+if(!userHasPermission("view_account")) {
+    die("You cannot access this page");
+}
+
 $pageTitle = 'Account Overview';
 require_once 'inc/header.php';
 

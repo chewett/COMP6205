@@ -3,6 +3,10 @@
 $pageRequiresLogin = true;
 require_once "inc/setup.php";
 
+if(!userHasPermission("view_statement")) {
+    die("You cannot access this page");
+}
+
 $pageTitle = 'View Statement X';
 require_once 'inc/header.php';
 

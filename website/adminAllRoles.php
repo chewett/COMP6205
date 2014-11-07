@@ -3,6 +3,10 @@
 $pageRequiresLogin = true;
 require_once "inc/setup.php";
 
+if(!userHasPermission("admin_view_roles")) {
+    die("You cannot access this page");
+}
+
 $pageTitle = 'All Roles';
 require_once 'inc/header.php';
 
