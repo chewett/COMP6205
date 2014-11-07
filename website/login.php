@@ -5,7 +5,7 @@ if(isset($_GET['logout']) && $_GET['logout'] == true) {
 	session_destroy();
 }
 
-require_once 'setup.php';
+require_once 'inc/setup.php';
 
 require_once 'inc/auth.php';
 $pageTitle = 'Login';

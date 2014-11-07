@@ -1,7 +1,7 @@
 <?php
 
 $pageRequiresLogin = true;
-require_once "setup.php";
+require_once "inc/setup.php";
 
 $pageTitle = 'Open New Account';
 require_once 'inc/header.php';
