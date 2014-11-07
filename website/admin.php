@@ -16,6 +16,10 @@ This is the admin page that lets you do a number of admin related functions
 
 To assign users new roles go <a href="adminUserRoles.php">here</a>
 
+<h2>View Roles</h2>
+
+To view all roles that are currently set up go <a href="adminAllRoles.php">here</a>.
+
 <h2>Change Permissions</h2>
 
 To change the permissions roles have access to, go <a href="adminRolePermissions.php">here</a>
