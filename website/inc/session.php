@@ -2,6 +2,9 @@
 
 session_start();
 
+//This stores the permissions the user has access to
+$permissions = array();
+
 if(!isset($pageRequiresLogin)) {
 	$pageRequiresLogin = false;
 }
@@ -21,5 +24,23 @@ if(isset($_SESSION['id_user'])) {
 		header("Location: login.php");
 		die();
 	}
+
+    $qb = $em->createQueryBuilder();
+    $qb->select("perm")
+        ->from("Rolehaspermission", "perm")
+        ->where("perm.idRole = ?1")
+        ->setParameter(1, $user->getIdRole());
+    $query = $qb->getQuery();
+    /** @var Rolehaspermission[] $permissions */
+    $permissionsObjects = $query->getResult();
+
+    foreach($permissionsObjects as $permission) {
+        $permissions[] = $permission->getIdPermission()->getName();
+    }
+
 }
 
+function userHasPermission($permissionName) {
+    global $permissions;
+    return in_array($permissionName, $permissions);
+}
