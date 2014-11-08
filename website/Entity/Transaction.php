@@ -13,7 +13,7 @@ class Transaction
      *
      * @Column(name="amount", type="integer", nullable=false)
      */
-    private $idTransaction;
+    private $amount;
 
 
     /**
