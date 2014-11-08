@@ -22,7 +22,7 @@ class Rolehaspermission
      *
      * @ManyToOne(targetEntity="Permission")
      * @JoinColumns({
-     *   @JoinColumn(name="id_permission", referencedColumnName="idpermission")
+     *   @JoinColumn(name="id_permission", referencedColumnName="idpermission", nullable=false)
      * })
      */
     private $idPermission;
@@ -32,7 +32,7 @@ class Rolehaspermission
      *
      * @ManyToOne(targetEntity="Role")
      * @JoinColumns({
-     *   @JoinColumn(name="id_role", referencedColumnName="id_role")
+     *   @JoinColumn(name="id_role", referencedColumnName="id_role", nullable=false)
      * })
      */
     private $idRole;

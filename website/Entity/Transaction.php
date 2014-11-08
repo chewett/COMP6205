@@ -8,6 +8,14 @@
  */
 class Transaction
 {
+	 /**
+     * @var integer
+     *
+     * @Column(name="amount", type="integer", nullable=false)
+     */
+    private $amount;
+
+
     /**
      * @var integer
      *
@@ -65,6 +73,19 @@ class Transaction
 	public function setDescription($description)
 	{
 		$this->description = $description;
+	}
+
+	public function getAmount()
+	{
+		return $this->amount;
+	}
+
+	/**
+	 * @param string $description
+	 */
+	public function setAmount($money)
+	{
+		$this->amount = $money;
 	}
 
 	/**
