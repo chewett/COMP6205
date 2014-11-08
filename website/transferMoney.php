@@ -21,7 +21,7 @@ if(isset($_POST['sourceAccountId']) && isset($_POST['destinationAccountId']) && 
 	}
 
 	$dstAcc=$em->getRepository("Bankaccount")->find($_POST['destinationAccountId']);
-	if($srcAcc==null){
+	if($dstAcc==null){
 		$err="Destination Account does not exist";
 	}
 
@@ -37,8 +37,10 @@ if(isset($_POST['sourceAccountId']) && isset($_POST['destinationAccountId']) && 
 		$transaction->setAmount($_POST['amount']);
 		$transaction->setTime(new DateTime("now"));
 
-		//increase payee's balance 
-		//$em->getRepository("Users");
+		//modify balances#
+		
+		$srcAcc->setBalance($srcAcc->getBalance()-$_POST['amount']);
+		$dstAcc->setBalance($dstAcc->getBalance()+$_POST['amount']);
 
 		
 
