@@ -32,7 +32,9 @@ $allTransactions = $query->getResult();
 
 ?>
 
-<h1>Bank Overview - Account ???</h1>
+<h1>Bank Overview - Account <?=$bankAccount->getName()?></h1>
+
+<h2>Account ID: <?=$bankAccount->getIdBankaccount()?></h2>
 
 <?php
 
@@ -40,7 +42,7 @@ if($allTransactions != null) {
 
 	?>
 	Here is a last of the last X transactions.
-	
+
 	<table class="table">
 		<thead>
 		<tr>
