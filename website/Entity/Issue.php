@@ -17,12 +17,15 @@ class Issue
      */
     private $idIssue;
 
-    /**
-     * @var integer
-     *
-     * @Column(name="id_bankaccount", type="integer", nullable=false)
-     */
-    private $idBankaccount;
+	/**
+	 * @var \Bankaccount
+	 *
+	 * @ManyToOne(targetEntity="Bankaccount")
+	 * @JoinColumns({
+	 *   @JoinColumn(name="id_bankaccount", referencedColumnName="id_bankAccount")
+	 * })
+	 */
+	private $idBankaccount;
 
     /**
      * @var string
@@ -72,7 +75,7 @@ class Issue
 	}
 
 	/**
-	 * @return int
+	 * @return Bankaccount
 	 */
 	public function getIdBankaccount()
 	{
@@ -80,7 +83,7 @@ class Issue
 	}
 
 	/**
-	 * @param int $idBankaccount
+	 * @param Bankaccount $idBankaccount
 	 */
 	public function setIdBankaccount($idBankaccount)
 	{
