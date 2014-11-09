@@ -4,6 +4,7 @@ session_start();
 
 //This stores the permissions the user has access to
 $permissions = array();
+$siteOptions = array();
 
 if(!isset($pageRequiresLogin)) {
 	$pageRequiresLogin = false;
@@ -37,6 +38,18 @@ if(isset($_SESSION['id_user'])) {
     foreach($permissionsObjects as $permission) {
         $permissions[] = $permission->getIdPermission()->getName();
     }
+
+	/** @var Options[] $optionsObjects */
+	$optionsObjects = $em->getRepository("Options")->findAll();
+	foreach($optionsObjects as $option) {
+		$siteOptions[$option->getKeyname()] = $option->getValue();
+	}
+
+	if(!isset($siteOptions['maintenance_mode'])) {
+		die('warning maintenance_mode not present in the database');
+	}else if($siteOptions['maintenance_mode'] == 'true' && !userHasPermission('maintenance_mode')){
+		die('Site in maintenance_mode, you cannot access it currently');
+	}
 
 }
 
