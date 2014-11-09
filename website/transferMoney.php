@@ -10,7 +10,7 @@ require_once 'inc/header.php';
 
 
 if(!userHasPermission("transfer_money")) {
-    ;
+    redirectUnauthorized();
 }
 
 $bankAccounts=$em->getRepository("Bankaccount")->findBy(array("idUser"=>$user)); //get all bank account of logged in user

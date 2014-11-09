@@ -1,12 +1,12 @@
-<?php
+`<?php
 
 $pageRequiresLogin = true;
-$pageTitle = 'View All Concerns';
+$pageTitle = 'View All Issues';
 
 require_once "inc/setup.php";
 
 if(!userHasPermission("admin_view_concerns")) {
-    die("You cannot access this page");
+      redirectUnauthorized();
 }
 
 
@@ -16,14 +16,14 @@ require_once 'inc/header.php';
 
 <h1>Admin - View all Concerns</h1>
 
-This allows you to view all concerns
+This allows you to view all issues
 
-<h2>Open Concerns</h2>
+<h2>Open Issues</h2>
 
 <table class="table">
 	<thead>
 	<tr>
-		<th>Concern ID</th>
+		<th>Issue ID</th>
 		<th>User Reported</th>
 		<th>Title</th>
 		<th></th>
@@ -51,7 +51,7 @@ This allows you to view all concerns
 	</tbody>
 </table>
 
-<h2>Resolved Concerns</h2>
+<h2>Resolved Issues</h2>
 
 Similar table above
 

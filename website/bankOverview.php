@@ -10,7 +10,7 @@ if(!(isset($_GET['id']) && (int)$_GET['id'])) {
 }
 
 if(!userHasPermission("view_bank_account")) {
-    die("You cannot access this page");
+      redirectUnauthorized();
 }
 
 

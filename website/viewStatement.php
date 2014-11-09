@@ -4,7 +4,7 @@ $pageRequiresLogin = true;
 require_once "inc/setup.php";
 
 if(!userHasPermission("view_statement")) {
-    die("You cannot access this page");
+     redirectUnauthorized();
 }
 
 $pageTitle = 'View Statement X';

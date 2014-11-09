@@ -5,7 +5,13 @@ $pageTitle = 'Admin Page';
 
 require_once "inc/setup.php";
 require_once 'inc/header.php';
-
+if(!(userHasPermission("admin_users_assign") ||
+   userHasPermission("admin_view_roles") ||
+   userHasPermission("admin_view_permission") ||
+   userHasPermission("admin_view_concerns") ||
+   userHasPermission("admin_site_options"))) {
+     redirectUnauthorized();
+}
 ?>
 
 <h1>Admin Page</h1>

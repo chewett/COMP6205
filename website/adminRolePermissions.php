@@ -5,7 +5,7 @@ $pageTitle = 'Admin Role Permissions';
 require_once "inc/setup.php";
 
 if(!userHasPermission("admin_view_permission")) {
-    die("You cannot access this page");
+      redirectUnauthorized();
 }
 
 

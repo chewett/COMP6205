@@ -5,7 +5,7 @@ $pageRequiresLogin = true;
 require_once "inc/setup.php";
 
 if(!userHasPermission("admin_site_options")) {
-    die("You cannot access this page");
+     redirectUnauthorized();
 }
 
 require_once 'inc/header.php';

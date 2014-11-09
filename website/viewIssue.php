@@ -6,6 +6,10 @@ require_once "inc/setup.php";
 $pageTitle = 'View Issue X';
 require_once 'inc/header.php';
 
+if(!userHasPermission("view_statement")) {
+     redirectUnauthorized();
+}
+
 ?>
 
 <h1>View Issue - Issue Number X</h1>
