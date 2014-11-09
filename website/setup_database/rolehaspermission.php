@@ -83,5 +83,7 @@ addPermissionToRole($clerk, $viewConcerns);
 addPermissionToRole($bankManager, $viewConcerns);
 addPermissionToRole($admin, $viewConcerns);
 
+$siteOptions = $permissionsRepo->findOneBy(array("name" => "admin_site_options"));
+addPermissionToRole($admin, $siteOptions);
 
 echo "If there are no errors then this was setup properly";

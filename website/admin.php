@@ -46,5 +46,12 @@ if(userHasPermission("admin_view_concerns")) {
     <?php
 }
 
+if(userHasPermission("admin_site_options")) {
+	?>
+	<h2>View Site options</h2>
+
+	To see site options go to <a href="adminSiteOptions.php">the site options page</a>
+<?php
+}
 
 require_once 'inc/footer.php';

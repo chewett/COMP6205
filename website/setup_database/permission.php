@@ -53,6 +53,11 @@ $viewConcerns->setName("admin_view_concerns");
 $viewConcerns->setDescription("Allow a user to view concerns");
 $em->persist($viewConcerns);
 
+$siteOptions = new Permission;
+$siteOptions->setName("admin_site_options");
+$siteOptions->setDescription("Allow a user to edit site options");
+$em->persist($siteOptions);
+
 $em->flush();
 
 echo "If there are no errors then this was setup properly";
