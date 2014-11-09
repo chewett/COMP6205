@@ -11,9 +11,13 @@ if(!userHasPermission("transfer_money")) {
     die("You cannot access this page");
 }
 
+$bankAccounts=$em->getRepository("Bankaccount")->findBy(array("idUser"=>$user)); //get all bank account of logged in user
+
 //if all form fields are set and different from 0
 if(isset($_POST['sourceAccountId']) && isset($_POST['destinationAccountId']) && isset($_POST['amount']) &&  isset($_POST['description']) &&
 	$_POST['sourceAccountId']!='' && $_POST['destinationAccountId'] != '' && $_POST['amount'] != '' && $_POST['description'] != '') {
+
+	$moneyToTransfer=$_POST['amount'];
 
 	$srcAcc=$em->getRepository("Bankaccount")->find($_POST['sourceAccountId']);
 	if($srcAcc==null){
@@ -25,8 +29,12 @@ if(isset($_POST['sourceAccountId']) && isset($_POST['destinationAccountId']) && 
 		$err="Destination Account does not exist";
 	}
 
-	if(!(is_numeric($_POST['amount']) && $_POST['amount']>0)){
+	if(!(is_numeric($moneyToTransfer) && $moneyToTransfer>0)){
 		$err="Amount should be positive number";
+	}
+
+	if($srcAcc->getBalance()<$moneyToTransfer){
+			$err="Balance in source account is not enough";
 	}
 
 	if(!isset($err)){
@@ -39,8 +47,9 @@ if(isset($_POST['sourceAccountId']) && isset($_POST['destinationAccountId']) && 
 
 		//modify balances#
 		
-		$srcAcc->setBalance($srcAcc->getBalance()-$_POST['amount']);
-		$dstAcc->setBalance($dstAcc->getBalance()+$_POST['amount']);
+
+		$srcAcc->setBalance($srcAcc->getBalance()-$moneyToTransfer);
+		$dstAcc->setBalance($dstAcc->getBalance()+$moneyToTransfer);
 
 		
 
@@ -57,16 +66,33 @@ if(isset($_POST['sourceAccountId']) && isset($_POST['destinationAccountId']) && 
 ?>
 
 <h1>Transfer Money</h1>
-<?php 
+
+
+
+
+<form class="form-signin" role="form" id="transferMoney" method="post">
+	
+	Enter the account details of the account you want to transfer money to and a description. <br /><br />
+
+
+	<?php 
+	//print the error
 	if(isset($err)){
-		echo "<p>$err</p>";
+		echo "<div class='alert alert-danger' role='alert'>$err</div>";
 		//echo "<p>" . $err . "</p>";
 	}
-?>
-<form class="form-signin" role="form" id="transferMoney" method="post">
-	<h3 class="form-signin-heading">Transfer Money</h3>
-	Enter the account details of the account you want to transfer money to and a description. <br /><br />
-	<input type="number" class="form-control" placeholder="From Account" required autofocus name="sourceAccountId">
+	?>
+
+	 <select class="form-control" placeholder="From Account" required autofocus name="sourceAccountId">
+
+	 	<?php
+	 	foreach ($bankAccounts as $account){
+	 		echo "<option value='{$account->getIdBankaccount()}'>{$account->getName()} : {$account->getIdBankaccount()}</option>";
+	 	}
+	 	?>
+	</select> 
+
+
 	<input type="number" class="form-control" placeholder="To Account" required autofocus name="destinationAccountId">
 	<input type="number" class="form-control" placeholder="Amount" required name="amount">
 	<input type="input" class="form-control" placeholder="Description" required name="description"> <br />
