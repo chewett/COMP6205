@@ -58,6 +58,11 @@ $siteOptions->setName("admin_site_options");
 $siteOptions->setDescription("Allow a user to edit site options");
 $em->persist($siteOptions);
 
+$reportIssue = new Permission;
+$reportIssue->setName("report_issue");
+$reportIssue->setDescription("Allow a user to report issues");
+$em->persist($reportIssue);
+
 $em->flush();
 
 echo "If there are no errors then this was setup properly";
