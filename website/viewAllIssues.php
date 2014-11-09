@@ -10,7 +10,7 @@ if(!userHasPermission("admin_view_issues")) {
 }
 
 /** @var Issue[] $openIssues */
-$openIssues = $em->getRepository("Issue")->findBy(array("status" => 1));
+$openIssues = $em->getRepository("Issue")->findBy(array("status" => 0));
 /** @var Issue[] $closedIssues */
 $closedIssues = $em->getRepository("Issue")->findBy(array("status" => 1));
 

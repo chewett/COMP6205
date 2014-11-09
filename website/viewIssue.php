@@ -11,19 +11,34 @@ if(!userHasPermission("admin_view_issues")) {
      redirectUnauthorized();
 }
 
+
+if(!(isset($_GET['id']) && (int)$_GET['id'])) {
+	header("Location: viewAllIssues.php");
+}
+
+/** @var Issue $issue */
+$issue = $em->getRepository("Issue")->find((int)$_GET['id']);
+
+
+
 ?>
 
-<h1>View Issue - Issue Number X</h1>
+<h1>View Issue - Issue Number <?=$issue->getIdIssue()?></h1>
 
-<h2>Issue Title</h2>
+<h2><?=$issue->getTitle()?></h2>
 
-<p>Description of issue</p>
+<p><?=$issue->getDescription()?></p>
 
-<form class="form-signin" role="form">
-	<h3 class="form-signin-heading">Add comment</h3>
-	<textarea class="form-control" rows="9" placeholder="Full description of problem"></textarea>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Add Comment</button>
-</form>
+<h2>Close Issue</h2>
+
+<p>If you have dealt with this issue you can close it</p>
+
+<p>
+	<form class="form-signin" role="form" method="post">
+		<button class="btn btn-lg btn-primary" type="submit" name="close" value="true">Close issue</button>
+	</form>
+
+	</p>
 
 <?php
 require_once 'inc/footer.php';
