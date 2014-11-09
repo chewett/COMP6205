@@ -43,7 +43,7 @@ class Issue
      *
      * @Column(name="status", type="boolean", nullable=false)
      */
-    private $status = '0';
+    private $status = '1';
 
     /**
      * @var \Users
