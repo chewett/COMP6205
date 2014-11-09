@@ -4,7 +4,7 @@ require_once '../inc/doctrine_setup.php';
 require_once '../inc/auth.php';
 
 $mainMode = new Options;
-$mainMode->setKey("maintenance_mode");
+$mainMode->setKeyname("maintenance_mode");
 $mainMode->setValue("false");
 
 $em->persist($mainMode);
