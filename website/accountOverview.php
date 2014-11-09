@@ -32,6 +32,7 @@ if($bankAccounts) {
 			<th>Account Name</th>
 			<th>Account Type</th>
 			<th>Account Balance</th>
+			<th></th>
 		</tr>
 		</thead>
 		<tbody>
@@ -43,6 +44,7 @@ if($bankAccounts) {
 				<td><?=$bank->getName()?></td>
 				<td><?=$bank->getType()?></td>
 				<td>£<?=$bank->getBalance()?></td>
+				<td><a href="bankOverview.php?id=<?=$bank->getIdBankaccount();?>">View</a></td>
 			</tr>
 		<?php } ?>
 		</tbody>
