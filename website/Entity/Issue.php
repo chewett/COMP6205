@@ -1,60 +1,56 @@
 <?php
 
-
-
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Issue
  *
- * @ORM\Table(name="issue", indexes={@ORM\Index(name="user", columns={"id_user"})})
- * @ORM\Entity
+ * @Table(name="issue", indexes={@Index(name="user", columns={"id_user"})})
+ * @Entity
  */
 class Issue
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_issue", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Column(name="id_issue", type="integer", nullable=false)
+     * @Id
+     * @GeneratedValue(strategy="IDENTITY")
      */
     private $idIssue;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_bankaccount", type="integer", nullable=false)
+     * @Column(name="id_bankaccount", type="integer", nullable=false)
      */
     private $idBankaccount;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     * @Column(name="title", type="string", length=255, nullable=false)
      */
     private $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", nullable=false)
+     * @Column(name="description", type="text", nullable=false)
      */
     private $description;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="status", type="boolean", nullable=false)
+     * @Column(name="status", type="boolean", nullable=false)
      */
     private $status = '0';
 
     /**
      * @var \Users
      *
-     * @ORM\ManyToOne(targetEntity="Users")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
+     * @ManyToOne(targetEntity="Users")
+     * @JoinColumns({
+     *   @JoinColumn(name="id_user", referencedColumnName="id_user")
      * })
      */
     private $idUser;
