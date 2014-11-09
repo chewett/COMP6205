@@ -5,11 +5,17 @@ if(isset($_GET['logout']) && $_GET['logout'] == true) {
 	session_destroy();
 }
 
+$pageTitle = 'Login';
 require_once 'inc/setup.php';
 
 require_once 'inc/auth.php';
-$pageTitle = 'Login';
+
 require_once 'inc/header.php';
+
+//check to see if you've been redirected to this page, then have informative message
+if(isset($_GET['requirelogin']) && $_GET['requirelogin']==1){
+	$redirectMsg= "You need to be logged in before going to $pageTitle page";
+}
 
 if(isset($_POST['username'])) {
 
@@ -36,7 +42,11 @@ if(isset($_POST['username'])) {
 	<form class="form-signin" role="form" method="post">
 		<?php
 			if(isset($errorMsg)){
-				echo $errorMsg;
+				echo "<div class='alert alert-danger' role='alert'>$errorMsg</div>";
+			}
+
+			if(isset($redirectMsg)){
+				echo "<div class='alert alert-warning' role='alert'>$redirectMsg</div>";
 			}
 		?>
 

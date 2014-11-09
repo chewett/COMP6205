@@ -1,13 +1,15 @@
 <?php
 
 $pageRequiresLogin = true;
+$pageTitle = 'Open New Account';
+
 require_once "inc/setup.php";
 
 if(!userHasPermission("open_bank_account")) {
-    die("You cannot access this page");
+    redirectUnauthorized();
 }
 
-$pageTitle = 'Open New Account';
+
 require_once 'inc/header.php';
 
 if(isset($_POST['name']) && $_POST['name'] != '' && isset($_POST['accountType']) && $_POST['accountType'] != '') {

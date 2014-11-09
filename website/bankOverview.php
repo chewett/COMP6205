@@ -1,6 +1,8 @@
 <?php
 
 $pageRequiresLogin = true;
+$pageTitle = 'Bank Account Overview';
+
 require_once "inc/setup.php";
 
 if(!(isset($_GET['id']) && (int)$_GET['id'])) {
@@ -11,7 +13,7 @@ if(!userHasPermission("view_bank_account")) {
     die("You cannot access this page");
 }
 
-$pageTitle = 'Bank Account Overview';
+
 require_once 'inc/header.php';
 
 /** @var Bankaccount $bankAccount */

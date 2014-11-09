@@ -12,7 +12,7 @@ if(!isset($pageRequiresLogin)) {
 
 //if you are not logged in but the page does require login, then redirect to login page
 if(!isset($_SESSION['id_user']) && $pageRequiresLogin) {
-	header("Location: login.php");
+	header("Location: login.php?requirelogin=1&pagetitle=$pageTitle");
 	die();                        //die after redirect
 }
 
@@ -56,4 +56,9 @@ if(isset($_SESSION['id_user'])) {
 function userHasPermission($permissionName) {
     global $permissions;
     return in_array($permissionName, $permissions);
+}
+
+function redirectUnauthorized(){
+    require_once(__DIR__ . '/../unauthorized.php');
+    die();
 }
