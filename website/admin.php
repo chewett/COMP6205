@@ -1,9 +1,9 @@
 <?php
 
 $pageRequiresLogin = true;
-require_once "inc/setup.php";
-
 $pageTitle = 'Admin Page';
+
+require_once "inc/setup.php";
 require_once 'inc/header.php';
 
 ?>

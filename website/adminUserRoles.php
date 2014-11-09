@@ -1,9 +1,14 @@
 <?php
 
 $pageRequiresLogin = true;
+$pageTitle = 'Admin User Roles';
+
 require_once "inc/setup.php";
 
-$pageTitle = 'Admin User Roles';
+if(!userHasPermission("admin_view_roles")) {
+    redirectUnauthorized();
+}
+
 require_once 'inc/header.php';
 
 ?>

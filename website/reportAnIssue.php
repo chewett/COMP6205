@@ -1,9 +1,10 @@
 <?php
 
 $pageRequiresLogin = true;
+$pageTitle = 'Report an issue';
 require_once "inc/setup.php";
 
-$pageTitle = 'Report an issue';
+
 require_once 'inc/header.php';
 
 ?>

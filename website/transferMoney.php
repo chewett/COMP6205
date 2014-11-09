@@ -1,14 +1,16 @@
 <?php
 
-require_once "inc/setup.php";
+$pageRequiresLogin = true;
 $pageTitle = 'Transfer Money';
+require_once "inc/setup.php";
+
 require_once 'inc/header.php';
 
-$pageRequiresLogin = true;
+
 
 
 if(!userHasPermission("transfer_money")) {
-    die("You cannot access this page");
+    ;
 }
 
 $bankAccounts=$em->getRepository("Bankaccount")->findBy(array("idUser"=>$user)); //get all bank account of logged in user

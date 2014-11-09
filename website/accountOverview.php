@@ -1,13 +1,15 @@
 <?php
 
 $pageRequiresLogin = true;
+$pageTitle = 'Account Overview';
+
 require_once "inc/setup.php";
 
 if(!userHasPermission("view_account")) {
-    die("You cannot access this page");
+    redirectUnauthorized();
 }
 
-$pageTitle = 'Account Overview';
+
 require_once 'inc/header.php';
 
 $bankAccounts = $em->getRepository("Bankaccount")->findBy(array("idUser" => $user->getIdUser()));
