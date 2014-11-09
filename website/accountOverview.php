@@ -40,8 +40,8 @@ if($bankAccounts) {
 			?>
 			<tr>
 				<td><?=$bank->getIdBankaccount()?></td>
-				<td><?=$bank->getType()?></td>
 				<td><?=$bank->getName()?></td>
+				<td><?=$bank->getType()?></td>
 				<td>£<?=$bank->getBalance()?></td>
 			</tr>
 		<?php } ?>
