@@ -62,6 +62,8 @@ addPermissionToRole($clerk, $viewStatement);
 addPermissionToRole($bankManager, $viewStatement);
 addPermissionToRole($admin, $viewStatement);
 
+$reportIssue = $permissionsRepo->findOneBy(array("name" => "report_issue"));
+addPermissionToRole($user, $viewStatement);
 
 $assignUsers = $permissionsRepo->findOneBy(array("name" => "admin_users_assign"));
 addPermissionToRole($bankManager, $assignUsers);
@@ -78,10 +80,10 @@ addPermissionToRole($bankManager, $viewPermissions);
 addPermissionToRole($admin, $viewPermissions);
 
 
-$viewConcerns = $permissionsRepo->findOneBy(array("name" => "admin_view_concerns"));
-addPermissionToRole($clerk, $viewConcerns);
-addPermissionToRole($bankManager, $viewConcerns);
-addPermissionToRole($admin, $viewConcerns);
+$viewIssues = $permissionsRepo->findOneBy(array("name" => "admin_view_issues"));
+addPermissionToRole($clerk, $viewIssues);
+addPermissionToRole($bankManager, $viewIssues);
+addPermissionToRole($admin, $viewIssues);
 
 $siteOptions = $permissionsRepo->findOneBy(array("name" => "admin_site_options"));
 addPermissionToRole($admin, $siteOptions);
