@@ -44,11 +44,11 @@ if(userHasPermission("admin_view_permission")) {
     <?php
 }
 
-if(userHasPermission("admin_view_concerns")) {
+if(userHasPermission("admin_view_issues")) {
     ?>
-    <h2>View All Concerns</h2>
+    <h2>View All Issues</h2>
 
-    To see all concerns go to <a href="adminAllConcerns.php">the concerns list</a>
+    To see all issues go to <a href="viewAllIssues.php">the issues list</a>
     <?php
 }
 

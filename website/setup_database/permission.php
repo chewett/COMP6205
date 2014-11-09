@@ -48,10 +48,10 @@ $viewPermissions->setName("admin_view_permission");
 $viewPermissions->setDescription("Allow a user to view the permissions list");
 $em->persist($viewPermissions);
 
-$viewConcerns = new Permission;
-$viewConcerns->setName("admin_view_concerns");
-$viewConcerns->setDescription("Allow a user to view concerns");
-$em->persist($viewConcerns);
+$viewIssues = new Permission;
+$viewIssues->setName("admin_view_issues");
+$viewIssues->setDescription("Allow a user to view issues");
+$em->persist($viewIssues);
 
 $siteOptions = new Permission;
 $siteOptions->setName("admin_site_options");
