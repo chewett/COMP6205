@@ -8,63 +8,66 @@ require_once 'inc/header.php';
 
 
 
-
 if(!userHasPermission("transfer_money")) {
     redirectUnauthorized();
 }
 
 $bankAccounts=$em->getRepository("Bankaccount")->findBy(array("idUser"=>$user)); //get all bank account of logged in user
 
-//if all form fields are set and different from 0
-if(isset($_POST['sourceAccountId']) && isset($_POST['destinationAccountId']) && isset($_POST['amount']) &&  isset($_POST['description']) &&
-	$_POST['sourceAccountId']!='' && $_POST['destinationAccountId'] != '' && $_POST['amount'] != '' && $_POST['description'] != '') {
+if(isset($_POST['submit'])) {
+	//if all form fields are set and different from 0
+	if(isset($_POST['sourceAccountId']) && isset($_POST['destinationAccountId']) && isset($_POST['amount']) &&  isset($_POST['description']) &&
+		$_POST['sourceAccountId']!='' && $_POST['destinationAccountId'] != '' && $_POST['amount'] != '' && $_POST['description'] != '') {
 
-	$moneyToTransfer=$_POST['amount'];
+		$moneyToTransfer=$_POST['amount'];
 
-	$srcAcc=$em->getRepository("Bankaccount")->find($_POST['sourceAccountId']);
-	if($srcAcc==null){
-		$err="Source Account does not exist";
+		$srcAcc=$em->getRepository("Bankaccount")->find($_POST['sourceAccountId']);
+		if($srcAcc==null){
+			$err="Source Account does not exist";
+		}
+
+		$dstAcc=$em->getRepository("Bankaccount")->find($_POST['destinationAccountId']);
+		if($dstAcc==null){
+			$err="Destination Account does not exist";
+		}
+
+		if(!(is_numeric($moneyToTransfer) && $moneyToTransfer>0)){
+			$err="Amount should be positive number";
+		}
+
+		if($srcAcc->getBalance()<$moneyToTransfer){
+				$err="Balance in source account is not enough";
+		}
+
+		if(!isset($err)){
+			$transaction= new Transaction;
+			$transaction->setIdBankaccountFrom($srcAcc);
+			$transaction->setIdBankaccountTo($dstAcc);
+			$transaction->setDescription($_POST['description']);
+			$transaction->setAmount($_POST['amount']);
+			$transaction->setTime(new DateTime("now"));
+
+			//modify balances#
+
+
+			$srcAcc->setBalance($srcAcc->getBalance()-$moneyToTransfer);
+			$dstAcc->setBalance($dstAcc->getBalance()+$moneyToTransfer);
+
+
+
+			$em->persist($transaction);
+			$em->flush();
+			header("Location: accountOverview.php");
+			die();
+		}
+
+	}else{
+		$err="Payee, Amount or Desciption not set";
 	}
-
-	$dstAcc=$em->getRepository("Bankaccount")->find($_POST['destinationAccountId']);
-	if($dstAcc==null){
-		$err="Destination Account does not exist";
-	}
-
-	if(!(is_numeric($moneyToTransfer) && $moneyToTransfer>0)){
-		$err="Amount should be positive number";
-	}
-
-	if($srcAcc->getBalance()<$moneyToTransfer){
-			$err="Balance in source account is not enough";
-	}
-
-	if(!isset($err)){
-		$transaction= new Transaction;
-		$transaction->setIdBankaccountFrom($srcAcc);
-		$transaction->setIdBankaccountTo($dstAcc);
-		$transaction->setDescription($_POST['description']);
-		$transaction->setAmount($_POST['amount']);
-		$transaction->setTime(new DateTime("now"));
-
-		//modify balances#
-		
-
-		$srcAcc->setBalance($srcAcc->getBalance()-$moneyToTransfer);
-		$dstAcc->setBalance($dstAcc->getBalance()+$moneyToTransfer);
-
-		
-
-		$em->persist($transaction);
-		$em->flush();
-		header("Location: accountOverview.php");
-		die();
-	}
-
-
-}else{
-	$err="Payee, Amount or Desciption not set";
 }
+
+
+
 ?>
 
 <h1>Transfer Money</h1>
@@ -98,7 +101,7 @@ if(isset($_POST['sourceAccountId']) && isset($_POST['destinationAccountId']) && 
 	<input type="number" class="form-control" placeholder="To Account" required autofocus name="destinationAccountId">
 	<input type="number" class="form-control" placeholder="Amount" required name="amount">
 	<input type="input" class="form-control" placeholder="Description" required name="description"> <br />
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Sent Payment</button>
+	<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sent Payment</button>
 </form>
 
 
