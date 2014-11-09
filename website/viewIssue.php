@@ -6,7 +6,8 @@ require_once "inc/setup.php";
 $pageTitle = 'View Issue X';
 require_once 'inc/header.php';
 
-if(!userHasPermission("view_statement")) {
+//if you have the permission to view specific issue (same as the permission to view the whole list of issues)
+if(!userHasPermission("admin_view_issues")) {
      redirectUnauthorized();
 }
 

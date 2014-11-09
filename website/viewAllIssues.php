@@ -5,7 +5,7 @@ $pageTitle = 'View All Issues';
 
 require_once "inc/setup.php";
 
-if(!userHasPermission("admin_view_concerns")) {
+if(!userHasPermission("admin_view_issues")) {
       redirectUnauthorized();
 }
 
