@@ -8,7 +8,6 @@ require_once 'inc/header.php';
 
 
 
-
 if(!userHasPermission("transfer_money")) {
     redirectUnauthorized();
 }
