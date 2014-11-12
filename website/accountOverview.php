@@ -12,6 +12,7 @@ if(!userHasPermission("view_account")) {
 
 require_once 'inc/header.php';
 
+/** @var Bankaccount[] $bankAccounts */
 $bankAccounts = $em->getRepository("Bankaccount")->findBy(array("idUser" => $user->getIdUser()));
 
 ?>
@@ -44,7 +45,7 @@ if($bankAccounts) {
 			<tr>
 				<td><?=$bank->getIdBankaccount()?></td>
 				<td><?=$bank->getName()?></td>
-				<td><?=$bank->getType()?></td>
+				<td><?=$bank->getIdAccounttype()->getName()?></td>
 				<td>£<?=$bank->getBalance()?></td>
 				<td><a href="bankOverview.php?id=<?=$bank->getIdBankaccount();?>">View</a></td>
 			</tr>

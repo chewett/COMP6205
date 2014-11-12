@@ -9,23 +9,34 @@ if(!userHasPermission("open_bank_account")) {
     redirectUnauthorized();
 }
 
+/** @var Accounttype[] $accountTypes */
+$accountTypes = $em->getRepository("Accounttype")->findAll();
 
 require_once 'inc/header.php';
 
 if(isset($_POST['submit'])) {
 
-	if (isset($_POST['name']) && $_POST['name'] != '' && isset($_POST['accountType']) && $_POST['accountType'] != '') {
-		$account = new Bankaccount();
-		$account->setBalance(0); //lol
-		$account->setName($_POST['name']);
-		$account->setType($_POST['accountType']);
-		$account->setIdUser($user);
+	if (isset($_POST['name']) && $_POST['name'] != '' && isset($_POST['accountType']) && (int)$_POST['accountType']) {
 
-		$em->persist($account);
-		$em->flush();
+		$accountType = $em->getRepository("Accounttype")->find((int)$_POST['accountType']);
 
-		header("Location: accountOverview.php");
-		die();
+		if($accountType != null) {
+
+			$account = new Bankaccount();
+			$account->setBalance(0); //lol
+			$account->setName($_POST['name']);
+			$account->setIdAccounttype($accountType);
+			$account->setIdUser($user);
+
+			$em->persist($account);
+			$em->flush();
+
+			header("Location: accountOverview.php");
+			die();
+		}else{
+			$err = "Unable to find account type";
+		}
+
 
 	} else {
 		$err = "Account Name or Type not set";
@@ -49,11 +60,13 @@ if(isset($_POST['submit'])) {
     <div class="form-group">
         <label for="accountType">Account Type</label>
         <select class="form-control" id="accountType" name="accountType">
-            <option value="current">Current Account</option>
-            <option value="personal">Personal Account</option>
-            <option value="savings">Savings Account</option>
-            <option value="loan">Loan Account</option>
-            <option value="joint">Joint Account</option>
+	        <?php
+	        foreach($accountTypes as $type) {
+				?>
+		        <option value="<?=$type->getIdAccounttype()?>"><?=$type->getName()?></option>
+		        <?php
+	        }
+	        ?>
         </select>
     </div>
     <button type="submit" name="submit" class="btn btn-default">Submit</button>
