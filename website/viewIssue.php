@@ -16,11 +16,16 @@ if(!(isset($_GET['id']) && (int)$_GET['id'])) {
 	header("Location: viewAllIssues.php");
 }
 
+
 /** @var Issue $issue */
 $issue = $em->getRepository("Issue")->find((int)$_GET['id']);
 
 
-
+if(isset($_POST['submit']) && $_POST['submit']!='') {
+	$issue->setStatus(1); //resolve issue
+	$em->flush();
+	$info="<div class='alert alert-success' role='alert'>You have reviewed and closed this issue</div>";
+}
 ?>
 
 <h1>View Issue - Issue Number <?=$issue->getIdIssue()?></h1>
@@ -29,16 +34,25 @@ $issue = $em->getRepository("Issue")->find((int)$_GET['id']);
 
 <p><?=$issue->getDescription()?></p>
 
-<h2>Close Issue</h2>
+<?php
+if(!($issue->isStatus()==1)) { ?>
+	<h2>Close Issue</h2>
 
-<p>If you have dealt with this issue you can close it</p>
-
-<p>
-	<form class="form-signin" role="form" method="post">
-		<button class="btn btn-lg btn-primary" type="submit" name="close" value="true">Close issue</button>
-	</form>
+	<p>If you have dealt with this issue you can close it</p>
+	<p>
+		<form class="form-signin" role="form" method="post">
+			<button name="submit" class="btn btn-lg btn-primary" type="submit" name="close" value="true">Close issue</button>
+		</form>
 
 	</p>
+<?php
+}else {
+	if(isset($info)){
+		echo $info;
+	}
+}
+?>
 
 <?php
 require_once 'inc/footer.php';
+
