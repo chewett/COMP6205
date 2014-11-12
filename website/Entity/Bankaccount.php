@@ -18,12 +18,15 @@ class Bankaccount
     private $idBankaccount;
 
 
-    /**
-     * @var string
-     *
-     * @Column(name="type", type="string", length=45, nullable=false)
-     */
-    private $type;
+	/**
+	 * @var \Accounttype
+	 *
+	 * @ManyToOne(targetEntity="Accounttype")
+	 * @JoinColumns({
+	 *   @JoinColumn(name="id_accountType", referencedColumnName="id_accountType")
+	 * })
+	 */
+	private $idAccounttype;
 
 
      /**
@@ -108,21 +111,20 @@ class Bankaccount
 	}
 
 	/**
-	 * @return string
+	 * @return Accounttype
 	 */
-	public function getType()
+	public function getIdAccounttype()
 	{
-		return $this->type;
+		return $this->idAccounttype;
 	}
 
 	/**
-	 * @param string $type
+	 * @param Accounttype $idAccounttype
 	 */
-	public function setType($type)
+	public function setIdAccounttype($idAccounttype)
 	{
-		$this->type = $type;
+		$this->idAccounttype = $idAccounttype;
 	}
-
 
 
 }
