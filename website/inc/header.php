@@ -48,10 +48,7 @@ if(!isset($pageTitle)) {
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a class="navbar-brand active" href="accountOverview.php">Account Overview</a></li>
-				<li><a class="navbar-brand active" href="bankOverview.php">Bank Overview</a></li>
-				<li><a class="navbar-brand active" href="openNewAccount.php">New Bank Account</a></li>
 				<li><a class="navbar-brand active" href="transferMoney.php">Transfer Money</a></li>
-				<li><a class="navbar-brand active" href="viewStatement.php">View Statement</a></li>
 				<li><a class="navbar-brand active" href="aboutUs.php">About Us</a></li>
 				<li><a class="navbar-brand active" href="admin.php">Admin</a></li>
 			</ul>
