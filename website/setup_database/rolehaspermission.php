@@ -63,7 +63,7 @@ addPermissionToRole($bankManager, $viewStatement);
 addPermissionToRole($admin, $viewStatement);
 
 $reportIssue = $permissionsRepo->findOneBy(array("name" => "report_issue"));
-addPermissionToRole($user, $viewStatement);
+addPermissionToRole($user, $reportIssue);
 
 $assignUsers = $permissionsRepo->findOneBy(array("name" => "admin_users_assign"));
 addPermissionToRole($bankManager, $assignUsers);
