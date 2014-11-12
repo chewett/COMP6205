@@ -12,38 +12,39 @@ if(!userHasPermission("open_bank_account")) {
 
 require_once 'inc/header.php';
 
-if(isset($_POST['name']) && $_POST['name'] != '' && isset($_POST['accountType']) && $_POST['accountType'] != '') {
-	$account= new Bankaccount();
-	$account->setBalance(0); //lol
-	$account->setName($_POST['name']);
-	$account->setType($_POST['accountType']);
-	$account->setIdUser($user);
+if(isset($_POST['submit'])) {
 
-	$em->persist($account);
-	$em->flush();
+	if (isset($_POST['name']) && $_POST['name'] != '' && isset($_POST['accountType']) && $_POST['accountType'] != '') {
+		$account = new Bankaccount();
+		$account->setBalance(0); //lol
+		$account->setName($_POST['name']);
+		$account->setType($_POST['accountType']);
+		$account->setIdUser($user);
 
-	header("Location: accountOverview.php");
-	die();
+		$em->persist($account);
+		$em->flush();
 
-}else{
-	$err="Account Name or Type not set";
+		header("Location: accountOverview.php");
+		die();
+
+	} else {
+		$err = "Account Name or Type not set";
+	}
 }
-
 
 ?>
 
 <h1>Open New Account</h1>
 <?php 
 	if(isset($err)){
-		echo "<p>$err</p>";
-		//echo "<p>" . $err . "</p>";
+		echo "<div class='alert alert-danger' role='alert'>$err</div>";
 	}
 ?>
 
 <form role="form" id="openAccount" method="post">
     <div class="form-group">
         <label for="name">Account Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required autofocus>
     </div>
     <div class="form-group">
         <label for="accountType">Account Type</label>
@@ -55,9 +56,7 @@ if(isset($_POST['name']) && $_POST['name'] != '' && isset($_POST['accountType'])
             <option value="joint">Joint Account</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
-
+    <button type="submit" name="submit" class="btn btn-default">Submit</button>
 </form>
 
 
