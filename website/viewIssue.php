@@ -3,12 +3,9 @@
 $pageRequiresLogin = true;
 require_once "inc/setup.php";
 
-$pageTitle = 'View Issue X';
-require_once 'inc/header.php';
-
 //if you have the permission to view specific issue (same as the permission to view the whole list of issues)
 if(!userHasPermission("admin_view_issues")) {
-     redirectUnauthorized();
+	redirectUnauthorized();
 }
 
 
@@ -19,7 +16,8 @@ if(!(isset($_GET['id']) && (int)$_GET['id'])) {
 /** @var Issue $issue */
 $issue = $em->getRepository("Issue")->find((int)$_GET['id']);
 
-
+$pageTitle = 'View Issue ' . $issue->getIdIssue();
+require_once 'inc/header.php';
 
 ?>
 
