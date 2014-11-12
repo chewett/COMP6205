@@ -35,8 +35,7 @@ require_once 'inc/header.php';
 	<form class="form-signin" role="form" method="post">
 		<button class="btn btn-lg btn-primary" type="submit" name="close" value="true">Close issue</button>
 	</form>
-
-	</p>
+</p>
 
 <?php
 require_once 'inc/footer.php';
