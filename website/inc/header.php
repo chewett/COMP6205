@@ -65,6 +65,6 @@ if(!isset($pageTitle)) {
 		<?php
 		if(isset($user)) {
 			?>
-			<div>User Details: <?=$user->getUsername();?><br />
+			<div class="user-details">User Details: <?=$user->getUsername();?><br />
 				<a href="login.php?logout=true">Logout</a> </div>
 		<?php } ?>
