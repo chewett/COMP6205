@@ -46,14 +46,6 @@ class Users
      */
     private $username;
 
-
-    /**
-     * @var integer
-     *
-     * @Column(name="bankAccount", type="integer", nullable=true)
-     */
-    private $bankaccount;
-
     /**
      * @var \Role
      *
@@ -63,22 +55,6 @@ class Users
      * })
      */
     private $idRole;
-
-	/**
-	 * @return int
-	 */
-	public function getBankaccount()
-	{
-		return $this->bankaccount;
-	}
-
-	/**
-	 * @param int $bankaccount
-	 */
-	public function setBankaccount($bankaccount)
-	{
-		$this->bankaccount = $bankaccount;
-	}
 
 	/**
 	 * @return string
