@@ -2,6 +2,11 @@
 require_once '../inc/auth.php';
 
 class HashingFunctionTest extends PHPUnit_Framework_TestCase {
+
+	/**
+	 * This tests the generatehas function
+	 * @return array The list of hashes generated
+	 */
 	public function testGenerateHashIsUnique() {
 		$hashs = array();
 
@@ -16,7 +21,9 @@ class HashingFunctionTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * This tests the getHash function
 	 * @depends testGenerateHashIsUnique
+	 * @param $hashs
 	 */
 	public function testGetHashSame($hashs) {
 		foreach($hashs as $hash) {
@@ -27,7 +34,9 @@ class HashingFunctionTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * This tests the verifyLoginPassword function
 	 * @depends testGenerateHashIsUnique
+	 * @param $hashs
 	 */
 	public function testValidLogin($hashs) {
 		foreach($hashs as $hash) {
@@ -36,21 +45,6 @@ class HashingFunctionTest extends PHPUnit_Framework_TestCase {
 		}
 
 	}
-
-	/**
-	 * function generateHash($password) {
-	$salt = '$2a$10$' . substr(md5(uniqid(rand(), true)), 0, 22);
-	return crypt($password, $salt);
-	}
-
-	function getHash($pass, $hash) {
-	return crypt($pass, $hash);
-	}
-
-	function verifyLoginPassword($pass, $hash) {
-	return (getHash($pass, $hash) == $hash);
-	}
-	 */
 
 }
  

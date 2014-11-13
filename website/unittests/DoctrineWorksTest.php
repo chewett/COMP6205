@@ -4,13 +4,19 @@ require_once '../inc/functions.php';
 class DoctrineWorksTest extends PHPUnit_Framework_TestCase
 {
 
+	/**
+	 * Tests you can get the entity manager
+	 */
 	public function testGetEm()
 	{
 		$em = getEntityManager();
 		$this->assertNotNull($em);
-		return $em;
 	}
 
+	/**
+	 * This creates a random Role Object
+	 * @return Role The created role
+	 */
 	private function createRole()
 	{
 		$role = new Role();
@@ -19,6 +25,10 @@ class DoctrineWorksTest extends PHPUnit_Framework_TestCase
 		return $role;
 	}
 
+	/**
+	 * This creates a random User object
+	 * @return Users The created user
+	 */
 	private function createUser()
 	{
 		$user = new Users();
@@ -29,6 +39,12 @@ class DoctrineWorksTest extends PHPUnit_Framework_TestCase
 		return $user;
 	}
 
+	/**
+	 * This creates a random bank account
+	 * @param $user The user associated with the bank account
+	 * @param $accountType The type fo account
+	 * @return Bankaccount The created bank account object
+	 */
 	private function createBankAccount($user, $accountType)
 	{
 		$bankAccount = new Bankaccount();
@@ -39,6 +55,10 @@ class DoctrineWorksTest extends PHPUnit_Framework_TestCase
 		return $bankAccount;
 	}
 
+	/**
+	 * This creates a random account type object
+	 * @return Accounttype The created account type object
+	 */
 	private function createAccountType()
 	{
 		$accountType = new Accounttype();
@@ -46,6 +66,9 @@ class DoctrineWorksTest extends PHPUnit_Framework_TestCase
 		return $accountType;
 	}
 
+	/**
+	 * This tests the createBankAccount to ensure it works correctly
+	 */
 	public function testCreateNewBankAccount()
 	{
 		$em = getEntityManager();
@@ -69,6 +92,9 @@ class DoctrineWorksTest extends PHPUnit_Framework_TestCase
 		$em->flush();
 	}
 
+	/**
+	 * This tests the createIssue function to ensure it works correctly
+	 */
 	public function testCreateIssue()
 	{
 
@@ -99,6 +125,9 @@ class DoctrineWorksTest extends PHPUnit_Framework_TestCase
 		$em->flush();
 	}
 
+	/**
+	 * This tests the closeIssue function to ensure it works correctly
+	 */
 	public function testCloseIssue()
 	{
 
@@ -133,6 +162,9 @@ class DoctrineWorksTest extends PHPUnit_Framework_TestCase
 		$em->flush();
 	}
 
+	/**
+	 * This tests the transfer money function to ensure it works correctly
+	 */
 	public function testTransferMoney() {
 		$reductionValue = 1000;
 
@@ -179,7 +211,7 @@ class DoctrineWorksTest extends PHPUnit_Framework_TestCase
 		$em->remove($user);
 		$em->remove($type);
 		$em->flush();
-}
+	}
 
 }
  

@@ -6,6 +6,7 @@ session_start();
 $permissions = array();
 $siteOptions = array();
 
+//If the page doesnt say it needs login, define it as false
 if(!isset($pageRequiresLogin)) {
 	$pageRequiresLogin = false;
 }
@@ -26,6 +27,7 @@ if(isset($_SESSION['id_user'])) {
 		die();
 	}
 
+	//Get all the users permissions
     $qb = $em->createQueryBuilder();
     $qb->select("perm")
         ->from("Rolehaspermission", "perm")
@@ -35,6 +37,7 @@ if(isset($_SESSION['id_user'])) {
     /** @var Rolehaspermission[] $permissions */
     $permissionsObjects = $query->getResult();
 
+	//Gets the names and stores them in a flat array
     foreach($permissionsObjects as $permission) {
         $permissions[] = $permission->getIdPermission()->getName();
     }
@@ -45,6 +48,7 @@ if(isset($_SESSION['id_user'])) {
 		$siteOptions[$option->getKeyname()] = $option->getValue();
 	}
 
+	//If site is in maintenance mode or the variable isnt set
 	if(!isset($siteOptions['maintenance_mode'])) {
 		die('warning maintenance_mode not present in the database');
 	}else if($siteOptions['maintenance_mode'] == 'true' && !userHasPermission('maintenance_mode')){
@@ -53,11 +57,19 @@ if(isset($_SESSION['id_user'])) {
 
 }
 
+/**
+ * This checks the users permission array to see if the user has the given permission
+ * @param $permissionName The permission you are checking to see if the user has
+ * @return bool True if the user has the permission
+ */
 function userHasPermission($permissionName) {
     global $permissions;
     return permissionInPermissions($permissions, $permissionName);
 }
 
+/**
+ * Displays the unauthorized page if the user cannot access the page
+ */
 function redirectUnauthorized(){
     require_once(__DIR__ . '/../unauthorized.php');
     die();
