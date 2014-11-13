@@ -55,7 +55,7 @@ if(isset($_SESSION['id_user'])) {
 
 function userHasPermission($permissionName) {
     global $permissions;
-    return in_array($permissionName, $permissions);
+    return permissionInPermissions($permissions, $permissionName);
 }
 
 function redirectUnauthorized(){
