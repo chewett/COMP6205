@@ -12,3 +12,8 @@ require_once __DIR__ .'/../inc/config.php';
 
 $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 $em = EntityManager::create($dbParams, $config);
+
+function getEntityManager() {
+	global $em;
+	return $em;
+}
