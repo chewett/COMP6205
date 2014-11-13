@@ -22,14 +22,7 @@ if(isset($_POST['submit'])) {
 
 		if($accountType != null) {
 
-			$account = new Bankaccount();
-			$account->setBalance(0); //lol
-			$account->setName($_POST['name']);
-			$account->setIdAccounttype($accountType);
-			$account->setIdUser($user);
-
-			$em->persist($account);
-			$em->flush();
+			createNewAccount($_POST['name'], $accountType, $user);
 
 			header("Location: accountOverview.php");
 			die();
