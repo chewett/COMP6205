@@ -1,5 +1,6 @@
 <?php
 
+require_once 'datetimeset.php';
 require_once 'doctrine_setup.php';
 
 function permissionInPermissions($permissions, $permissionName) {
@@ -7,10 +8,10 @@ function permissionInPermissions($permissions, $permissionName) {
 }
 
 function createBankAccount($name, $type, $user) {
-	global $em;
+	$em = getEntityManager();
 
 	$account = new Bankaccount();
-	$account->setBalance(0); //lol
+	$account->setBalance(0);
 	$account->setName($name);
 	$account->setIdAccounttype($type);
 	$account->setIdUser($user);
@@ -23,7 +24,7 @@ function createBankAccount($name, $type, $user) {
 
 function createNewIssue($accountId, $title, $description, $user)
 {
-	global $em;
+	$em = getEntityManager();
 	$issue = new Issue;
 	$issue->setIdBankaccount($accountId);
 	$issue->setTitle($title);
@@ -38,7 +39,7 @@ function createNewIssue($accountId, $title, $description, $user)
 }
 
 function transferMoney($from, $to, $amount, $description) {
-	global $em;
+	$em = getEntityManager();
 
 	$transaction= new Transaction;
 	$transaction->setIdBankaccountFrom($from);
@@ -53,10 +54,12 @@ function transferMoney($from, $to, $amount, $description) {
 
 	$em->persist($transaction);
 	$em->flush();
+
+	return $transaction;
 }
 
 function closeIssue($issue) {
-	global $em;
+	$em = getEntityManager();
 	$issue->setStatus(1); //resolve issue
 	$em->flush();
 }
