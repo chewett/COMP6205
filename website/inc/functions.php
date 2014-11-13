@@ -18,6 +18,7 @@ function createBankAccount($name, $type, $user) {
 	$em->persist($account);
 	$em->flush();
 
+	return $account;
 }
 
 function createNewIssue($accountId, $title, $description, $user)
