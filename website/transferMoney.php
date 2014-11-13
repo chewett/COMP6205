@@ -40,23 +40,7 @@ if(isset($_POST['submit'])) {
 		}
 
 		if(!isset($err)){
-			$transaction= new Transaction;
-			$transaction->setIdBankaccountFrom($srcAcc);
-			$transaction->setIdBankaccountTo($dstAcc);
-			$transaction->setDescription($_POST['description']);
-			$transaction->setAmount($_POST['amount']);
-			$transaction->setTime(new DateTime("now"));
-
-			//modify balances#
-
-
-			$srcAcc->setBalance($srcAcc->getBalance()-$moneyToTransfer);
-			$dstAcc->setBalance($dstAcc->getBalance()+$moneyToTransfer);
-
-
-
-			$em->persist($transaction);
-			$em->flush();
+			transferMoney($srcAcc, $dstAcc, $_POST['amount'], $_POST['description']);
 			header("Location: accountOverview.php");
 			die();
 		}

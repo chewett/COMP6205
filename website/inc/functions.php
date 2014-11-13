@@ -36,3 +36,22 @@ function createNewIssue($accountId, $title, $description, $user)
 
 	return $issue;
 }
+
+function transferMoney($from, $to, $amount, $description) {
+	global $em;
+
+	$transaction= new Transaction;
+	$transaction->setIdBankaccountFrom($from);
+	$transaction->setIdBankaccountTo($to);
+	$transaction->setDescription($description);
+	$transaction->setAmount($amount);
+	$transaction->setTime(new DateTime("now"));
+
+	//modify balances
+	$from->setBalance($from->getBalance()-$amount);
+	$to->setBalance($to->getBalance()+$amount);
+
+	$em->persist($transaction);
+	$em->flush();
+
+}
