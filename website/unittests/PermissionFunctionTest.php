@@ -1,7 +1,7 @@
 <?php
 require_once '../inc/functions.php';
 
-class TestPermissionFunctions extends PHPUnit_Framework_TestCase {
+class PermissionFunctionTest extends PHPUnit_Framework_TestCase {
 
 	public function testNotInArray() {
 		$array = array("a", "b", "c");
