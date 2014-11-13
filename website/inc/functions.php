@@ -20,3 +20,18 @@ function createBankAccount($name, $type, $user) {
 
 }
 
+function createNewIssue($accountId, $title, $description, $user)
+{
+	global $em;
+	$issue = new Issue;
+	$issue->setIdBankaccount($accountId);
+	$issue->setTitle($title);
+	$issue->setDescription($description);
+	$issue->setIdUser($user);
+	$issue->setStatus(0); //unresolved by default
+
+	$em->persist($issue);
+	$em->flush();
+
+	return $issue;
+}

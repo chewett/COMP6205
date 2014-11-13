@@ -17,20 +17,8 @@ if(isset($_POST['account_id']) && $_POST['account_id'] != '' &&
    isset($_POST['description']) && $_POST['description'] != '') {
 		
 		$accountInt = (int)$_POST['account_id'];
-
-		$issue= new Issue;
 		$accountId = $em->getRepository("Bankaccount")->find($accountInt);
-
-		$issue->setIdBankaccount($accountId);
-		$issue->setTitle($_POST['title']);
-		$issue->setDescription($_POST['description']);
-
-		$issue->setIdUser($user); // comming from session.php
-		$issue->setStatus(0); //unresolved by default 
-
-		$em->persist($issue);
-		$em->flush();
-
+		createNewIssue($accountId, $_POST['title'], $_POST['description'], $user);
 		header("Location: accountOverview.php");
 		die();
 
