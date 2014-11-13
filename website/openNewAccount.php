@@ -22,7 +22,7 @@ if(isset($_POST['submit'])) {
 
 		if($accountType != null) {
 
-			createNewAccount($_POST['name'], $accountType, $user);
+			createBankAccount($_POST['name'], $accountType, $user);
 
 			header("Location: accountOverview.php");
 			die();
