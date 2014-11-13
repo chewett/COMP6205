@@ -21,8 +21,7 @@ $pageTitle = 'View Issue ' . $issue->getIdIssue();
 require_once 'inc/header.php';
 
 if(isset($_POST['submit']) && $_POST['submit']!='') {
-	$issue->setStatus(1); //resolve issue
-	$em->flush();
+	closeIssue($issue);
 	$info="<div class='alert alert-success' role='alert'>You have reviewed and closed this issue</div>";
 }
 ?>

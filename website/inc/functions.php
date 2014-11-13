@@ -53,5 +53,10 @@ function transferMoney($from, $to, $amount, $description) {
 
 	$em->persist($transaction);
 	$em->flush();
+}
 
+function closeIssue($issue) {
+	global $em;
+	$issue->setStatus(1); //resolve issue
+	$em->flush();
 }
