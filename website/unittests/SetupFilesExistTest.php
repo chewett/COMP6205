@@ -24,17 +24,4 @@ class SetupFilesExistTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue(is_file('../inc/load_options.php'));
 	}
 
-
-
 }
-
-
-/**
- *
- *
-require_once 'functions.php';
-require_once 'doctrine_setup.php';
-require_once 'session.php';
-require_once 'load_options.php';
- *
- */
