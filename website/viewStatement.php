@@ -42,9 +42,9 @@ require_once 'inc/header.php';
 
 <h1>View statement - <?=$year?>-<?=$month?></h1>
 
-	<h1>Bank Overview - Account <?=$bankAccount->getName()?></h1>
+<h2>Bank Overview - Account <?=$bankAccount->getName()?></h2>
 
-	<h2>Account ID: <?=$bankAccount->getIdBankaccount()?></h2>
+<h2>Account ID: <?=$bankAccount->getIdBankaccount()?></h2>
 
 <?php
 
