@@ -96,3 +96,15 @@ function closeIssue($issue) {
 	$issue->setStatus(1); //resolve issue
 	$em->flush();
 }
+
+function determineStartOfNextMonth($month, $year) {
+	if($month < 12) {
+		$newMonth = $month + 1;
+		$newYear = $year;
+	}else{
+		$newMonth= 1;
+		$newYear = $year + 1;
+	}
+
+	return array($newMonth, $newYear);
+}
