@@ -38,6 +38,8 @@ $allTransactions = $query->getResult();
 
 <h2>Account ID: <?=$bankAccount->getIdBankaccount()?></h2>
 
+View this months <a href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=????&month=?????">statement</a>
+
 <?php
 
 if($allTransactions != null) {
