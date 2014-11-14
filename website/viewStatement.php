@@ -7,45 +7,99 @@ if(!userHasPermission("view_statement")) {
      redirectUnauthorized();
 }
 
-$pageTitle = 'View Statement X';
+if(!(isset($_GET['id']) && (int)$_GET['id'])) {
+	header("Location: accountOverview.php");
+}
+
+/** @var Bankaccount $bankAccount */
+$bankAccount = $em->getRepository("Bankaccount")->find((int)$_GET['id']);
+
+if(!isset($_GET['month']) && !(int)$_GET['month'] && !isset($_GET['year']) && !(int)$_GET['year']) {
+	header("Location: bankOverview.php?id={$bankAccount->getIdBankaccount()}");
+}
+
+$month = (int)$_GET['month'];
+$year = (int)$_GET['year'];
+
+$newPeriod = determineStartOfNextMonth($month, $year);
+
+$qb = $em->createQueryBuilder();
+$qb->select("t")
+	->from("Transaction", "t")
+	->where("(t.idBankaccountFrom = ?1 OR t.idBankaccountTo = ?1) AND (t.time >= ?2 AND t.time < ?3)")
+	->setParameter(1, $bankAccount->getIdBankaccount())
+	->setParameter(2, $year . '-' . $month .'-01')
+	->SetParameter(3, $newPeriod[1] .'-' . $newPeriod[0] . '-01');
+$query = $qb->getQuery();
+/** @var Transaction[] $allTransactions */
+$allTransactions = $query->getResult();
+
+
+$pageTitle = 'View Statement ' . $year . "-". $month;
 require_once 'inc/header.php';
 
 ?>
 
-<h1>View statement - Month ???</h1>
+<h1>View statement - <?=$year?>-<?=$month?></h1>
 
-Here is your statement for month ???.
+	<h1>Bank Overview - Account <?=$bankAccount->getName()?></h1>
 
-<table class="table">
-	<thead>
-	<tr>
-		<th>Date</th>
-		<th>Reference</th>
-		<th>Spent</th>
-		<th>Recieved</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr>
-		<td>1 Jan 2014</td>
-		<td>Food</td>
-		<td>£10</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>1 Jan 2013</td>
-		<td>Company Paid you</td>
-		<td></td>
-		<td>£500</td>
-	</tr>
-	<tr>
-		<td>1 Jan 2012</td>
-		<td>Food</td>
-		<td>£10</td>
-		<td></td>
-	</tr>
-	</tbody>
-</table>
+	<h2>Account ID: <?=$bankAccount->getIdBankaccount()?></h2>
+
+<?php
+
+if($allTransactions != null) {
+
+	?>
+	Here is a last of the last X transactions.
+
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Date</th>
+			<th>Reference</th>
+			<th>Spent</th>
+			<th>Recieved</th>
+		</tr>
+		</thead>
+		<tbody>
+
+		<?php
+		foreach($allTransactions as $transaction) {
+			$moneyTo = '';
+			$moneyFrom = '';
+			if($transaction->getIdBankaccountFrom() == $bankAccount) {
+				$moneyFrom = "£" . $transaction->getAmount();
+			}else{
+				$moneyTo = "£" . $transaction->getAmount();
+			}
+
+
+			?>
+			<tr>
+				<td><?=$transaction->getTime()->format('Y-m-d H:i:s')?></td>
+				<td><?=$transaction->getDescription()?></td>
+				<td><?=$moneyFrom?></td>
+				<td><?=$moneyTo?></td>
+			</tr>
+		<?php
+		}
+		?>
+
+		</tbody>
+	</table>
+
+<?php
+}else{
+	?>
+	There are no transactions
+<?php
+}
+
+
+?>
+
+<br />
 
 <button class="button">PDF Print</button>
 
