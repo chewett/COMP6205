@@ -48,8 +48,8 @@ require_once 'inc/header.php';
 <h2>Account ID: <?=$bankAccount->getIdBankaccount()?></h2>
 
 <div>
-<a href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=$newPeriod[1]?>&month=<?=$newPeriod[0]?>">View Next statement</a><br />
-<a href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=$pastMonth[1]?>&month=<?=$pastMonth[0]?>">View Previous statement</a>
+<a class="btn" href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=$newPeriod[1]?>&month=<?=$newPeriod[0]?>">View Next statement</a><br />
+<a class="btn" href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=$pastMonth[1]?>&month=<?=$pastMonth[0]?>">View Previous statement</a>
 </div>
 
 <?php
