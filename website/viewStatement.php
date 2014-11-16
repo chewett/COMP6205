@@ -14,7 +14,7 @@ if(!(isset($_GET['id']) && (int)$_GET['id'])) {
 /** @var Bankaccount $bankAccount */
 $bankAccount = $em->getRepository("Bankaccount")->find((int)$_GET['id']);
 
-if(!isset($_GET['month']) && !(int)$_GET['month'] && !isset($_GET['year']) && !(int)$_GET['year']) {
+if(!isset($_GET['month']) || (int)$_GET['month'] == 0 || !isset($_GET['year']) || (int)$_GET['year'] == 0)  {
 	header("Location: bankOverview.php?id={$bankAccount->getIdBankaccount()}");
 }
 
@@ -22,6 +22,7 @@ $month = (int)$_GET['month'];
 $year = (int)$_GET['year'];
 
 $newPeriod = determineStartOfNextMonth($month, $year);
+$pastMonth = determineStartOfPreviousMonth($month, $year);
 
 $qb = $em->createQueryBuilder();
 $qb->select("t")
@@ -45,6 +46,11 @@ require_once 'inc/header.php';
 <h2>Bank Overview - Account <?=$bankAccount->getName()?></h2>
 
 <h2>Account ID: <?=$bankAccount->getIdBankaccount()?></h2>
+
+<div>
+<a href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=$newPeriod[1]?>&month=<?=$newPeriod[0]?>">View Next statement</a><br />
+<a href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=$pastMonth[1]?>&month=<?=$pastMonth[0]?>">View Previous statement</a>
+</div>
 
 <?php
 
