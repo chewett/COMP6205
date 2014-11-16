@@ -108,3 +108,15 @@ function determineStartOfNextMonth($month, $year) {
 
 	return array($newMonth, $newYear);
 }
+
+function determineStartOfPreviousMonth($month, $year) {
+	if($month == 1) {
+		$newMonth = 12;
+		$newYear = $year - 1;
+	}else{
+		$newMonth= $month - 1;
+		$newYear = $year;
+	}
+
+	return array($newMonth, $newYear);
+}
