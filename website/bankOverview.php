@@ -34,64 +34,64 @@ $allTransactions = $query->getResult();
 
 ?>
 
+<script>
+	updateTransaction();
+	setInterval(updateTransaction, 10000);
+
+	function updateTransaction() {
+		console.log("Loading transaction");
+		$.getJSON("loadTransactions.php?id=<?=$bankAccount->getIdBankaccount()?>", '', replaceTransaction);
+	}
+
+	function replaceTransaction(data) {
+		console.log("Processing transaction");
+		var rows = '';
+
+		for(var i = 0; i < data.length; i++) {
+			var sent = '';
+			var received = '';
+			if(data[i].received) {
+				received = '£' + data[i].amount;
+			}else{
+				sent = '£' + data[i].amount;
+			}
+
+			rows += "<tr>" +
+			"<td>" + data[i].time.date + "</td>" +
+			"<td>" + data[i].description + "</td>" +
+			"<td>" + sent + "</td>" +
+			"<td>" + received + "</td>" +
+			"</tr>";
+		}
+
+		$('#transactionsBody').html(rows);
+		console.log("Finished processing")
+	}
+
+
+</script>
+
+
 <h1>Bank Overview - Account <?=$bankAccount->getName()?></h1>
 
 <h2>Account ID: <?=$bankAccount->getIdBankaccount()?></h2>
 
-View this months <a href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=????&month=?????">statement</a>
+View this months <a href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=date('Y')?>&month=<?=date('n')?>">statement</a>
 
-<?php
+Here is a list of transactions.
 
-if($allTransactions != null) {
-
-	?>
-	Here is a last of the last X transactions.
-
-	<table class="table">
-		<thead>
-		<tr>
-			<th>Date</th>
-			<th>Reference</th>
-			<th>Spent</th>
-			<th>Recieved</th>
-		</tr>
-		</thead>
-		<tbody>
-
-		<?php
-		foreach($allTransactions as $transaction) {
-			$moneyTo = '';
-			$moneyFrom = '';
-			if($transaction->getIdBankaccountFrom() == $bankAccount) {
-				$moneyFrom = "£" . $transaction->getAmount();
-			}else{
-				$moneyTo = "£" . $transaction->getAmount();
-			}
-
-
-			?>
-			<tr>
-				<td><?=$transaction->getTime()->format('Y-m-d H:i:s')?></td>
-				<td><?=$transaction->getDescription()?></td>
-				<td><?=$moneyFrom?></td>
-				<td><?=$moneyTo?></td>
-			</tr>
-			<?php
-		}
-		?>
-
-		</tbody>
-	</table>
-
-<?php
-}else{
-	?>
-	There are no transactions
-	<?php
-}
-
-
-	?>
+<table class="table">
+	<thead>
+	<tr>
+		<th>Date</th>
+		<th>Reference</th>
+		<th>Spent</th>
+		<th>Recieved</th>
+	</tr>
+	</thead>
+	<tbody id="transactionsBody">
+	</tbody>
+</table>
 
 
 <?php

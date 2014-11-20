@@ -18,6 +18,7 @@ $qb = $em->createQueryBuilder();
 $qb->select("t")
 	->from("Transaction", "t")
 	->where("t.idBankaccountFrom = ?1 OR t.idBankaccountTo = ?1")
+	->orderBy("t.idTransaction", "desc")
 	->setParameter(1, $bankAccount->getIdBankaccount());
 $query = $qb->getQuery();
 /** @var Transaction[] $allTransactions */
@@ -38,5 +39,3 @@ foreach($allTransactions as $transaction) {
 }
 
 echo json_encode($jsonData);
-
-
