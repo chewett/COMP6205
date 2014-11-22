@@ -100,6 +100,6 @@ $statementFile = fopen(dirname(__FILE__) . "/statements/{$guid}.tex", "w");
 fwrite($statementFile, $statement);
 fclose($statementFile);
 
-exec("cd ". dirname(__FILE__) . "/statements; pdflatex {$guid}.tex > test.txt");
+exec("cd ". dirname(__FILE__) . "/statements; pdflatex {$guid}.tex > pdflatex_statement_creation.log");
 
 
