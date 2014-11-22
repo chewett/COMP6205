@@ -71,6 +71,7 @@ function userHasPermission($permissionName) {
  * Displays the unauthorized page if the user cannot access the page
  */
 function redirectUnauthorized(){
+	global $pageTitle;
     require_once(__DIR__ . '/../unauthorized.php');
     die();
 }

@@ -56,8 +56,8 @@ if(!isset($pageTitle)) {
 			<ul class="nav navbar-nav">
 				<li><a class="navbar-brand active" href="accountOverview.php">Account Overview</a></li>
 				<li><a class="navbar-brand active" href="transferMoney.php">Transfer Money</a></li>
-				<li><a class="navbar-brand active" href="aboutUs.php">About Us</a></li>
 				<li><a class="navbar-brand active" href="admin.php">Admin</a></li>
+				<li><a class="navbar-brand active" href="aboutUs.php">About Us</a></li>
 			</ul>
 		</div>
 	</div>
