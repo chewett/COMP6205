@@ -50,16 +50,29 @@ if(!isset($pageTitle)) {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand active" href="login.php">Main Page</a>
+			<a class="navbar-brand active" href="login.php">Login</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a class="navbar-brand active" href="accountOverview.php">Account Overview</a></li>
-				<li><a class="navbar-brand active" href="transferMoney.php">Transfer Money</a></li>
+
+				<?php
+					//display the Account Overview tab only if user is logged in
+					if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
+						echo '<li><a class="navbar-brand active" href="accountOverview.php">Account Overview</a></li>';
+					}
+				?>
+
+				<?php
+					//display the transfer money tab only if user is logged in
+					if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
+						echo '<li><a class="navbar-brand active" href="transferMoney.php">Transfer Money</a></li>';
+					}
+				?>
+				
 				
 				<?php
-					//display the admin tab only if user has at least one of the roles below
-					if(isset($_SESSION['user_id'])&&$_SESSION['user_id']){
+					//display the admin tab only if user is logged in and has at least one of the roles below
+					if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
 						if((userHasPermission("admin_users_assign") ||
 						userHasPermission("admin_view_roles") ||
 						userHasPermission("admin_view_permission") ||
