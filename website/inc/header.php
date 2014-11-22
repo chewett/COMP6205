@@ -84,6 +84,12 @@ if(!isset($pageTitle)) {
 					
 				?>
 				<li><a class="navbar-brand active" href="aboutUs.php">About Us</a></li>
+				<?php
+				//display the transfer money tab only if user is logged in
+				if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
+					echo '<li><a class="navbar-brand active" href="login.php?logout=true">Logout</a></li>';
+				}
+				?>
 			</ul>
 		</div>
 	</div>
@@ -95,6 +101,5 @@ if(!isset($pageTitle)) {
 		<?php
 		if(isset($user)) {
 			?>
-			<div class="user-details">User Details: <?=$user->getUsername();?><br />
-				<a href="login.php?logout=true">Logout</a> </div>
+			<div class="user-details alert alert-info">Welcome <?=$user->getFirstname();?> <?=$user->getLastname()?> </div>
 		<?php } ?>
