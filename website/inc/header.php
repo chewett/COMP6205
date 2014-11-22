@@ -59,7 +59,7 @@ if(!isset($pageTitle)) {
 				
 				<?php
 					//display the admin tab only if user has at least one of the roles below
-					if($_SESSION['user_id']){
+					if(isset($_SESSION['user_id'])&&$_SESSION['user_id']){
 						if((userHasPermission("admin_users_assign") ||
 						userHasPermission("admin_view_roles") ||
 						userHasPermission("admin_view_permission") ||
