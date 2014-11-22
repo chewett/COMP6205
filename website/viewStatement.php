@@ -56,7 +56,7 @@ require_once 'inc/header.php';
 if($allTransactions != null) {
 
 	?>
-	Here is a last of the last X transactions.
+	Here is the months transactions.
 
 	<table class="table">
 		<thead>
