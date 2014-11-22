@@ -85,7 +85,7 @@ if(isset($_POST['submit'])) {
 	<input type="number" class="form-control" placeholder="To Account" required autofocus name="destinationAccountId">
 	<input type="number" class="form-control" placeholder="Amount" required name="amount">
 	<input type="input" class="form-control" placeholder="Description" required name="description"> <br />
-	<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sent Payment</button>
+	<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Send Payment</button>
 </form>
 
 
