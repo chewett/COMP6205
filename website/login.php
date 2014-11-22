@@ -5,10 +5,17 @@ if(isset($_GET['logout']) && $_GET['logout'] == true) {
 	session_destroy();
 }
 
+
+
 $pageTitle = 'Login';
 require_once 'inc/setup.php';
 
 require_once 'inc/auth.php';
+
+if(isset($_SESSION['id_user'])) {
+	header("Location: accountOverview.php");
+	die();                        //die after redirect
+}
 
 require_once 'inc/header.php';
 
