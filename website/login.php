@@ -14,7 +14,7 @@ require_once 'inc/header.php';
 
 //check to see if you've been redirected to this page, then have informative message
 if(isset($_GET['requirelogin']) && $_GET['requirelogin']==1){
-	$redirectMsg= "You need to be logged in before going to $pageTitle page";
+	$redirectMsg= "You need to be logged in before going to " . $_GET['pagetitle'] . " page";
 }
 
 if(isset($_POST['username'])) {
