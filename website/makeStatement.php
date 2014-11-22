@@ -69,6 +69,8 @@ Account Name: '.$bankAccount->getName().'
 
 Account Type: '.$bankAccount->getIdAccounttype()->getName().' \newline
 
+Statement for period: '.$year. '-'. $month .'
+
 \begin{tabular}{|c|c|c|c|}
 \hline
 Date & Reference & Spent & Received \\\\
