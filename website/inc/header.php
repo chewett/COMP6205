@@ -59,13 +59,16 @@ if(!isset($pageTitle)) {
 				
 				<?php
 					//display the admin tab only if user has at least one of the roles below
-					if((userHasPermission("admin_users_assign") ||
-					userHasPermission("admin_view_roles") ||
-					userHasPermission("admin_view_permission") ||
-					userHasPermission("admin_view_concerns") ||
-					userHasPermission("admin_site_options"))) {
-						echo '<li><a class="navbar-brand active" href="admin.php">Admin</a></li>';
-				}
+					if($_SESSION['user_id']){
+						if((userHasPermission("admin_users_assign") ||
+						userHasPermission("admin_view_roles") ||
+						userHasPermission("admin_view_permission") ||
+						userHasPermission("admin_view_concerns") ||
+						userHasPermission("admin_site_options"))) {
+							echo '<li><a class="navbar-brand active" href="admin.php">Admin</a></li>';
+						}
+					}
+					
 				?>
 				<li><a class="navbar-brand active" href="aboutUs.php">About Us</a></li>
 			</ul>
