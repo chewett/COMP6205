@@ -69,6 +69,27 @@
 		<h2> Disable access to guessable pages such as admin.php </h2>
 		<h2> Password hashing and salting </h2>
 
+		<h2>CSRF - Not yet implemented</h2>
+
+		<h2>Linking to external JS and not ours</h2>
+
+		<p>
+			Where possible we have linked to the Google hosted libraries we have used.
+
+			In <code>/inc/header.php</code> we link to the jQuery library hosted by Google.
+		</p>
+
+		<pre>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;</pre>
+		<p>
+			This has a number of added benefits. The first is that google will be able to serve these large files much faster than we can.
+			This is because they will have a large number of local servers and using IP anycast.
+			These servers will also likely be much faster than ours due to their large data centers.
+
+			This reduces the amount of data to be loaded off our site and improves loading time as browsers normally will only load a certain number of resources from one domain at a time.
+
+			This also has caching benefits as if a user has visited a website this includes jQuery from the Google CDN previously it will load this page from the cache speeding up pageload time.
+		</p>
+
 	</div>
 
 </div><!-- /.container -->
