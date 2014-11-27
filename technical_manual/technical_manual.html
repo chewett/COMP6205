@@ -53,7 +53,7 @@
 			<h3> Server side validation (SQL Inject)</h3>
 			<h3> Database schema (ORM) </h3>
 			<p>
-				<img src="images/ER_diagram.png" />
+				<img class="img-responsive" src="images/ER_diagram.png" />
 			</p>
 			<h3> Transaction consistency, ACID properties </h3>
 			<h3> Criticial evaluation </h3>
@@ -65,7 +65,69 @@
 			<h3> Responsive site, working on mobile devices </h3>
 			<h3> Input client side validation </h3>
 		<h2> Unit Tests</h2>
+			<p>
+				To ensure that we do not introduce bugs we have written a number of unit tests to exhaustively test the functions and main parts of the website.
+				As part of our development process it was recommended to run these tests before each commit so that we could fix any problems we caused in the commit before it committed.
+			</p>
+			<p>
+				These tests were written using the phpunit framework and all tests can be found in the <code>unittests</code> directory.
+				Theses tests could be run with <code>phpunit .</code>. An example of what the output looks like when ran is below.
+			</p>
+			<p>
+				<img class="img-responsive" src="images/phpunit.png" />
+			</p>
+			<p>
+				An example test written to test our permission function is reproduced below.
+				The full source code for this file is available in <code>unittests/HashingFunctionTest.php</code>
+			</p>
+			<p>
+<pre>/**
+ * This tests the verifyLoginPassword function to see if it will verify valid and invalid passwords
+ * @depends testGenerateHashIsUnique
+ * @param $hashs a list of hashes generated above with the password "Easy_Password"
+ */
+public function testValidLogin($hashs) {
+	foreach($hashs as $hash) {
+		$this->assertTrue(verifyLoginPassword("Easy_Password", $hash));
+		$this->assertFalse(verifyLoginPassword("Wrong_Password", $hash));
+	}
+
+}
+</pre>
+			</p>
+			<p>
+				This test is given a list of hashes from a previous test.
+				These hashes are all salted hashes with the password "Easy_Password".
+				Here we test the function <code>verifyLoginPassword</code> and pass it a valid and invalid password.
+				We use <code>assertTrue</code> and <code>assertFalse</code> to check if the function returns the expected value.
+				Any failure in assertion will cause this test to fail and report back the expected and actual value.
+			</p>
+
+		<h2>Coding Standards</h2>
+			<p>
+				While programming this website we tried to, for the most part, adheer to PSR-1 basic coding standards.
+				You can find the PSR-1 standards <a href="http://www.php-fig.org/psr/psr-1/">online</a>.
+			</p>
+
 		<h2> 404 page </h2>
+
+		<p>
+			We have used a <code>.htaccess</code> page to ensure that any people who visit a URL that is not found on our webserver get a more helpful screen.
+			Below is the content of the <code>.htaccess</code> page.
+		</p>
+
+		<pre>ErrorDocument 404 /comp6205/website/404.php</pre>
+
+		<h3>Before adding .htaccess page</h3>
+		<img class="img-responsive" src="images/not_found_bad.png" />
+
+		<h3>After adding .htaccess page</h3>
+		<img class="img-responsive" src="images/not_found_good.png" />
+
+		<p>
+			This will hopefully mean that they do not get put off by the default 404 page and it points them at a page that does exist.
+		</p>
+
 		<h2> Dynamic templates (hiding/showing content based on user) </h2>
 		<h2> AJAX: reload page to dynamically update transactions list </h2>
 		<h2> PDF Creation, Chris is a wizzard </h2>
@@ -81,7 +143,7 @@
 			This ensures that a users password is not stored in plaintext and as there is a salt used it makes bruteforcing of passwords much trickier.
 		</p>
 		<p>
-			Therefore passwords are stored in the database like <code>$2y$10$4cd8ef6781c5e9e99d0a7ulXV3QNdg2gFIhcSndVMDRgHZVxVGodW</code>
+			Therefore passwords are stored in the database like <code>$2y$10$4cd8ef6781c5e9e99d0a7ulXV3QNdg2gFIhcSndVMDRgHZVxVGodW</code>.
 		</p>
 
 		<h2>CSRF - Not yet implemented</h2>
