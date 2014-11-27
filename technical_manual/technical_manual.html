@@ -20,6 +20,17 @@
 	<script src="js/html5shiv.min.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="js/ie10-viewport-bug-workaround.js"></script>
+
+	<script src="js/google-code-prettify/run_prettify.js" type="text/javascript"></script>
+	<link href="js/google-code-prettify/prettify.css" type="text/css">
+
 </head>
 <body>
 
@@ -81,7 +92,7 @@
 				The full source code for this file is available in <code>unittests/HashingFunctionTest.php</code>
 			</p>
 			<p>
-<pre>/**
+<pre class="prettyprint">/**
  * This tests the verifyLoginPassword function to see if it will verify valid and invalid passwords
  * @depends testGenerateHashIsUnique
  * @param $hashs a list of hashes generated above with the password "Easy_Password"
@@ -116,7 +127,7 @@ public function testValidLogin($hashs) {
 			Below is the content of the <code>.htaccess</code> page.
 		</p>
 
-		<pre>ErrorDocument 404 /comp6205/website/404.php</pre>
+		<pre class="prettyprint">ErrorDocument 404 /comp6205/website/404.php</pre>
 
 		<h3>Before adding .htaccess page</h3>
 		<img class="img-responsive" src="images/not_found_bad.png" />
@@ -156,7 +167,7 @@ public function testValidLogin($hashs) {
 			In <code>/inc/header.php</code> we link to the jQuery library hosted by Google.
 		</p>
 
-		<pre>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;</pre>
+		<pre class="prettyprint">&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;</pre>
 		<p>
 			This has a number of added benefits:
 			<ul>
@@ -183,15 +194,14 @@ public function testValidLogin($hashs) {
 			This also has caching benefits as if a user has visited a website this includes jQuery from the Google CDN previously it will load this page from the cache speeding up pageload time.
 		</p>
 
+		<h2>Content used</h2>
+
+		<h3>Google Prettify</h3>
+
+		<p>For this manual we have used Google prettify which can be downloaded <a href="https://code.google.com/p/google-code-prettify/">here</a></p>
+
 	</div>
 
 </div><!-- /.container -->
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
