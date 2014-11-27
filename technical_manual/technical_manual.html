@@ -140,6 +140,53 @@ public function testValidLogin($hashs) {
 		</p>
 
 		<h2> Dynamic templates (hiding/showing content based on user) </h2>
+
+			<p>
+				Since neither of us had used templating libraries we decided that we would not spend time looking into and learning one of these to focus on our two main areas.
+				We have however used a dynamic template written using PHP to help us develop the site easier.
+			</p>
+			<p>
+				All webpages included basic header and footer templates which made each page look similar to like:
+			</p>
+			<p>
+<pre class="prettyprint">&lt;?php
+$pageRequiresLogin = true;
+$pageTitle = 'Account Overview';
+require_once 'inc/setup.php';
+require_once 'inc/header.php';
+?&gt;
+
+Page Content
+
+&lt;?php
+require_once 'inc/footer.php';
+</pre>
+			</p>
+		<p>
+			Here we set up templates for the header and the footer of the page and then included them on all the pages that we needed them on.
+			This gave us a common look across the whole website and mean that we did not have to alter every page when we wished to change something on the header or footer.
+			This therefore decreased the amount of work we needed to do.
+		</p>
+		<p>
+			The template is also dynamic as the page title and whether the page requires you to be logged in is set in variables then used in the header.
+			It will also load additional tabs along the top of the page depending on your role permissions as shown in the below snippet:
+		</p>
+		<p>
+<pre class="prettyprint">&lt;?php
+//display the admin tab only if user is logged in and has at least one of the roles below
+if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
+	if((userHasPermission("admin_users_assign") ||
+	userHasPermission("admin_view_roles") ||
+	userHasPermission("admin_view_permission") ||
+	userHasPermission("admin_view_concerns") ||
+	userHasPermission("admin_site_options"))) {
+		echo '&lt;li&gt;&lt;a class="navbar-brand active" href="admin.php"&gt;Admin&lt;/a&gt;&lt;/li&gt;';
+	}
+}
+?&gt;
+</pre>
+		</p>
+
 		<h2> AJAX: reload page to dynamically update transactions list </h2>
 		<h2> PDF Creation, Chris is a wizzard </h2>
 		<h2> Disable access to guessable pages such as admin.php </h2>
