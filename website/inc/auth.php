@@ -6,7 +6,7 @@
  * @return string Resulting hash
  */
 function generateHash($password) {
-	$salt = '$2a$10$' . substr(md5(uniqid(rand(), true)), 0, 22);
+	$salt = '$2y$10$' . substr(md5(uniqid(rand(), true)), 0, 22);
 	return crypt($password, $salt);
 }
 
