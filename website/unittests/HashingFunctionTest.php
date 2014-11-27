@@ -4,8 +4,8 @@ require_once '../inc/auth.php';
 class HashingFunctionTest extends PHPUnit_Framework_TestCase {
 
 	/**
-	 * This tests the generatehas function
-	 * @return array The list of hashes generated
+	 * This tests the generatehas function to ensure that it can generate hashes correctly
+	 * @return array a list of hashes generated above with the password "Easy_Password"
 	 */
 	public function testGenerateHashIsUnique() {
 		$hashs = array();
@@ -21,9 +21,9 @@ class HashingFunctionTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * This tests the getHash function
+	 * This tests the getHash function to see if it will be able to create the correct hash
 	 * @depends testGenerateHashIsUnique
-	 * @param $hashs
+	 * @param $hashs a list of hashes generated above with the password "Easy_Password"
 	 */
 	public function testGetHashSame($hashs) {
 		foreach($hashs as $hash) {
@@ -34,9 +34,9 @@ class HashingFunctionTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * This tests the verifyLoginPassword function
+	 * This tests the verifyLoginPassword function to see if it will verify valid and invalid passwords
 	 * @depends testGenerateHashIsUnique
-	 * @param $hashs
+	 * @param $hashs a list of hashes generated above with the password "Easy_Password"
 	 */
 	public function testValidLogin($hashs) {
 		foreach($hashs as $hash) {
