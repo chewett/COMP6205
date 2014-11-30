@@ -51,7 +51,7 @@ class Users
      *
      * @ManyToOne(targetEntity="Role")
      * @JoinColumns({
-     *   @JoinColumn(name="id_role", referencedColumnName="id_role")
+     *   @JoinColumn(name="id_role", referencedColumnName="id_role", nullable=false)
      * })
      */
     private $idRole;
