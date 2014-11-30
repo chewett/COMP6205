@@ -3,7 +3,7 @@
 /**
  * Accounttype
  *
- * @Table(name="accountType")
+ * @Table(name="accountType", uniqueConstraints={@UniqueConstraint(name="name_UNIQUE", columns={"name"})})
  * @Entity
  */
 class Accounttype

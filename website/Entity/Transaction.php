@@ -44,7 +44,7 @@ class Transaction
      *
      * @ManyToOne(targetEntity="Bankaccount")
      * @JoinColumns({
-     *   @JoinColumn(name="id_bankAccount_from", referencedColumnName="id_bankAccount")
+     *   @JoinColumn(name="id_bankAccount_from", referencedColumnName="id_bankAccount", nullable=false)
      * })
      */
     private $idBankaccountFrom;
@@ -54,7 +54,7 @@ class Transaction
      *
      * @ManyToOne(targetEntity="Bankaccount")
      * @JoinColumns({
-     *   @JoinColumn(name="id_bankAccount_to", referencedColumnName="id_bankAccount")
+     *   @JoinColumn(name="id_bankAccount_to", referencedColumnName="id_bankAccount", nullable=false)
      * })
      */
     private $idBankaccountTo;

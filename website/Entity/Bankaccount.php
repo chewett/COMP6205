@@ -23,7 +23,7 @@ class Bankaccount
 	 *
 	 * @ManyToOne(targetEntity="Accounttype")
 	 * @JoinColumns({
-	 *   @JoinColumn(name="id_accountType", referencedColumnName="id_accountType")
+	 *   @JoinColumn(name="id_accountType", referencedColumnName="id_accountType", nullable=false)
 	 * })
 	 */
 	private $idAccounttype;
@@ -40,7 +40,7 @@ class Bankaccount
     /**
      * @var integer
      *
-     * @Column(name="balance", type="integer", nullable=true)
+     * @Column(name="balance", type="integer", nullable=false)
      */
     private $balance;
 
@@ -49,7 +49,7 @@ class Bankaccount
      *
      * @ManyToOne(targetEntity="Users")
      * @JoinColumns({
-     *   @JoinColumn(name="id_user", referencedColumnName="id_user")
+     *   @JoinColumn(name="id_user", referencedColumnName="id_user", nullable=false)
      * })
      */
     private $idUser;

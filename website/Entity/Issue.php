@@ -22,7 +22,7 @@ class Issue
 	 *
 	 * @ManyToOne(targetEntity="Bankaccount")
 	 * @JoinColumns({
-	 *   @JoinColumn(name="id_bankaccount", referencedColumnName="id_bankAccount")
+	 *   @JoinColumn(name="id_bankaccount", referencedColumnName="id_bankAccount", nullable=false)
 	 * })
 	 */
 	private $idBankaccount;
