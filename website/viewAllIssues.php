@@ -42,7 +42,7 @@ if($openIssues) {
 			?>
 			<tr>
 				<td><?=$issue->getIdIssue()?></td>
-				<td><?=$issue->getIdUser()->getUsername()?></td>
+				<td><?=$issue->getIdBankaccount()->getIdUser()->getUsername()?></td>
 				<td><?=$issue->getTitle()?></td>
 				<td><a href="viewIssue.php?id=<?=$issue->getIdIssue()?>">View</a></td>
 			</tr>

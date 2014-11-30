@@ -18,7 +18,7 @@ if(isset($_POST['account_id']) && $_POST['account_id'] != '' &&
 		
 		$accountInt = (int)$_POST['account_id'];
 		$accountId = $em->getRepository("Bankaccount")->find($accountInt);
-		createNewIssue($accountId, $_POST['title'], $_POST['description'], $user);
+		createNewIssue($accountId, $_POST['title'], $_POST['description']);
 		header("Location: accountOverview.php");
 		die();
 

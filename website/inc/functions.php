@@ -40,17 +40,15 @@ function createBankAccount($name, $type, $user) {
  * @param Bankaccount $accountId Account name associated
  * @param $title Title of the issue
  * @param $description The description of the problem
- * @param Users $user The user reporting the issue
  * @return Issue The issue object created
  */
-function createNewIssue($accountId, $title, $description, $user)
+function createNewIssue($accountId, $title, $description)
 {
 	$em = getEntityManager();
 	$issue = new Issue;
 	$issue->setIdBankaccount($accountId);
 	$issue->setTitle($title);
 	$issue->setDescription($description);
-	$issue->setIdUser($user);
 	$issue->setStatus(0); //unresolved by default
 
 	$em->persist($issue);

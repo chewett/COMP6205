@@ -3,7 +3,7 @@
 /**
  * Issue
  *
- * @Table(name="issue", indexes={@Index(name="user", columns={"id_user"})})
+ * @Table(name="issue")
  * @Entity
  */
 class Issue
@@ -48,16 +48,6 @@ class Issue
      */
     private $status = '1';
 
-    /**
-     * @var \Users
-     *
-     * @ManyToOne(targetEntity="Users")
-     * @JoinColumns({
-     *   @JoinColumn(name="id_user", referencedColumnName="id_user")
-     * })
-     */
-    private $idUser;
-
 	/**
 	 * @return string
 	 */
@@ -96,22 +86,6 @@ class Issue
 	public function getIdIssue()
 	{
 		return $this->idIssue;
-	}
-
-	/**
-	 * @return Users
-	 */
-	public function getIdUser()
-	{
-		return $this->idUser;
-	}
-
-	/**
-	 * @param Users $idUser
-	 */
-	public function setIdUser($idUser)
-	{
-		$this->idUser = $idUser;
 	}
 
 	/**
