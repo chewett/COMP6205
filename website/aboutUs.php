@@ -1,6 +1,9 @@
 <?php
 
 $pageTitle = 'About Us';
+$pageRequiresLogin = false;
+
+require_once "inc/setup.php";
 require_once 'inc/header.php';
 
 ?>
