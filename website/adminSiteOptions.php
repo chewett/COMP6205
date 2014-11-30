@@ -20,6 +20,10 @@ $options = $em->getRepository("Options")->findAll();
 <p>
     Here is a list of options.
 </p>
+
+<div class="alert alert-info" role="alert">On the fully implemented website you would be able to change these options</div>
+
+
 <?php
 
 if($options) {

@@ -17,6 +17,8 @@ require_once 'inc/header.php';
 
 This allows you to change what roles a user has. E.g. promoting a user from a normal user to a bank clerk.
 
+<div class="alert alert-info" role="alert">On the fully implemented website you would be able to change these roles</div>
+
 
 <table class="table">
 	<thead>
