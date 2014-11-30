@@ -2,6 +2,7 @@
 
 $pageRequiresLogin = true;
 require_once "inc/setup.php";
+require_once "inc/makeStatement.php";
 
 if(!userHasPermission("view_statement")) {
      redirectUnauthorized();
@@ -35,6 +36,7 @@ $query = $qb->getQuery();
 /** @var Transaction[] $allTransactions */
 $allTransactions = $query->getResult();
 
+$statementUrl = makeStatement($month, $year, $bankAccount);
 
 $pageTitle = 'View Statement ' . $year . "-". $month;
 require_once 'inc/header.php';
@@ -50,6 +52,10 @@ require_once 'inc/header.php';
 <div>
 	<a class="btn btn-primary" href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=$pastMonth[1]?>&month=<?=$pastMonth[0]?>">View Previous statement</a>
 	<a class="btn btn-primary" href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=$newPeriod[1]?>&month=<?=$newPeriod[0]?>">View Next statement</a>
+</div>
+
+<div>
+	<a class="button" href="<?=$statementUrl?>">PDF Print of statement</a>
 </div>
 
 <?php
@@ -106,8 +112,6 @@ if($allTransactions != null) {
 ?>
 
 <br />
-
-<button class="button">PDF Print</button>
 
 <?php
 require_once 'inc/footer.php';
