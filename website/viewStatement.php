@@ -53,9 +53,10 @@ require_once 'inc/header.php';
 	<a class="btn btn-primary" href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=$pastMonth[1]?>&month=<?=$pastMonth[0]?>">View Previous statement</a>
 	<a class="btn btn-primary" href="viewStatement.php?id=<?=$bankAccount->getIdBankaccount()?>&year=<?=$newPeriod[1]?>&month=<?=$newPeriod[0]?>">View Next statement</a>
 </div>
+<br />
 
 <div>
-	<a class="button" href="<?=$statementUrl?>">PDF Print of statement</a>
+	<a class="btn btn-info" href="<?=$statementUrl?>">PDF Print of statement</a>
 </div>
 
 <?php
