@@ -60,14 +60,86 @@
 		<div class="page-header">
 			<h1 id="Thing">COMP6205 Thing</h1>
 		</div>
-		<h2> <u>Doctrine</u> </h2>
+		<h2> <u>Doctrine - An ORM system</u> </h2>
+
+			<p>
+				Doctrine is one of the points we decided to learn about. It provides us with an object relational mapping in PHP.
+				This allows us to access the database using PHP objects and have Doctrine write the data back to a database.
+				An example of one of the mapping files is below.
+			</p>
+			<p>
+<pre class="prettyprint">/**
+ * @var string
+ *
+ * @Column(name="keyname", type="string", length=45, nullable=false)
+ */
+private $keyname;
+</pre>
+			</p>
+			<p>
+				Here we define a field in an object and the type of column it should be in the database.
+				Once we have designed our entities we can then run a Doctrine export script to create the database.
+				This also updates the database as we change the entities without losing data in the database.
+			</p>
+			<p>
+				We can create objects and use them and when we want them to be written to the database doctrine will do this.
+			</p>
+		<p>
+<pre class="prettyprint">
+$mainMode = new Options;
+$mainMode->setKeyname("maintenance_mode");
+$mainMode->setValue("false");
+
+$em->persist($mainMode);
+$em->flush();
+</pre>
+		</p>
+		<p>
+			$em is the entity manager and deals with all the objects that we wish to write to and get from the database.
+			By telling it to persist the new object it puts it in a queue to write back to the database and when flush() is called this is performed.
+		</p>
+
 			<h3> Server side validation (SQL Inject)</h3>
-			<h3> Database schema (ORM) </h3>
+
+			<p>
+				Doctrine handles SQL injection problems in many of its functions.
+				When you are using the objects in the above manner Doctrine will escape all user input for you.
+				It also provides prepared statements when you wish to use their own Doctrine Query Language (DQL) or SQL.
+			</p>
+
+			<h3>Generated Database schema (ORM) </h3>
+			<p>
+				Below is the entity relationship diagram generated from the Doctrine entities.
+				Doctrine does not rely on the order of the columns so the produced database structure does not have column order order.
+				This uses crows foot notation to demonstrate the foreign keys.
+				<ul>
+					<li>Fields that are the primary key for the table have a yellow key.</li>
+					<li>Fields that are a foreign key have a purple icon.</li>
+					<li>Fields that are required have a blue icon.</li>
+					<li>Fields that are not required have a white icon.</li>
+				</ul>
+			</p>
+
 			<p>
 				<img class="img-responsive" src="images/ER_diagram.png" />
 			</p>
 			<h3> Transaction consistency, ACID properties </h3>
-			<h3> Criticial evaluation </h3>
+
+			<p>
+				Doctrine has transaction handling already built in.
+				Each time an entity is modified or persisted then it is queued.
+				When you call flush on the Entity Manager then it will run the SQL operations in one transaction.
+				This gives you transaction consistency without having to do it yourself.
+			</p>
+
+			<h3>Criticial evaluation </h3>
+
+			<p>
+				Doctrine was very helpful for the transaction and SQL injection handling abilities and using objects in PHP makes it much easier than trying to keep a database and set of objects in sync.
+				Using the ORM in PHP means that you can use more OOP and use objects to relate to the actual tables.
+				In doing this we didnt have to write any SQL and only a small bit of DQL to do the more advanced parts of the website.
+			</p>
+
 		<h2> <u>Role based authentication</u> </h2>
 			<h3> Roles </h3>
 			<h3> Permissions </h3>
