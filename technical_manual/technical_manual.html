@@ -141,10 +141,27 @@ $em->flush();
 			</p>
 
 		<h2> <u>Role based authentication</u> </h2>
-			<h3> Roles </h3>
-			<h3> Permissions </h3>
-			<h3> RoleHasPermissions </h3>
-
+		
+			<p>
+				We spent some time working on creating a role based system to permit/deny access to parts of the website.
+				By researching we decided to split the data into three different tables in the database.
+			</p>
+			
+			<p>
+				<ul>
+					<li>Roles - This table stores a list of roles that users could have. One user has one specific role</li>
+					<li>Permissions - This table stores a list of possible permissions a role could have. These permissions let you access functionality of the website</li>
+					<li>RoleHasPermissions - This table links 1 role to 1 permission. This is needed to ensure 3rd normal form is kept in the database.</li>
+				</ul>
+			</p>
+			
+			<p>
+				By having a list of permissions to access pages rather than deciding on roles that can access pages we have improved coding and reduced the time required to add new roles.
+				A common problem without having pasermission based role authentication is that the ability to access a page will often be checked by the role the user has.
+				This then means that if a new role is added all the pages need to be edited that the role can access.
+				By having a permission based system you give that user the permissions it needs to complete its job and all the previous pages accept that user provided they have the permissions.
+				This reduces the need for ongoing system maintene and means non-techincal users can create new roles as and when needed.
+			</p>
 
 		<h2> Bootstrap</h2>
 			<h3> Responsive site, working on mobile devices </h3>
