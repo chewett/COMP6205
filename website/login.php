@@ -2,7 +2,12 @@
 
 if(isset($_GET['logout']) && $_GET['logout'] == true) {
 	session_start();
-	session_destroy();
+
+	//Only logout if you have the right token
+	//prevents CSRF
+	if($_GET['token'] === $_SESSION['logout_token']) {
+		session_destroy();
+	}
 }
 
 

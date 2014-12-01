@@ -14,6 +14,15 @@ function permissionInPermissions($permissions, $permissionName) {
 }
 
 /**
+ * This creates a random token to be used as the logout token
+ * @return string The newly generated logout token
+ */
+function generateLogoutToken() {
+	$_SESSION['logout_token'] = substr(str_shuffle(md5(time())),0,10);
+	return $_SESSION['logout_token'];
+}
+
+/**
  * Given a user, bank account type and name it will create a bank account in the database
  * @param $name The name of the bank account
  * @param Accounttype $type The type of the bank account

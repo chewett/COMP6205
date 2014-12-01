@@ -87,7 +87,7 @@ if(!isset($pageTitle)) {
 				<?php
 				//display the transfer money tab only if user is logged in
 				if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
-					echo '<li><a class="navbar-brand active" href="login.php?logout=true">Logout</a></li>';
+					echo '<li><a class="navbar-brand active" href="login.php?logout=true&token=' . generateLogoutToken() .'">Logout</a></li>';
 				}
 				?>
 			</ul>
