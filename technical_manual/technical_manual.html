@@ -358,7 +358,32 @@ function updateTransaction() {
 			Therefore passwords are stored in the database like <code>$2y$10$4cd8ef6781c5e9e99d0a7ulXV3QNdg2gFIhcSndVMDRgHZVxVGodW</code>.
 		</p>
 
-		<h2>CSRF - Not yet implemented</h2>
+		<h2>CSRF</h2>
+
+		<p>
+			Cross site request forgery is where someone uses known details about a website to perform actions on your behalf.
+			An example would be making you visit a URL which then performs something you didnt want to happen.
+			A typical solution to stop this is to include tokens or nonces (Numbers used once) into page loads and require these tokens each page request.
+			This is invisible to the user but means that hackers will not be able to guess the tokens and therefore make requests to the page.
+			It would take a long time to apply this to an entire website so we have just applied this to the logout link.
+			Below is the code used to generate the security token.
+		</p>
+
+	<p>
+<pre class="prettyprint">/**
+ * This creates a random token to be used as the logout token
+ * @return string The newly generated logout token
+ */
+function generateLogoutToken() {
+	$_SESSION['logout_token'] = substr(str_shuffle(md5(time())),0,10);
+	return $_SESSION['logout_token'];
+}</pre>
+		</p>
+		<p>
+			Every page load the token is regenerated so that it is kept constantly changing.
+			To implement this onto everything we would put hidden fields in forms before submission which would then submit the token that would allow the form to be submitted.
+			Since this is not guessable this stops people using Cross site request forgery and protects the user from this.
+		</p>
 
 		<h2>Linking to external JS and not ours</h2>
 
