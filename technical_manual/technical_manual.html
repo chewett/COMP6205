@@ -299,8 +299,51 @@ if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
 		</p>
 
 		<h2> AJAX: reload page to dynamically update transactions list </h2>
-		<h2> PDF Creation, Chris is a wizzard </h2>
+
+			<p>
+				The view transaction page uses AJAX calls to dynamically update the page as and when changes are made.
+				This will reload the current transactions every 10 seconds and update the table.
+				<code>loadTransactions.php</code> gets the data from the database and outputs JSON which is then loaded by the <code>bankOverview.php</code>
+			</p>
+
+		<p>
+<pre class="prettyprint">setInterval(updateTransaction, 10000);
+
+function updateTransaction() {
+	console.log("Loading transaction");
+	$.getJSON("loadTransactions.php?id=<?=$bankAccount->getIdBankaccount()?>", '', replaceTransaction);
+}</pre>
+		</p>
+
+		<p>
+			Here we use the jQuery <code>$.getJSON()</code> method to load the transactions page and then once loaded call the callback function <code>replaceTransactions</code> which updates the information on the page.
+			We tell the page to load this every 10 seconds with <code>setInterval()</code> which will run the update function.
+		</p>
+
+		<h2>PDF Statement Creation</h2>
+
+		<p>
+			To create a PDF we create a latex file and then compile it on the server with the below code
+			<pre class="prettyprint">exec("cd " . dirname(__FILE__) . "/../statements; pdflatex {$guid}.tex > pdflatex_statement_creation.log");</pre>
+			This invokes pdflatex which creates the pdf and then later in the function we return the location of the new statement.
+			Calling exec is bad however all user input will be sanitised and therefore the user will not be able to take control of this risky system call.
+			A possible extension would be to use a PHP pdf creation library however for this example pdflatex suffices.
+		</p>
+		<p>
+			An example of the created statement is <a href="statement_example.pdf">available</a>
+		</p>
+
 		<h2> Disable access to guessable pages such as admin.php </h2>
+
+			<p>
+				As a security procedure and as part of our permission checking all pages that require permissions are checked to ensure the user has them.
+				Any users visiting pages that they are not allowed to visit will have the below error shown.
+			</p>
+
+			<p>
+				<img src="images/cannot_access_page.png" />
+			</p>
+
 		<h2> Password hashing and salting </h2>
 
 		<p>
