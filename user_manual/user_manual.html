@@ -49,71 +49,142 @@
 		<div class="page-header">
 			<h1 id="Thing">COMP6205 User Manual</h1>
 		</div>
-		<h2> How to login </h2>
+		<h2> Client Pages </h2>
 
-		<ul>
-			<li>How to get bank information - given to them by branch</li>
-			<li>How to login</li>
-			<li>What to do if they cant</li>
-		</ul>
-
-
-		<h2> Phone the bank to obtain your credentials </h2>
+		<ol>
+			<h3> <li>How to login</li> </h3>
 
 			<ul>
-				<li>Similar to above, possibly link them to this section</li>
+				<li>We have made the assumption that in order to get your login credentials, you must obtain them from the bank. 
+					Once you get your login details, you can go the login screen. Note that unless you are logged in, you cannot see
+					anything but the Login and About us pages </li>
+				<img class="img-responsive" src="images/client activities/header_when_not_logged.png" />
+				<br /><br /><br />
+						
+				<li>The following screen shows the login screen where you have to put your username and password</li>
+				<img class="img-responsive" src="images/client activities/login_screen.png" />
+				<br /><br /><br />
+
+				<li>If you cannot login or forget your password, you are encouraged to go to the About us page and see our contact details</li>
+				<img class="img-responsive" src="images/client activities/login_invalid.png" />
 			</ul>
 
 
-		<h2> Report issue </h2>
 
-			<ul>
-				<li>How to report</li>
-				<li>Why you might want to report</li>
-				<li>Bank peoples will contact you</li>
+			
+			<h3> <li>Account Overview </li></h3>
+
+				<ul>
+					<li>After a user logs in, they see the Account Overview page. Initially it would show no accounts and it would give the user the opportunity to
+						open account or report issue.</li>
+					<img class="img-responsive" src="images/client activities/welcome_non_admin.png" />
+				</ul>
+		
+
+
+			<h3><li> Open Account </li> </h3>
+				<ul>
+					<li>Opening an account is as easy as giving a name of the account and specifying the type (such as savings, loan, etc)</li>
+					<img class="img-responsive" src="images/client activities/open_new_acc.png" /> <br />
+
+					<li>After opening the new account, you are redirected to the Account Overview page where you can view your newly created account. Every new account has initial balance of 0£. (Mention that to get some money, you need to fiddle with DB or is that too technical?)</li>
+					<img class="img-responsive" src="images/client activities/view_new_accounts.png" />
+				</ul>
+			
+
+			
+			<h3><li>Transfer money</li></h3>
+				<ul>
+					<li>After you have set up your accounts, you can finally transfer money between your accounts or even to other accounts, registered in the bank. To do the transfer (regardless whether it is between your accounts or to another person's account), you must know the <b> id </b> of the recipient. In the example below John Smith is sending 200£ from his daily account ( <b> id: 1 </b> ) to his savings ( <b> id: 2 </b> )
+					</li>
+					<img class="img-responsive" src="images/client activities/transfer.png" />
+					<br /><br />
+					<li>Note that when transfering money the bank website does <u>NOT</u> allow you to:
+						<ul>
+							<li> Send money to non-existing destination. This is why you MUST know the account id of the recipient, </li>
+							<img class="img-responsive" src="images/client activities/invalid_dest.png" /> <br /> 
+							<li> Send more money than you have in the account from which you are sending. </li>
+							<img class="img-responsive" src="images/client activities/insufficient_src.png" /> <br /> 
+							<li> Send negative amount of money. </li>
+							<img class="img-responsive" src="images/client activities/negative_transfer.png" /> <br /> 
+							<li> Leave any of the fields blank. </li>
+						</ul>
+				</ul>
+
+
+
+			<h3><li> View Account Transactions and Statements</li></h3>
+				<ul>
+					<li>Immediately after you make a transaction, you are redirected to the Account Overview page where you can see the amount deducted from your account:</li>
+					<img class="img-responsive" src="images/client activities/new_balance.png" /> <br />
+					<li> You can go into more detail and <b> View Transactions </b> for specific account, which will dynamically show you your most recent transactions for this account. (<i>Button above was updated, so we probably need new screenshot</i>). In the example below John Smith is observing the recent transactions for his savings account. You can see when the transaction took place, what is the reference and if  money has come in or gone out of the account:</li>
+					<img class="img-responsive" src="images/client activities/view_account.png" /> <br />
+					<li> We realize that people have different lifestyles, so some may have 10 transactions for the last month or 100 for the past week. Therefore, apart from dynamically observing your recent transactions, you can also view your monthly statement. We see that John Smith has only one transaction in November:</li>
+					<img class="img-responsive" src="images/client activities/transaction_dec.png" /> <br />
+					<li> You can navigate back and forth the months and see the statement for whichever month you are interested in. For instance, John Smith has gone back a month and is viewing his statement for November, when he had more activity on his account:</li>
+					<img class="img-responsive" src="images/client activities/transactions_nov.png" /> <br /> 
+					<li> Finally, you can view a printable pdf of your montly statement and eventually download it: </li>
+					<img class="img-responsive" src="images/client activities/pdf_statement.png" /> <br />
+				</ul>
+	
+
+	
+			<h3><li> Report Concern</li> </h3>
+			<p>From the Account Overview page you can submit an issue if you consider that there is something unsual going on. All you have to do is:</p>
+			<ul> 
+				<li>Select the account where the issue is present</li>
+				<li>Give a title to your problem</li>
+				<li>Describe the problem in more detail</li>
+				<img class="img-responsive" src="images/client activities/report_issue.png" /> 
+				<li> After you have sent the report, a bank clerk will receive it and you will be contacted shortly. </li>
 			</ul>
-		<h2> Account Overview </h2>
 
-		<ul>
-			<li>Explain entire page and all buttons</li>
-		</ul>
 
-		<h2> Open Account </h2>
-		<ul>
-			<li>Explain entire page and all buttons</li>
-		</ul>
-		<h2> View Account </h2>
-		<ul>
-			<li>Explain entire page and all buttons</li>
-		</ul>
-		<h2> View Statement </h2>
-			<ul>
-				<li>Explain entire page and all buttons</li>
-			</ul>
+			<h3><li> Log out</li> </h3>
+			<p> Logging out simply logs you out of the bank website and redirects you to the Login page in case you want to login again </p>
+		</ol>
 
-			<h3> View PDF magic </h3>
-			<ul>
-				<li>Chewett needs to work on this to make it work</li>
-			</ul>
-		<h2>Transfer money</h2>
-			<ul>
-				<li>Explain entire page and all buttons</li>
-			</ul>
 
-		<h2> Admin page </h2>
 
-			<ul>
-				<li>I need to clean up these pages</li>
-			</ul>
+		<h2> Admin pages </h2>
+			
+			<p>When an admin logs in, they can see the Admin tab in the navigation bar, which gives them more rights:</p>
+			<img class="img-responsive" src="images/admin activities/login_admin.png" /> <br />
+			<p> Recall that regular users do not see this page. <b> Even if normal user guesses the URL for the admin page, 
+			they are not authorized to view it: </b> (<i> this probably should not be in the user manual </i>) </p>
+			<img class="img-responsive" src="images/admin activities/user_notAuthorized.png" /> <br />  
+			<p> The admin page gives access to the following: </p>
+			<ol>
+				<h3> <li>Assign Users </li> </h3>
+				<p>This allows the admin to change what roles a user has. E.g. promoting a user from a normal user to a bank clerk,
+					promoting clerk to manager or demoting manager to clerk. However, as this is not a full website, so this feauture is not implemented:
+					<i> Again, is this suitable for the user manual?</i> </p>
+					<img class="img-responsive" src="images/admin activities/change_role.png" /> <br />  
+				<h3> <li>View Roles </li> </h3>
+				<p> This page shows the admin the list of available roles and a short description of the role: </p>
+				<img class="img-responsive" src="images/admin activities/view_roles.png" /> <br />  
+				<h3> <li>Change Permissions </li> </h3>
+				<p>This allows the admin to change the permissions of different roles, e.g what  capabilities would the user, the clerk, the manager and the admin have. However, as this is not a full website, so this feauture is not implemented:
+					<i> Again, is this suitable for the user manual?</i> </p>
+				<img class="img-responsive" src="images/admin activities/change_permission.png" /> <br />  
+				<h3> <li>View Issues </li> </h3>
+				<p> This page allows the admin, Joe Bloggs, to view issues, submitted by clients </p>
+				<img class="img-responsive" src="images/admin activities/view_issues.png" /> <br />  
+				<p> After choosing an issue, submitted by particular client, the admin, Joe Bloggs, can view the case in more detail</p>
+				<img class="img-responsive" src="images/admin activities/close_issue.png" /> <br />  
+				<p> After contacting the client, the admin, Joe Bloggs, can close the issue, after which he gets a confirmation </p>
+				<img class="img-responsive" src="images/admin activities/close_issue_confirm.png" /> <br />  
+				<p> Finally, when going back to the issues list, the admin, Joe Bloggs, can see that the issues that he has resolved are now under the 'Resolved' category </p>
+				<img class="img-responsive" src="images/admin activities/resolved_issues.png" /> <br />  
+				<h3> <li>View Site Options </li> </h3>
+				<p> Finally, the admin is allowed to view site options. For example, he would be able to temporarily bring down the site for regular maintenance. However, as this is demo site, this feauture is not implemented. </p>
+				<img class="img-responsive" src="images/admin activities/maintenance.png" /> <br />
+				<h3><li> Log out</li> </h3>
+				<p> Logging out simply logs you out of the bank website and redirects you to the Login page in case you want to login again </p>
+			</ol>
 
-			<h3> View Users </h3>
-			<h3> View Roles </h3>
-			<h3> View Issues </h3>
-			<h3> View Site Options </h3>
-		<h2> Log out </h2>
-			<ul>
-				<li>explain button</li>
-			</ul>
+			
+
 
 	</div>
 
