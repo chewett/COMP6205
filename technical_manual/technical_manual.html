@@ -100,6 +100,15 @@ $em->flush();
 			By telling it to persist the new object it puts it in a queue to write back to the database and when flush() is called this is performed.
 		</p>
 
+		<p>
+			One of the decisions we had to make was to choose the format that Doctrine uses to detail information about the tables.
+			Doctrine allows you to define this using PHP DocBlock comments, XML, YML and PHP objects.
+			We reviewed these formats and decided on DocBlock comments.
+			XML allowed you to validate the table structure using an XML validtor which was very useful however it removed the PHP class from the table structure.
+			When changing the details you had to change the XML and then the PHP class. This was open to errors where only one was changed.
+			Therefore we decided to use DocBlock annotations to keep the table structure close to the PHP classes to ensure no issues occured where only one area was changed.
+		</p>
+
 			<h3> Server side validation (SQL Inject)</h3>
 
 			<p>
@@ -145,8 +154,39 @@ $em->flush();
 		
 			<p>
 				We spent some time working on creating a role based system to permit/deny access to parts of the website.
-				By researching we decided to split the data into three different tables in the database.
 			</p>
+
+			<p>
+				We had three different ways we considered creating the role based authentication
+			</p>
+
+			<ul>
+				<li>
+					One Role Per user, Pages checked for roles - This was a very simple method and one of the reasons why we didnt choose it.
+					If you added a new role with a similar set of allowed pages to old ones you needed to change every page to permit access to the new role
+				</li>
+				<li>
+					Many permissions to a user - This is where a user was given a set of permissions required to do their job.
+					We decided against this in the end as it could quickly lead to some users that should have the same set of permissions differing as some people were given additional permissions and not others.
+				</li>
+				<li>
+					One Role per user, Many permissions per role - This allowed for you to configure a page to check for a permission rather than a role.
+					The benefit of this was that when a new role was added you gave that a set of permissions and you did not have to change all the pages.
+				</li>
+				<li>
+					Many roles per user, Many permissions per role - This is similar to the above option but users can have many roles.
+					We decided against this in the end becuase this added another layer of complexity and meant that a user having multiple roles would inherit the privilages.
+					Confusion may have occured when users are given multiple roles giving them access to things they may not have been meant to access.
+				</li>
+			</ul>
+
+			<p>
+				A final idea was that we would implement the third system but that users would be able to have override permissions where permissions were assigned directly a user.
+				This could mean you could give someone an additional permission from their role.
+				This was considered messy and that the solution if this was needed was to create a new role.
+			</p>
+
+
 			
 			<p>
 				<ul>
