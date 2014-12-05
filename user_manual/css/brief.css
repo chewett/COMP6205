@@ -3,5 +3,9 @@ h1, h2 {
 }
 .main_content {
 	padding: 0px 15px 155px;
-	background-color: #FFF0EA;
+	background-color: #CAF7FA;
+}
+
+body {
+	background-color: #CAF7FA;
 }
