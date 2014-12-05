@@ -100,7 +100,7 @@ function transferMoney($from, $to, $amount, $description) {
  */
 function closeIssue($issue) {
 	$em = getEntityManager();
-	$issue->setStatus(1); //resolve issue
+	$issue->closeIssue(); //resolve issue
 	$em->flush();
 }
 

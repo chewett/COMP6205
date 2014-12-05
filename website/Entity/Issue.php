@@ -120,6 +120,13 @@ class Issue
 		$this->title = $title;
 	}
 
+	/**
+	 * Closes the issue
+	 */
+	public function closeIssue() {
+		$this->setStatus(1);
+	}
+
 
 
 
