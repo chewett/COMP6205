@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 
-	<title>COMP6205 Assignment Brief</title>
+	<title>COMP6205 Technical Manual</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,11 +43,11 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand active" href="#thing">COMP6205 Thing</a>
+			<a class="navbar-brand active" href="#thing">COMP6205 Technical Manual</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="#Thing">Thing</a></li>
+				<li><a>Christopher Hewett and Georgi Tsonev</a></li>
 			</ul>
 		</div>
 	</div>
@@ -58,12 +58,19 @@
 	<div class="main_content">
 
 		<div class="page-header">
-			<h1 id="Thing">COMP6205 Thing</h1>
+			<h1 id="Thing">COMP6205 Technical Manual</h1>
 		</div>
+
+		<p>
+			The two areas we were planning to learn about were Object relational mapping and Role based security.
+			We will decribe how we have implemented this first.
+		</p>
+
 		<h2> <u>Doctrine - An ORM system</u> </h2>
 
 			<p>
-				Doctrine is one of the points we decided to learn about. It provides us with an object relational mapping in PHP.
+				Doctrine provides us with an object relational mapping in PHP.
+				When learning to use Doctrine we referred to its "Getting Started with Doctrine"<a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/tutorials/getting-started.html">[ref]</a> guide.
 				This allows us to access the database using PHP objects and have Doctrine write the data back to a database.
 				An example of one of the mapping files <code>Entity/Options.php</code> is below.
 			</p>
@@ -96,29 +103,42 @@ $em->flush();
 </pre>
 		</p>
 		<p>
-			$em is the entity manager and deals with all the objects that we wish to write to and get from the database.
-			By telling it to persist the new object it puts it in a queue to write back to the database and when flush() is called this is performed.
+			<code>$em</code> is the entity manager and deals with all the objects that we wish to write to and get from the database.
+			By telling it to persist the new object it puts it in a queue to write back to the database and when <code>flush()</code> is called this is performed.
 		</p>
 
 		<p>
 			One of the decisions we had to make was to choose the format that Doctrine uses to detail information about the tables.
 			Doctrine allows you to define this using PHP DocBlock comments, XML, YML and PHP objects.
 			We reviewed these formats and decided on DocBlock comments.
-			XML allowed you to validate the table structure using an XML validtor which was very useful however it removed the PHP class from the table structure.
+			XML allowed you to validate the table structure using an XML validator which was very useful however it removed the PHP class from the table structure.
+			The same problem occurred for yaml and the PHP definitions, you removed the structure of the table from the class structure.
 			When changing the details you had to change the XML and then the PHP class. This was open to errors where only one was changed.
 			Therefore we decided to use DocBlock annotations to keep the table structure close to the PHP classes to ensure no issues occured where only one area was changed.
 		</p>
 
-			<h3> Server side validation (SQL Inject)</h3>
+			<h3> Server side validation (SQL Injection)</h3>
 
 			<p>
-				Doctrine handles SQL injection problems in many of its functions.
+				Doctrine handles SQL injection problems in many of its functions<a href="http://doctrine-dbal.readthedocs.org/en/latest/reference/security.html#sql-injection-safe-and-unsafe-apis-for-user-input">[ref]</a>.
 				When you are using the objects in the above manner Doctrine will escape all user input for you.
-				It also provides prepared statements when you wish to use their own Doctrine Query Language (DQL) or SQL.
+				It also provides prepared statements when you wish to use their own Doctrine Query Language (DQL) or SQL<a href="http://doctrine-dbal.readthedocs.org/en/latest/reference/security.html#right-prepared-statements">[ref]</a>.
 			</p>
 
 			<h3>Generated Database schema (ORM) </h3>
 			<p>
+				Doctrine provides tools to synchronise your database structure to the DocBlock annotations<a href="http://doctrine-orm.readthedocs.org/en/latest/reference/tools.html#database-schema-generation">[ref]</a>.
+				We have used this to generate and update the database as we have been working.
+				Consequently we have not had to design the tables using conventional table creation tools.
+				This has sped up development as we just maintain the DocBlock annotations and use the tool to synchronise the database.<br />
+
+				Using the Doctrine command line tools this can be performed by running <code>php vendor/bin/doctrine orm:schema-tool:update --force</code>. <br />
+
+				We stored this in a script for easy access and can be found in <code>scripts/update_database_to_annotations.sh</code>
+			</p>
+
+			<p>
+
 				Below is the entity relationship diagram generated from the Doctrine entities.
 				Doctrine does not rely on the order of the columns so the produced database structure does not have column order order.
 				This uses crows foot notation to demonstrate the foreign keys.
@@ -136,9 +156,9 @@ $em->flush();
 			<h3> Transaction consistency, ACID properties </h3>
 
 			<p>
-				Doctrine has transaction handling already built in.
+				Doctrine has transaction handling already built in<a href="http://doctrine-orm.readthedocs.org/en/latest/reference/transactions-and-concurrency.html">[ref]</a>.
 				Each time an entity is modified or persisted then it is queued.
-				When you call flush on the Entity Manager then it will run the SQL operations in one transaction.
+				When you call flush<a href="http://doctrine-orm.readthedocs.org/en/latest/reference/working-with-objects.html#persisting-entities">[ref]</a> on the Entity Manager then it will run the SQL operations in one transaction.
 				This gives you transaction consistency without having to do it yourself.
 			</p>
 
@@ -231,23 +251,43 @@ $em->flush();
 				We have used Twitter Bootstrap system to style the website and utlising some of their design patterns.
 				This was so that we could focus on getting a site that looked good and worked well on a range a devices to focus on learning in our chosen areas.
 			</p>
-		
-			<h3> Responsive site, working on mobile devices </h3>
-			
-			<p>
-				Bootstrap provide a base level of responsive design that allows you to create a website that works well on mobile devices.
-				Provided you design your site correctly it will be able to scale to smaller screen devices.
-				We have spent some time ensuring that webpages scale to smaller sized screens so that most of the functionlity was still present.
-				This is to acknowledge the trend that many forms of web browsing is now on phones an tablets. 
-			</p>
-			
-			<h3> Input client side validation </h3>
 
-			<p>
-				Previously we wished to spend a bit of time learning to use the Dojo JavaScript library to make text inputs which validated the input.
-				After some work with bootstrap we found that bootstrap actually does this very well so decided to simplify our plan.
-				This was helpful as neither of us had much experiance with this library and we would have had to spend a fair bit of time learning to use it.
-			</p>
+			<div class="clearfix">
+				<img style="padding: 10px" class="pull-left img-responsive" src="images/mobile_view.png" />
+
+				<h3> Responsive site, working on mobile devices </h3>
+
+				<p>
+					Bootstrap provide a base level of responsive design that allows you to create a website that works well on mobile devices.
+					Provided you design your site correctly it will be able to scale to smaller screen devices.
+				</p>
+				<p>The below example is used throughout the manuals and provides an <code>img-responsive</code> class which scales the size of the image to the surronding div<br />
+					<pre class="prettyprint">&lt;img class="img-responsive" src="images/ER_diagram.png" /&gt;</pre></p>
+				<p>
+					We have spent some time ensuring that webpages scale to smaller sized screens so that most of the functionlity was still present.
+					This is to acknowledge the trend that many forms of web browsing is now on phones an tablets.<br />
+					On the left is an example of the website displayed in a mobile browser.<br />
+					You can see that the buttons along the top has been condensed into a button allowing you to reveal the additional navigation links.<br />
+					In addition the text flows to fit the smaller screen rather than making the user scroll.
+				</p>
+
+				<h3> Input client side validation </h3>
+
+				<p>
+					Previously we wished to spend a bit of time learning to use the Dojo JavaScript library to make text inputs which validated the input.
+					After some work with bootstrap we found that bootstrap actually does this very well so decided to simplify our plan.
+					This was helpful as neither of us had much experiance with this library and we would have had to spend a fair bit of time learning to use it.
+				</p>
+
+				<p>
+					In <code>transferMoney.php</code> the code below for the input box produces the following output when the user tries to submit when the data isnt included.<br />
+					<pre class="prettyprint">&lt;input type="number" class="form-control" placeholder="Amount" required name="amount"&gt;</pre><br />
+					<img class="img-responsive" src="images/box_validation.png" />
+				</p>
+
+
+			</div>
+
 
 		<h2> Unit Tests</h2>
 			<p>
@@ -290,8 +330,7 @@ public function testValidLogin($hashs) {
 
 		<h2>Coding Standards</h2>
 			<p>
-				While programming this website we tried to, for the most part, adheer to PSR-1 basic coding standards.
-				You can find the PSR-1 standards <a href="http://www.php-fig.org/psr/psr-1/">online</a>.
+				While programming this website we tried to, for the most part, adheer to PSR-1 basic coding standards<a href="http://www.php-fig.org/psr/psr-1/">[ref]</a>.
 			</p>
 
 		<h2> 404 page </h2>
@@ -374,7 +413,7 @@ if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
 
 function updateTransaction() {
 	console.log("Loading transaction");
-	$.getJSON("loadTransactions.php?id=<?=$bankAccount->getIdBankaccount()?>", '', replaceTransaction);
+	$.getJSON("loadTransactions.php?id=&lt;?=$bankAccount->getIdBankaccount()?&gt;", '', replaceTransaction);
 }</pre>
 		</p>
 
@@ -407,11 +446,49 @@ function updateTransaction() {
 				<img src="images/cannot_access_page.png" />
 			</p>
 
+			<p>
+				This is performed by a check at the top of pages, the below code taken from <code>adminRolePermissions.php</code> is used to ensure that the user has the correct permissions to view the page
+			<pre class="prettyprint">if(!userHasPermission("admin_view_permission")) {
+	redirectUnauthorized();
+}</pre>
+			</p>
+
 		<h2> Password hashing and salting </h2>
 
 		<p>
 			To keep the users password secure we have decided we will hash and salt the passwords.
-			The three functions that deal with this are in <code>/inc/auth.php</code>.
+			The three functions that deal with this are in <code>/inc/auth.php</code> reproduced below.
+		</p>
+		<p>
+			<pre class="prettyprint">/**
+ * Used to generate a salt and hash when someone creates an account
+ * @param $password Password to hash
+ * @return string Resulting hash
+ */
+function generateHash($password) {
+	$salt = '$2y$10$' . substr(md5(uniqid(rand(), true)), 0, 22);
+	return crypt($password, $salt);
+}
+
+/**
+ * This is used to get the hash given a password and a hash
+ * @param $pass Password to hash
+ * @param $hash Salt and hash method
+ * @return string Resulting hash
+ */
+function getHash($pass, $hash) {
+	return crypt($pass, $hash);
+}
+
+/**
+ * Checks to see if a given password is correct to generate the hash
+ * @param $pass Password to hash
+ * @param $hash Salt and hash method
+ * @return bool true if password valid to generate hash
+ */
+function verifyLoginPassword($pass, $hash) {
+	return (getHash($pass, $hash) == $hash);
+}</pre>
 		</p>
 		<p>
 			We use the PHP <code>crypt($password, $salt)</code> function to properly hash the passwords and use blowfish hashing.
@@ -483,11 +560,9 @@ function generateLogoutToken() {
 			This also has caching benefits as if a user has visited a website this includes jQuery from the Google CDN previously it will load this page from the cache speeding up pageload time.
 		</p>
 
-		<h2>Content used</h2>
+		<h2>Google Prettify</h2>
 
-		<h3>Google Prettify</h3>
-
-		<p>For this manual we have used Google prettify which can be downloaded <a href="https://code.google.com/p/google-code-prettify/">here</a></p>
+		<p>For this manual we have used Google prettify to do syntax highlighting which can be downloaded <a href="https://code.google.com/p/google-code-prettify/">here</a></p>
 
 	</div>
 
