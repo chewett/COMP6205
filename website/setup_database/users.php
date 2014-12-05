@@ -3,17 +3,23 @@
 require_once '../inc/doctrine_setup.php';
 require_once '../inc/auth.php';
 
+$rolesRepo = $em->getRepository("Role");
+$user = $rolesRepo->findOneBy(array("rolename" => "user"));
+$admin = $rolesRepo->findOneBy(array("rolename" => "admin"));
+
 $bob = new Users();
-$bob->setFirstname("bob");
+$bob->setFirstname("Joe");
 $bob->setPassword(generateHash("bob"));
-$bob->setLastname("Bob");
+$bob->setLastname("Bloggs");
 $bob->setUsername("bob");
+$bob->setIdRole($user);
 
 $bob2 = new Users();
-$bob2->setFirstname("bob2");
+$bob2->setFirstname("John");
 $bob2->setPassword(generateHash("bob2"));
-$bob2->setLastname("Bob2");
+$bob2->setLastname("Smith");
 $bob2->setUsername("bob2");
+$bob2->setIdRole($admin);
 
 
 
