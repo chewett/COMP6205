@@ -1,11 +1,59 @@
-h1, h2 {
+h1, h2, h3 {
 	padding-top: 50px;
 }
 .main_content {
-	padding: 0px 15px 155px;
+	padding: 100px 15px 155px;
 	background-color: #D7F5F7;
 }
 
 body {
 	background-color: #D7F5F7;
+}
+
+.affix-top {
+	padding-top: 50px;
+}
+
+/* side nav css used from http://tutsme-webdesign.info/bootstrap-3-affix/ */
+.sidenav {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding-top:    0px;
+	padding-bottom: 10px;
+	border-radius: 5px;
+	font-size: 13px;
+}
+
+.sidebar .nav > li > a {
+	display: block;
+	color: #716b7a;
+	padding: 3px 10px;
+}
+.sidebar .nav > li > a:hover,
+.sidebar .nav > li > a:focus {
+	text-decoration: none;
+	background-color: #e5e3e9;
+}
+.sidebar .nav > .active > a,
+.sidebar .nav > .active:hover > a,
+.sidebar .nav > .active:focus > a {
+	font-weight: bold;
+	color: #245269;
+	background-color: transparent;
+}
+
+.sidebar .nav .nav {
+	display: none;
+}
+.sidebar .nav > li.active .nav {
+	display:block;
+}
+.sidebar .nav .nav {
+	margin-bottom: 8px;
+}
+.sidebar .nav .nav > li > a {
+	padding-top:    3px;
+	padding-bottom: 3px;
+	padding-left: 20px;
+	font-size: 90%;
 }

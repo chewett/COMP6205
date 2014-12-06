@@ -32,7 +32,7 @@
 	<link href="js/google-code-prettify/prettify.css" type="text/css">
 
 </head>
-<body>
+<body data-spy="scroll" data-target="#myScrollspy" >
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -57,16 +57,51 @@
 
 	<div class="main_content">
 
-		<div class="page-header">
-			<h1 id="Thing">COMP6205 Technical Manual</h1>
-		</div>
+		<div class="row">
+			<div class="col-xs-3" id="myScrollspy">
+				<nav class="sidebar">
+					<ul class="nav sidenav" data-spy="affix" data-offset-top="0">
+						<li class="active"><a href="#technicalManual">COMP6205 Technical Manual</a></li>
+						<li><a href="#doctrine">Doctrine</a>
+							<ul class="nav">
+								<li><a href="#doctrine-sql">SQL Injection</a></li>
+								<li><a href="#doctrine-schema">Schema Generation</a></li>
+								<li><a href="#doctrine-transactions">Transactions</a></li>
+								<li><a href="#doctrine-evaluation">Critical Evaluation</a></li>
+							</ul>
+						</li>
+						<li><a href="#roleAuthentication">Role Authentication</a></li>
+						<li><a href="#bootstrap">Bootstrap</a>
+							<ul class="nav">
+								<li><a href="#bootstrap-responsive">Responsive Design</a></li>
+								<li><a href="#bootstrap-client">Client side validation</a></li>
+							</ul>
+						</li>
+						<li><a href="#unitTests">Unit Tests</a></li>
+						<li><a href="#codingStandards">Coding Standards</a></li>
+						<li><a href="#404Page">404 Page</a></li>
+						<li><a href="#templating">Dynamic Templates</a></li>
+						<li><a href="#automaticUpdates">Automatic Page Updates</a></li>
+						<li><a href="#pdfCreation">PDF Creation</a></li>
+						<li><a href="#CSRF">CSRF</a></li>
+						<li><a href="#externalLibraries">External Libraries</a></li>
+						<li><a href="#googlePrettify">Google Prettify</a></li>
 
-		<p>
-			The two areas we were planning to learn about were Object relational mapping and Role based security.
-			We will describe how we have implemented this first.
-		</p>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-xs-9">
 
-		<h2> <u>Doctrine - An ORM system</u> </h2>
+			<div>
+				<h1 id="technicalManual">COMP6205 Technical Manual</h1>
+			</div>
+
+			<p>
+				The two areas we were planning to learn about were Object relational mapping and Role based security.
+				We will describe how we have implemented this first.
+			</p>
+
+			<h2 id="doctrine"><u>Doctrine - An ORM system</u></h2>
 
 			<p>
 				Doctrine provides us with an object relational mapping in PHP.
@@ -92,7 +127,7 @@ private $keyname;
 				We can create objects and use them and when we want them to be written to the database doctrine will do this. This is used in the setup files <code>setup_database/options.php</code>
 
 			</p>
-		<p>
+			<p>
 <pre class="prettyprint">
 $mainMode = new Options;
 $mainMode->setKeyname("maintenance_mode");
@@ -101,23 +136,23 @@ $mainMode->setValue("false");
 $em->persist($mainMode);
 $em->flush();
 </pre>
-		</p>
-		<p>
-			<code>$em</code> is the entity manager and deals with all the objects that we wish to write to and get from the database.
-			By telling it to persist the new object it puts it in a queue to write back to the database and when <code>flush()</code> is called this is performed.
-		</p>
+			</p>
+			<p>
+				<code>$em</code> is the entity manager and deals with all the objects that we wish to write to and get from the database.
+				By telling it to persist the new object it puts it in a queue to write back to the database and when <code>flush()</code> is called this is performed.
+			</p>
 
-		<p>
-			One of the decisions we had to make was to choose the format that Doctrine uses to detail information about the tables.
-			Doctrine allows you to define this using PHP DocBlock comments, XML, YML and PHP objects.
-			We reviewed these formats and decided on DocBlock comments.
-			XML allowed you to validate the table structure using an XML validator which was very useful however it removed the PHP class from the table structure.
-			The same problem occurred for YML and the PHP definitions, you removed the structure of the table from the class structure.
-			When changing the details you had to change the XML and then the PHP class. This was open to errors where only one was changed.
-			Therefore we decided to use DocBlock annotations to keep the table structure close to the PHP classes to ensure no issues occurred where only one area was changed.
-		</p>
+			<p>
+				One of the decisions we had to make was to choose the format that Doctrine uses to detail information about the tables.
+				Doctrine allows you to define this using PHP DocBlock comments, XML, YML and PHP objects.
+				We reviewed these formats and decided on DocBlock comments.
+				XML allowed you to validate the table structure using an XML validator which was very useful however it removed the PHP class from the table structure.
+				The same problem occurred for YML and the PHP definitions, you removed the structure of the table from the class structure.
+				When changing the details you had to change the XML and then the PHP class. This was open to errors where only one was changed.
+				Therefore we decided to use DocBlock annotations to keep the table structure close to the PHP classes to ensure no issues occurred where only one area was changed.
+			</p>
 
-			<h3> Server side validation (SQL Injection)</h3>
+			<h3 id="doctrine-sql"> Server side validation (SQL Injection)</h3>
 
 			<p>
 				Doctrine handles SQL injection problems in many of its functions<a href="http://doctrine-dbal.readthedocs.org/en/latest/reference/security.html#sql-injection-safe-and-unsafe-apis-for-user-input">[ref]</a>.
@@ -125,7 +160,7 @@ $em->flush();
 				It also provides prepared statements when you wish to use their own Doctrine Query Language (DQL) or SQL<a href="http://doctrine-dbal.readthedocs.org/en/latest/reference/security.html#right-prepared-statements">[ref]</a>.
 			</p>
 
-			<h3>Generated Database schema (ORM) </h3>
+			<h3 id="doctrine-schema">Generated Database schema (ORM) </h3>
 			<p>
 				Doctrine provides tools to synchronise your database structure to the DocBlock annotations<a href="http://doctrine-orm.readthedocs.org/en/latest/reference/tools.html#database-schema-generation">[ref]</a>.
 				We have used this to generate and update the database as we have been working.
@@ -142,18 +177,19 @@ $em->flush();
 				Below is the entity relationship diagram generated from the Doctrine entities.
 				Doctrine does not rely on the order of the columns so the produced database structure does not have column order order.
 				This uses crows foot notation to demonstrate the foreign keys.
-				<ul>
-					<li>Fields that are the primary key for the table have a yellow key.</li>
-					<li>Fields that are a foreign key have a purple icon.</li>
-					<li>Fields that are required have a blue icon.</li>
-					<li>Fields that are not required have a white icon.</li>
-				</ul>
+			<ul>
+				<li>Fields that are the primary key for the table have a yellow key.</li>
+				<li>Fields that are a foreign key have a purple icon.</li>
+				<li>Fields that are required have a blue icon.</li>
+				<li>Fields that are not required have a white icon.</li>
+			</ul>
 			</p>
 
 			<p>
 				<img class="img-responsive" src="images/ER_diagram.png" />
 			</p>
-			<h3> Transaction consistency, ACID properties </h3>
+
+			<h3 id="doctrine-transactions"> Transaction consistency, ACID properties </h3>
 
 			<p>
 				Doctrine has transaction handling already built in<a href="http://doctrine-orm.readthedocs.org/en/latest/reference/transactions-and-concurrency.html">[ref]</a>.
@@ -162,7 +198,7 @@ $em->flush();
 				This gives you transaction consistency without having to do it yourself.
 			</p>
 
-			<h3>Critical evaluation </h3>
+			<h3 id="doctrine-evaluation">Critical evaluation </h3>
 
 			<p>
 				Doctrine was very helpful for the transaction and SQL injection handling abilities and using objects in PHP makes it much easier than trying to keep a database and set of objects in sync.
@@ -170,8 +206,8 @@ $em->flush();
 				In doing this we didn't have to write any SQL and only a small bit of DQL to do the more advanced parts of the website.
 			</p>
 
-		<h2> <u>Role based authentication</u> </h2>
-		
+			<h2 id="roleAuthentication"> <u>Role based authentication</u> </h2>
+
 			<p>
 				We spent some time working on creating a role based system to permit/deny access to parts of the website.
 			</p>
@@ -187,7 +223,7 @@ $em->flush();
 					<p><img src="images/one_user_one_role.png" /></p>
 
 					<p>This was a very simple method and one of the reasons why we didn't choose it.
-					If you added a new role with a similar set of allowed pages to old ones you needed to change every page to permit access to the new role
+						If you added a new role with a similar set of allowed pages to old ones you needed to change every page to permit access to the new role
 					</p>
 				</li>
 				<li>
@@ -196,7 +232,7 @@ $em->flush();
 					<p><img src="images/one_user_many_permissions.png" /></p>
 
 					<p>This is where a user was given a set of permissions required to do their job.
-					We decided against this in the end as it could quickly lead to some users that should have the same set of permissions differing as some people were given additional permissions and not others.
+						We decided against this in the end as it could quickly lead to some users that should have the same set of permissions differing as some people were given additional permissions and not others.
 					</p>
 				</li>
 				<li>
@@ -205,7 +241,7 @@ $em->flush();
 					<p><img src="images/one_user_one_role_many_permissions.png" /></p>
 
 					<p>This allowed for you to configure a page to check for a permission rather than a role.
-					The benefit of this was that when a new role was added you gave that a set of permissions and you did not have to change all the pages.
+						The benefit of this was that when a new role was added you gave that a set of permissions and you did not have to change all the pages.
 					</p>
 				</li>
 				<li>
@@ -215,9 +251,9 @@ $em->flush();
 					<p><img src="images/one_user_many_roles_many_permissions.png" /></p>
 
 					<p>
-					This is similar to the above option but users can have many roles.
-					We decided against this in the end because this added another layer of complexity and meant that a user having multiple roles would inherit the privileges.
-					Confusion may have occurred when users are given multiple roles giving them access to things they may not have been meant to access.
+						This is similar to the above option but users can have many roles.
+						We decided against this in the end because this added another layer of complexity and meant that a user having multiple roles would inherit the privileges.
+						Confusion may have occurred when users are given multiple roles giving them access to things they may not have been meant to access.
 					</p>
 				</li>
 			</ul>
@@ -229,15 +265,15 @@ $em->flush();
 			</p>
 
 
-			
+
 			<p>
-				<ul>
-					<li>Roles - This table stores a list of roles that users could have. One user has one specific role</li>
-					<li>Permissions - This table stores a list of possible permissions a role could have. These permissions let you access functionality of the website</li>
-					<li>RoleHasPermissions - This table links 1 role to 1 permission. This is needed to ensure 3rd normal form is kept in the database.</li>
-				</ul>
+			<ul>
+				<li>Roles - This table stores a list of roles that users could have. One user has one specific role</li>
+				<li>Permissions - This table stores a list of possible permissions a role could have. These permissions let you access functionality of the website</li>
+				<li>RoleHasPermissions - This table links 1 role to 1 permission. This is needed to ensure 3rd normal form is kept in the database.</li>
+			</ul>
 			</p>
-			
+
 			<p>
 				By having a list of permissions to access pages rather than deciding on roles that can access pages we have improved coding and reduced the time required to add new roles.
 				A common problem without having permission based role authentication is that the ability to access a page will often be checked by the role the user has.
@@ -246,7 +282,7 @@ $em->flush();
 				This reduces the need for ongoing system maintenance and means non-technical users can create new roles as and when needed.
 			</p>
 
-		<h2> Bootstrap</h2>
+			<h2 id="bootstrap">Bootstrap</h2>
 			<p>
 				We have used Twitter Bootstrap system to style the website and utilising some of their design patterns.
 				This was so that we could focus on getting a site that looked good and worked well on a range a devices to focus on learning in our chosen areas.
@@ -255,14 +291,14 @@ $em->flush();
 			<div class="clearfix">
 				<img style="padding: 10px" class="pull-left img-responsive" src="images/mobile_view.png" />
 
-				<h3> Responsive site, working on mobile devices </h3>
+				<h3 id="bootstrap-responsive"> Responsive site, working on mobile devices </h3>
 
 				<p>
 					Bootstrap provide a base level of responsive design that allows you to create a website that works well on mobile devices.
 					Provided you design your site correctly it will be able to scale to smaller screen devices.
 				</p>
 				<p>The below example is used throughout the manuals and provides an <code>img-responsive</code> class which scales the size of the image to the surrounding div<br />
-					<pre class="prettyprint">&lt;img class="img-responsive" src="images/ER_diagram.png" /&gt;</pre></p>
+				<pre class="prettyprint">&lt;img class="img-responsive" src="images/ER_diagram.png" /&gt;</pre></p>
 				<p>
 					We have spent some time ensuring that webpages scale to smaller sized screens so that most of the functionality was still present.
 					This is to acknowledge the trend that many forms of web browsing is now on phones an tablets.<br />
@@ -271,7 +307,7 @@ $em->flush();
 					In addition the text flows to fit the smaller screen rather than making the user scroll.
 				</p>
 
-				<h3> Input client side validation </h3>
+				<h3 id="bootstrap-client"> Input client side validation </h3>
 
 				<p>
 					Previously we wished to spend a bit of time learning to use the Dojo JavaScript library to make text inputs which validated the input.
@@ -281,15 +317,15 @@ $em->flush();
 
 				<p>
 					In <code>transferMoney.php</code> the code below for the input box produces the following output when the user tries to submit when the data isn't included.<br />
-					<pre class="prettyprint">&lt;input type="number" class="form-control" placeholder="Amount" required name="amount"&gt;</pre><br />
-					<img class="img-responsive" src="images/box_validation.png" />
+				<pre class="prettyprint">&lt;input type="number" class="form-control" placeholder="Amount" required name="amount"&gt;</pre><br />
+				<img class="img-responsive" src="images/box_validation.png" />
 				</p>
 
 
 			</div>
 
 
-		<h2> Unit Tests</h2>
+			<h2 id="unitTests"> Unit Tests</h2>
 			<p>
 				To ensure that we do not introduce bugs we have written a number of unit tests to exhaustively test the functions and main parts of the website.
 				As part of our development process it was recommended to run these tests before each commit so that we could fix any problems we caused in the commit before it committed.
@@ -328,31 +364,31 @@ public function testValidLogin($hashs) {
 				Any failure in assertion will cause this test to fail and report back the expected and actual value.
 			</p>
 
-		<h2>Coding Standards</h2>
+			<h2 id="codingStandards">Coding Standards</h2>
 			<p>
 				While programming this website we tried to, for the most part, adhere to PSR-1 basic coding standards<a href="http://www.php-fig.org/psr/psr-1/">[ref]</a>.
 			</p>
 
-		<h2> 404 page </h2>
+			<h2 id="404Page"> 404 page </h2>
 
-		<p>
-			We have used a <code>.htaccess</code> page to ensure that any people who visit a URL that is not found on our webserver get a more helpful screen.
-			Below is the content of the <code>.htaccess</code> page.
-		</p>
+			<p>
+				We have used a <code>.htaccess</code> page to ensure that any people who visit a URL that is not found on our webserver get a more helpful screen.
+				Below is the content of the <code>.htaccess</code> page.
+			</p>
 
-		<pre class="prettyprint">ErrorDocument 404 /comp6205/website/404.php</pre>
+			<pre class="prettyprint">ErrorDocument 404 /comp6205/website/404.php</pre>
 
-		<h3>Before adding .htaccess page</h3>
-		<img class="img-responsive" src="images/not_found_bad.png" />
+			<h3>Before adding .htaccess page</h3>
+			<img class="img-responsive" src="images/not_found_bad.png" />
 
-		<h3>After adding .htaccess page</h3>
-		<img class="img-responsive" src="images/not_found_good.png" />
+			<h3>After adding .htaccess page</h3>
+			<img class="img-responsive" src="images/not_found_good.png" />
 
-		<p>
-			This will hopefully mean that they do not get put off by the default 404 page and it points them at a page that does exist.
-		</p>
+			<p>
+				This will hopefully mean that they do not get put off by the default 404 page and it points them at a page that does exist.
+			</p>
 
-		<h2> Dynamic templates (hiding/showing content based on user) </h2>
+			<h2 id="templating"> Dynamic templates (hiding/showing content based on user) </h2>
 
 			<p>
 				Since neither of us had used templating libraries we decided that we would not spend time looking into and learning one of these to focus on our two main areas.
@@ -375,16 +411,16 @@ Page Content
 require_once 'inc/footer.php';
 </pre>
 			</p>
-		<p>
-			Here we set up templates for the header and the footer of the page and then included them on all the pages that we needed them on.
-			This gave us a common look across the whole website and mean that we did not have to alter every page when we wished to change something on the header or footer.
-			This therefore decreased the amount of work we needed to do.
-		</p>
-		<p>
-			The template is also dynamic as the page title and whether the page requires you to be logged in is set in variables then used in the header.
-			It will also load additional tabs along the top of the page depending on your role permissions as shown in the below snippet:
-		</p>
-		<p>
+			<p>
+				Here we set up templates for the header and the footer of the page and then included them on all the pages that we needed them on.
+				This gave us a common look across the whole website and mean that we did not have to alter every page when we wished to change something on the header or footer.
+				This therefore decreased the amount of work we needed to do.
+			</p>
+			<p>
+				The template is also dynamic as the page title and whether the page requires you to be logged in is set in variables then used in the header.
+				It will also load additional tabs along the top of the page depending on your role permissions as shown in the below snippet:
+			</p>
+			<p>
 <pre class="prettyprint">&lt;?php
 //display the admin tab only if user is logged in and has at least one of the roles below
 if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
@@ -398,9 +434,9 @@ if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
 }
 ?&gt;
 </pre>
-		</p>
+			</p>
 
-		<h2> AJAX: reload page to dynamically update transactions list </h2>
+			<h2 id="automaticUpdates"> AJAX: reload page to dynamically update transactions list </h2>
 
 			<p>
 				The view transaction page uses AJAX calls to dynamically update the page as and when changes are made.
@@ -408,34 +444,34 @@ if(isset($_SESSION['id_user']) && $_SESSION['id_user']){
 				<code>loadTransactions.php</code> gets the data from the database and outputs JSON which is then loaded by the <code>bankOverview.php</code>
 			</p>
 
-		<p>
+			<p>
 <pre class="prettyprint">setInterval(updateTransaction, 10000);
 
 function updateTransaction() {
 	console.log("Loading transaction");
 	$.getJSON("loadTransactions.php?id=&lt;?=$bankAccount->getIdBankaccount()?&gt;", '', replaceTransaction);
 }</pre>
-		</p>
+			</p>
 
-		<p>
-			Here we use the jQuery <code>$.getJSON()</code> method to load the transactions page and then once loaded call the callback function <code>replaceTransactions</code> which updates the information on the page.
-			We tell the page to load this every 10 seconds with <code>setInterval()</code> which will run the update function.
-		</p>
+			<p>
+				Here we use the jQuery <code>$.getJSON()</code> method to load the transactions page and then once loaded call the callback function <code>replaceTransactions</code> which updates the information on the page.
+				We tell the page to load this every 10 seconds with <code>setInterval()</code> which will run the update function.
+			</p>
 
-		<h2>PDF Statement Creation</h2>
+			<h2 id="pdfCreation">PDF Statement Creation</h2>
 
-		<p>
-			To create a PDF we create a latex file and then compile it on the server with the below code
+			<p>
+				To create a PDF we create a latex file and then compile it on the server with the below code
 			<pre class="prettyprint">exec("cd " . dirname(__FILE__) . "/../statements; pdflatex {$guid}.tex > pdflatex_statement_creation.log");</pre>
 			This invokes pdflatex which creates the pdf and then later in the function we return the location of the new statement.
 			Calling exec is bad however all user input will be sanitised and therefore the user will not be able to take control of this risky system call.
 			A possible extension would be to use a PHP pdf creation library however for this example pdflatex suffices.
-		</p>
-		<p>
-			An example of the created statement is <a href="statement_example.pdf">available</a>
-		</p>
+			</p>
+			<p>
+				An example of the created statement is <a href="statement_example.pdf">available</a>
+			</p>
 
-		<h2> Disable access to guessable pages such as admin.php </h2>
+			<h2> Disable access to guessable pages such as admin.php </h2>
 
 			<p>
 				As a security procedure and as part of our permission checking all pages that require permissions are checked to ensure the user has them.
@@ -453,13 +489,13 @@ function updateTransaction() {
 }</pre>
 			</p>
 
-		<h2> Password hashing and salting </h2>
+			<h2> Password hashing and salting </h2>
 
-		<p>
-			To keep the users password secure we have decided we will hash and salt the passwords.
-			The three functions that deal with this are in <code>/inc/auth.php</code> reproduced below.
-		</p>
-		<p>
+			<p>
+				To keep the users password secure we have decided we will hash and salt the passwords.
+				The three functions that deal with this are in <code>/inc/auth.php</code> reproduced below.
+			</p>
+			<p>
 			<pre class="prettyprint">/**
  * Used to generate a salt and hash when someone creates an account
  * @param $password Password to hash
@@ -489,27 +525,27 @@ function getHash($pass, $hash) {
 function verifyLoginPassword($pass, $hash) {
 	return (getHash($pass, $hash) == $hash);
 }</pre>
-		</p>
-		<p>
-			We use the PHP <code>crypt($password, $salt)</code> function to properly hash the passwords and use blowfish hashing.
-			This ensures that a users password is not stored in plaintext and as there is a salt used it makes bruteforcing of passwords much trickier.
-		</p>
-		<p>
-			Therefore passwords are stored in the database like <code>$2y$10$4cd8ef6781c5e9e99d0a7ulXV3QNdg2gFIhcSndVMDRgHZVxVGodW</code>.
-		</p>
+			</p>
+			<p>
+				We use the PHP <code>crypt($password, $salt)</code> function to properly hash the passwords and use blowfish hashing.
+				This ensures that a users password is not stored in plaintext and as there is a salt used it makes bruteforcing of passwords much trickier.
+			</p>
+			<p>
+				Therefore passwords are stored in the database like <code>$2y$10$4cd8ef6781c5e9e99d0a7ulXV3QNdg2gFIhcSndVMDRgHZVxVGodW</code>.
+			</p>
 
-		<h2>CSRF</h2>
+			<h2 id="CSRF">Cross Site Request Forgery</h2>
 
-		<p>
-			Cross site request forgery is where someone uses known details about a website to perform actions on your behalf.
-			An example would be making you visit a URL which then performs something you didn't want to happen.
-			A typical solution to stop this is to include tokens or nonces (Numbers used once) into page loads and require these tokens each page request.
-			This is invisible to the user but means that hackers will not be able to guess the tokens and therefore make requests to the page.
-			It would take a long time to apply this to an entire website so we have just applied this to the logout link.
-			Below is the code used to generate the security token.
-		</p>
+			<p>
+				Cross site request forgery is where someone uses known details about a website to perform actions on your behalf.
+				An example would be making you visit a URL which then performs something you didn't want to happen.
+				A typical solution to stop this is to include tokens or nonces (Numbers used once) into page loads and require these tokens each page request.
+				This is invisible to the user but means that hackers will not be able to guess the tokens and therefore make requests to the page.
+				It would take a long time to apply this to an entire website so we have just applied this to the logout link.
+				Below is the code used to generate the security token.
+			</p>
 
-	<p>
+			<p>
 <pre class="prettyprint">/**
  * This creates a random token to be used as the logout token
  * @return string The newly generated logout token
@@ -518,24 +554,24 @@ function generateLogoutToken() {
 	$_SESSION['logout_token'] = substr(str_shuffle(md5(time())),0,10);
 	return $_SESSION['logout_token'];
 }</pre>
-		</p>
-		<p>
-			Every page load the token is regenerated so that it is kept constantly changing.
-			To implement this onto everything we would put hidden fields in forms before submission which would then submit the token that would allow the form to be submitted.
-			Since this is not guessable this stops people using Cross site request forgery and protects the user from this.
-		</p>
+			</p>
+			<p>
+				Every page load the token is regenerated so that it is kept constantly changing.
+				To implement this onto everything we would put hidden fields in forms before submission which would then submit the token that would allow the form to be submitted.
+				Since this is not guessable this stops people using Cross site request forgery and protects the user from this.
+			</p>
 
-		<h2>Linking to external JS and not ours</h2>
+			<h2 id="externalLibraries">Linking to external JS and not ours</h2>
 
-		<p>
-			Where possible we have linked to the Google hosted libraries we have used.
+			<p>
+				Where possible we have linked to the Google hosted libraries we have used.
 
-			In <code>/inc/header.php</code> we link to the jQuery library hosted by Google.
-		</p>
+				In <code>/inc/header.php</code> we link to the jQuery library hosted by Google.
+			</p>
 
-		<pre class="prettyprint">&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;</pre>
-		<p>
-			This has a number of added benefits:
+			<pre class="prettyprint">&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;</pre>
+			<p>
+				This has a number of added benefits:
 			<ul>
 				<li>
 					Google will be able to serve these large files much faster than we can.
@@ -558,11 +594,15 @@ function generateLogoutToken() {
 			This reduces the amount of data to be loaded off our site and improves loading time as browsers normally will only load a certain number of resources from one domain at a time.
 
 			This also has caching benefits as if a user has visited a website this includes jQuery from the Google CDN previously it will load this page from the cache speeding up pageload time.
-		</p>
+			</p>
 
-		<h2>Google Prettify</h2>
+			<h2 id="googlePrettify">Google Prettify</h2>
 
-		<p>For this manual we have used Google prettify to do syntax highlighting which can be downloaded <a href="https://code.google.com/p/google-code-prettify/">here</a></p>
+			<p>For this manual we have used Google prettify to do syntax highlighting which can be downloaded <a href="https://code.google.com/p/google-code-prettify/">here</a></p>
+
+
+			</div>
+		</div>
 
 	</div>
 
