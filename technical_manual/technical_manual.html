@@ -220,7 +220,7 @@ $em->flush();
 				<li>
 					<p><strong>One Role Per user, Pages checked for roles</strong></p>
 
-					<p><img src="images/one_user_one_role.png" /></p>
+					<p><img class="img-responsive" src="images/one_user_one_role.png" /></p>
 
 					<p>This was a very simple method and one of the reasons why we didn't choose it.
 						If you added a new role with a similar set of allowed pages to old ones you needed to change every page to permit access to the new role
@@ -229,7 +229,7 @@ $em->flush();
 				<li>
 					<p><strong>Many permissions to a user</strong></p>
 
-					<p><img src="images/one_user_many_permissions.png" /></p>
+					<p><img class="img-responsive" src="images/one_user_many_permissions.png" /></p>
 
 					<p>This is where a user was given a set of permissions required to do their job.
 						We decided against this in the end as it could quickly lead to some users that should have the same set of permissions differing as some people were given additional permissions and not others.
@@ -238,7 +238,7 @@ $em->flush();
 				<li>
 					<p><strong>One Role per user, Many permissions per role</strong></p>
 
-					<p><img src="images/one_user_one_role_many_permissions.png" /></p>
+					<p><img class="img-responsive" src="images/one_user_one_role_many_permissions.png" /></p>
 
 					<p>This allowed for you to configure a page to check for a permission rather than a role.
 						The benefit of this was that when a new role was added you gave that a set of permissions and you did not have to change all the pages.
@@ -248,7 +248,7 @@ $em->flush();
 
 					<p><strong>Many roles per user, Many permissions per role</strong></p>
 
-					<p><img src="images/one_user_many_roles_many_permissions.png" /></p>
+					<p><img class="img-responsive" src="images/one_user_many_roles_many_permissions.png" /></p>
 
 					<p>
 						This is similar to the above option but users can have many roles.
@@ -479,7 +479,7 @@ function updateTransaction() {
 			</p>
 
 			<p>
-				<img src="images/cannot_access_page.png" />
+				<img class="img-responsive" src="images/cannot_access_page.png" />
 			</p>
 
 			<p>
