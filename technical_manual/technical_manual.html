@@ -100,6 +100,7 @@
 							<ul class="nav">
 								<li><a href="#codingStandards">Coding Standards</a></li>
 								<li><a href="#git">Git</a></li>
+								<li><a href="#composer">Composer</a></li>
 								<li><a href="#unitTests">Unit Tests</a></li>
 								<li><a href="#gantt">Charting Progress</a></li>
 							</ul>
@@ -588,8 +589,6 @@ function verifyLoginPassword($pass, $hash) {
 				<p>Therefore, where possible, we have included these external libraries via a CDN</p>
 
 
-
-
 			<h2 id="projectMang">Project Management</h2>
 
 			<p>
@@ -610,6 +609,44 @@ function verifyLoginPassword($pass, $hash) {
 
 			<p>All files used during this project have been put into our version management system</p>
 
+			<h3 id="composer">Composer</h3>
+
+			<p>
+				Composer is a PHP dependency manager that we have used to install Doctrine and PHPUnit with.
+				It is very useful as it stores the version that you check out and develop with so that others who come to work on the project always download the specific version you wrote the code on.
+				This removes issues of people installing the wrong version or not knowing what version you worked on.
+			</p>
+
+			<p>
+				Our <code>composer.json</code> is reproduced below. Here you can see we did not specify which version of doctrine we installed.
+
+				<pre class="prettyprint">{
+	"require":
+		{
+			"doctrine/orm": "*",
+			"phpunit/phpunit": "4.3.*"
+		},
+	"autoload": {
+		"psr-0": {"": "Entity/"}
+	}
+
+}
+</pre>
+			</p>
+
+			<p>
+				However the first time composer is installed it creates a <code>composer.lock</code> which checks out the latest versions of doctrine and then details where it found the modules and what specific versions were installed.
+				Below is part of the lock file.<br />
+				<pre class="prettyprint">{
+	"name": "doctrine/annotations",
+	"version": "v1.2.1",
+	"source": {
+		"type": "git",
+		"url": "https://github.com/doctrine/annotations.git",
+		"reference": "6a6bec0670bb6e71a263b08bc1b98ea242928633"
+	}
+}</pre>
+			</p>
 
 			<h3 id="unitTests"> Unit Tests</h3>
 			<p>
@@ -685,6 +722,10 @@ public function testValidLogin($hashs) {
 					</li>
 					<li><strong>Google Code Prettify</strong> - For the manual we have included code and use google code prettify to do syntax higlighting.<br />
 						<a href="https://code.google.com/p/google-code-prettify/">[website]</a>
+					</li>
+					<li><strong>Composer</strong> - Composer was used to install Doctrine.
+						This was helpful as it stores which verion you have been doing development with and means that anyone who wishs to continue the project will be able to get the precise version we used.
+						<br /><a href="https://getcomposer.org/">[website]</a>
 					</li>
 				</ul>
 
