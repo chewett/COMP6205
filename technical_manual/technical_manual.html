@@ -91,6 +91,7 @@
 								<li><a href="#automaticUpdates">Automatic Page Updates</a></li>
 								<li><a href="#pdfCreation">PDF Creation</a></li>
 								<li><a href="#CSRF">CSRF</a></li>
+								<li><a href="#xss">XSS</a></li>
 								<li><a href="#guessing">Permission Checks</a></li>
 								<li><a href="#passwordhashing">Password Hashing</a></li>
 								<li><a href="#cdns">Using CDN's</a></li>
@@ -489,6 +490,35 @@ function generateLogoutToken() {
 				Every page load the token is regenerated so that it is kept constantly changing.
 				To implement this onto everything we would put hidden fields in forms before submission which would then submit the token that would allow the form to be submitted.
 				Since this is not guessable this stops people using Cross site request forgery and protects the user from this.
+			</p>
+
+			<h3 id="xss">Cross Site Scripting</h3>
+
+			<p>
+				To prevent Cross Site Scripting you need to ensure that user input is properly escaped.
+				Therefore anywhere untrustworthy user input is to be displayed we need to escape it and stop it being executed.
+			</p>
+
+			<p>
+				An example of a XSS attack is below, where the user has entered <code>&lt;b&gt;Bold Account Name&lt;/b&gt;</code> as their account name. <br />
+				<img class="img-responsive" src="images/xss_before.png" />
+			</p>
+
+			<p>
+				This could be more serious such as JavaScript to perform actions on another users behalf.
+				Therefore to fix this we have placed the below code on the <code>getName()</code> function in <code>Entity/Bankaccount.php</code><br />
+				<pre class="prettyprint">public function getName()
+{
+	return htmlentities($this->name);
+}
+</pre>
+				This escapes the untrusted user string to ensure that it cannot be used to perpetrate an XSS attack.
+			</p>
+			<p>
+				When this code is ran, the above malicious code turns into<br />
+				<img class="img-responsive" src="images/xss_after.png" /> <br />
+				Due to time constraints this is the only field which has this protection but it has been used to demonstrate how to prevent XSS attacks.
+				Any place that user defined input is shown to the user needs to be protected.
 			</p>
 
 			<h3 id="guessing">Permission Checking - Disable access to guessable pages such as admin.php</h3>
