@@ -33,6 +33,7 @@ if($options) {
         <tr>
             <th>Keyname</th>
             <th>Value</th>
+	        <th></th>
         </tr>
         </thead>
         <tbody>
@@ -42,6 +43,7 @@ if($options) {
             <tr>
                 <td><?=$option->getKeyname()?></td>
                 <td><?=$option->getValue()?></td>
+	            <td><a>Change</a></td>
             </tr>
         <?php } ?>
         </tbody>
