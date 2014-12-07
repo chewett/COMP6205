@@ -99,7 +99,7 @@ class Bankaccount
 	 */
 	public function getName()
 	{
-		return $this->name;
+		return htmlentities($this->name);
 	}
 
 	/**
