@@ -51,6 +51,7 @@
 				<nav class="sidebar">
 					<ul class="nav sidenav" data-spy="affix" data-offset-top="0">
 						<li class="active"><a href="#userManual">COMP6205 User Manual</a></li>
+						<li><a href="#manualUsage">Manual Usage</a></li>
 						<li><a href="#clientPages">Client Pages</a>
 							<ul class="nav">
 								<li><a href="#client-login">How to Login</a></li>
@@ -80,11 +81,24 @@
 					<h1 id="userManual">COMP6205 User Manual</h1>
 				</div>
 
+				<h2 id="manualUsage">Manual Usage</h2>
+
+				<p>
+					When using this user manual and website we recommend you use an updated browser of your choice.
+					Older browsers will work, but will have reduced functionality and some features may not be available.
+				</p>
+				<p>
+					The website and manual will work on tablets and mobile devices but again for the best user experiance you should view it on a desktop computer and browser.
+				</p>
+
 
 		<h2 id="clientPages"> Client Pages </h2>
 
-		<ol>
-			<h3 id="client-login"> <li>How to login</li> </h3>
+			<p>
+				These help topics relate to ones that a user may access when using our website.
+			</p>
+
+			<h3 id="client-login">How to login</h3>
 
 			<ul>
 				<li>We have made the assumption that in order to get your login credentials, you must obtain them from the bank. 
@@ -101,10 +115,7 @@
 				<img class="img-responsive" src="images/client activities/login_invalid.png" />
 			</ul>
 
-
-
-			
-			<h3 id="client-account"> <li>Account Overview </li></h3>
+			<h3 id="client-account">Account Overview</h3>
 
 				<ul>
 					<li>After a user logs in, they see the Account Overview page. Initially it would show no accounts and it would give the user the opportunity to
@@ -114,7 +125,7 @@
 		
 
 
-			<h3 id="client-open"><li> Open Account </li> </h3>
+			<h3 id="client-open">Open Account</h3>
 				<ul>
 					<li>Opening an account is as easy as giving a name of the account and specifying the type (such as savings, loan, etc)</li>
 					<img class="img-responsive" src="images/client activities/open_new_acc.png" /> <br />
@@ -125,7 +136,7 @@
 			
 
 			
-			<h3 id="client-transfer"><li>Transfer money</li></h3>
+			<h3 id="client-transfer">Transfer money</h3>
 				<ul>
 					<li>After you have set up your accounts, you can finally transfer money between your accounts or even to other accounts, registered in the bank. To do the transfer (regardless whether it is between your accounts or to another person's account), you must know the <b> id </b> of the recipient. In the example below John Smith is sending 200£ from his daily account ( <b> id: 1 </b> ) to his savings ( <b> id: 2 </b> )
 					</li>
@@ -145,7 +156,7 @@
 
 
 
-			<h3 id="client-transactions"><li> View Account Transactions and Statements</li></h3>
+			<h3 id="client-transactions">View Account Transactions and Statements</h3>
 				<ul>
 					<li>Immediately after you make a transaction, you are redirected to the Account Overview page where you can see the amount deducted from your account:</li>
 					<img class="img-responsive" src="images/client activities/new_balance.png" /> <br />
@@ -161,7 +172,7 @@
 	
 
 	
-			<h3 id="client-report"><li> Report Concern</li> </h3>
+			<h3 id="client-report">Report Concern</h3>
 			<p>From the Account Overview page you can submit an issue if you consider that there is something unsual going on. All you have to do is:</p>
 			<ul> 
 				<li>Select the account where the issue is present</li>
@@ -172,11 +183,15 @@
 			</ul>
 
 
-			<h3 id="client-logout"><li> Log out</li> </h3>
+			<h3 id="client-logout">Log out</h3>
 			<p> Logging out simply logs you out of the bank website and redirects you to the Login page in case you want to login again </p>
 		</ol>
 
 		<h2 id="adminPages"> Admin pages </h2>
+
+			<p>
+				These help topics relate to ones that an admin may access when using our website.
+			</p>
 			
 			<p>When an admin logs in, they can see the Admin tab in the navigation bar, which gives them more rights:</p>
 			<img class="img-responsive" src="images/admin activities/login_admin.png" /> <br />
@@ -184,23 +199,24 @@
 			they are not authorized to view it: </b> (<i> this probably should not be in the user manual </i>) </p>
 			<img class="img-responsive" src="images/admin activities/user_notAuthorized.png" /> <br />  
 			<p> The admin page gives access to the following: </p>
-			<ol>
-				<h3 id="admin-assignUsers"> <li>Assign Users </li> </h3>
+
+
+				<h3 id="admin-assignUsers">Assign Users</h3>
 				<p>This allows the admin to change what roles a user has. E.g. promoting a user from a normal user to a bank clerk,
 					promoting clerk to manager or demoting manager to clerk. However, as this is not a full website, so this feauture is not implemented:
 					<i> Again, is this suitable for the user manual?</i> </p>
 					<img class="img-responsive" src="images/admin activities/change_role.png" /> <br />
 
-				<h3 id="admin-viewRoles"> <li>View Roles </li> </h3>
+				<h3 id="admin-viewRoles">View Roles</h3>
 				<p> This page shows the admin the list of available roles and a short description of the role: </p>
 				<img class="img-responsive" src="images/admin activities/view_roles.png" /> <br />
 
-				<h3 id="admin-changePermissions"> <li>Change Permissions </li> </h3>
+				<h3 id="admin-changePermissions">Change Permissions</h3>
 				<p>This allows the admin to change the permissions of different roles, e.g what  capabilities would the user, the clerk, the manager and the admin have. However, as this is not a full website, so this feauture is not implemented:
 					<i> Again, is this suitable for the user manual?</i> </p>
 				<img class="img-responsive" src="images/admin activities/change_permission.png" /> <br />
 
-				<h3 id="admin-viewIssues"> <li>View Issues </li> </h3>
+				<h3 id="admin-viewIssues">View Issues</h3>
 				<p> This page allows the admin, Joe Bloggs, to view issues, submitted by clients </p>
 				<img class="img-responsive" src="images/admin activities/view_issues.png" /> <br />  
 				<p> After choosing an issue, submitted by particular client, the admin, Joe Bloggs, can view the case in more detail</p>
@@ -210,7 +226,7 @@
 				<p> Finally, when going back to the issues list, the admin, Joe Bloggs, can see that the issues that he has resolved are now under the 'Resolved' category </p>
 				<img class="img-responsive" src="images/admin activities/resolved_issues.png" /> <br />
 
-				<h3 id="admin-viewSiteOptions"> <li>View Site Options </li> </h3>
+				<h3 id="admin-viewSiteOptions">View Site Options</h3>
 				<p> Finally, the admin is allowed to view site options. For example, he would be able to temporarily bring down the site for regular maintenance. However, as this is demo site, this feauture is not implemented. </p>
 				<img class="img-responsive" src="images/admin activities/maintenance.png" /> <br />
 			</ol>
