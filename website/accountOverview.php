@@ -47,7 +47,7 @@ if($bankAccounts) {
 				<td><?=$bank->getName()?></td>
 				<td><?=$bank->getIdAccounttype()->getName()?></td>
 				<td>£<?=$bank->getBalance()?></td>
-				<td><a href="bankOverview.php?id=<?=$bank->getIdBankaccount();?>">View Transaction</a></td>
+				<td><a href="bankOverview.php?id=<?=$bank->getIdBankaccount();?>">View Transactions</a></td>
 			</tr>
 		<?php } ?>
 		</tbody>
