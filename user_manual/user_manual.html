@@ -100,92 +100,107 @@
 
 			<h3 id="client-login">How to login</h3>
 
-			<ul>
-				<li>We have made the assumption that in order to get your login credentials, you must obtain them from the bank. 
+			<p>We have made the assumption that in order to get your login credentials, you must obtain them from the bank.
 					Once you get your login details, you can go the login screen. Note that unless you are logged in, you cannot see
-					anything but the Login and About us pages </li>
+					anything but the Login and About us pages
+			</p>
+			<p>
 				<img class="img-responsive" src="images/client activities/header_when_not_logged.png" />
-				<br /><br /><br />
-						
-				<li>The following screen shows the login screen where you have to put your username and password</li>
-				<img class="img-responsive" src="images/client activities/login_screen.png" />
-				<br /><br /><br />
+			</p>
 
-				<li>If you cannot login or forget your password, you are encouraged to go to the About us page and see our contact details</li>
-				<img class="img-responsive" src="images/client activities/login_invalid.png" />
-			</ul>
+				<p>The following screen shows the login screen where you have to put your username and password</p>
+
+				<p><img class="img-responsive" src="images/client activities/login_screen.png" /></p>
+
+
+				<p>If you cannot login or forget your password, you are encouraged to go to the About us page and see our contact details</p>
+				<p><img class="img-responsive" src="images/client activities/login_invalid.png" /></p>
+
 
 			<h3 id="client-account">Account Overview</h3>
 
-				<ul>
-					<li>After a user logs in, they see the Account Overview page. Initially it would show no accounts and it would give the user the opportunity to
-						open account or report issue.</li>
-					<img class="img-responsive" src="images/client activities/welcome_non_admin.png" />
-				</ul>
-		
+				<p>After a user logs in, they see the Account Overview page. Initially it will show no accounts and will give the user the opportunity to
+					open an account or report an issue.</p>
+
+
+				<p><img class="img-responsive" src="images/client activities/welcome_non_admin.png" /></p>
+
 
 
 			<h3 id="client-open">Open Account</h3>
-				<ul>
-					<li>Opening an account is as easy as giving a name of the account and specifying the type (such as savings, loan, etc)</li>
-					<img class="img-responsive" src="images/client activities/open_new_acc.png" /> <br />
+				<p>Opening an account is as easy as giving a name of the account and specifying the type (such as savings, loan, etc)</p>
 
-					<li>After opening the new account, you are redirected to the Account Overview page where you can view your newly created account. Every new account has initial balance of 0£. (Mention that to get some money, you need to fiddle with DB or is that too technical?)</li>
-					<img class="img-responsive" src="images/client activities/view_new_accounts.png" />
-				</ul>
-			
+				<p><img class="img-responsive" src="images/client activities/open_new_acc.png" /></p>
+
+				<p>After opening the new account, you are redirected to the Account Overview page where you can view your newly created account. Every new account has initial balance of 0£. (Mention that to get some money, you need to fiddle with DB or is that too technical?)</p>
+
+				<p><img class="img-responsive" src="images/client activities/view_new_accounts.png" /></p>
 
 			
 			<h3 id="client-transfer">Transfer money</h3>
-				<ul>
-					<li>After you have set up your accounts, you can finally transfer money between your accounts or even to other accounts, registered in the bank. To do the transfer (regardless whether it is between your accounts or to another person's account), you must know the <b> id </b> of the recipient. In the example below John Smith is sending 200£ from his daily account ( <b> id: 1 </b> ) to his savings ( <b> id: 2 </b> )
-					</li>
-					<img class="img-responsive" src="images/client activities/transfer.png" />
-					<br /><br />
-					<li>Note that when transfering money the bank website does <u>NOT</u> allow you to:
+
+				<p>After you have set up your accounts, you can finally transfer money between your accounts or even to other accounts, registered in the bank. To do the transfer (regardless whether it is between your accounts or to another person's account), you must know the <b> id </b> of the recipient.
+					In the example below John Smith is sending 200£ from his daily account ( <b> id: 1 </b> ) to his savings ( <b> id: 2 </b> )
+				</p>
+
+					<p><img class="img-responsive" src="images/client activities/transfer.png" /> </p>
+
+
+					<p>
+						Note that when transferring money the bank website does not allow you to:
 						<ul>
-							<li> Send money to non-existing destination. This is why you MUST know the account id of the recipient, </li>
-							<img class="img-responsive" src="images/client activities/invalid_dest.png" /> <br /> 
-							<li> Send more money than you have in the account from which you are sending. </li>
-							<img class="img-responsive" src="images/client activities/insufficient_src.png" /> <br /> 
-							<li> Send negative amount of money. </li>
-							<img class="img-responsive" src="images/client activities/negative_transfer.png" /> <br /> 
-							<li> Leave any of the fields blank. </li>
+							<li> Send money to non-existing destination. This is why you must know the account id of the recipient, <br /><br />
+							<img class="img-responsive" src="images/client activities/invalid_dest.png" /> <br /><br /></li>
+							<li> Send more money than you have in the account from which you are sending. <br /><br />
+							<img class="img-responsive" src="images/client activities/insufficient_src.png" /> <br /><br /></li>
+
+
+							<li> Send negative amount of money. <br /><br />
+							<img class="img-responsive" src="images/client activities/negative_transfer.png" /><br /><br /> </li>
+
+							<li> Leave any of the fields blank. <br /><br />
+								<img class="img-responsive" src="images/client activities/fields_blank.png" /><br /><br /> </li>
+							</li>
 						</ul>
-				</ul>
+					</p>
 
 
 
 			<h3 id="client-transactions">View Account Transactions and Statements</h3>
-				<ul>
-					<li>Immediately after you make a transaction, you are redirected to the Account Overview page where you can see the amount deducted from your account:</li>
-					<img class="img-responsive" src="images/client activities/new_balance.png" /> <br />
-					<li> You can go into more detail and <b> View Transactions </b> for specific account, which will dynamically show you your most recent transactions for this account. (<i>Button above was updated, so we probably need new screenshot</i>). In the example below John Smith is observing the recent transactions for his savings account. You can see when the transaction took place, what is the reference and if  money has come in or gone out of the account:</li>
-					<img class="img-responsive" src="images/client activities/view_account.png" /> <br />
-					<li> We realize that people have different lifestyles, so some may have 10 transactions for the last month or 100 for the past week. Therefore, apart from dynamically observing your recent transactions, you can also view your monthly statement. We see that John Smith has only one transaction in November:</li>
-					<img class="img-responsive" src="images/client activities/transaction_dec.png" /> <br />
-					<li> You can navigate back and forth the months and see the statement for whichever month you are interested in. For instance, John Smith has gone back a month and is viewing his statement for November, when he had more activity on his account:</li>
-					<img class="img-responsive" src="images/client activities/transactions_nov.png" /> <br /> 
-					<li> Finally, you can view a printable pdf of your montly statement and eventually download it: </li>
-					<img class="img-responsive" src="images/client activities/pdf_statement.png" /> <br />
-				</ul>
+				<p>
+					Immediately after you make a transaction, you are redirected to the Account Overview page where you can see the amount deducted from your account.</p>
+
+					<p><img class="img-responsive" src="images/client activities/new_balance.png" /> </p>
+					<p>You can go into more detail and <b> View Transactions </b> for specific account, which will dynamically show you your most recent transactions for this account. (<i>Button above was updated, so we probably need new screenshot</i>). In the example below John Smith is observing the recent transactions for his savings account. You can see when the transaction took place, what is the reference and if  money has come in or gone out of the account:</p>
+				<p><img class="img-responsive" src="images/client activities/view_account.png" /> </p>
+				<p>We realize that people have different lifestyles, so some may have 10 transactions for the last month or 100 for the past week. Therefore, apart from dynamically observing your recent transactions, you can also view your monthly statement. We see that John Smith has only one transaction in November:</p>
+				<p><img class="img-responsive" src="images/client activities/transaction_dec.png" /> </p>
+				<p>You can navigate back and forth the months and see the statement for whichever month you are interested in. For instance, John Smith has gone back a month and is viewing his statement for November, when he had more activity on his account:</p>
+				<p><img class="img-responsive" src="images/client activities/transactions_nov.png" /> </p>
+				<p>Finally, you can view a printable pdf of your montly statement and eventually download it </p>
+				<p><img class="img-responsive" src="images/client activities/pdf_statement.png" /> </p>
+
+				<p>An example of this statement is <a href="statement_example.pdf">here</a></p>
+
 	
 
 	
 			<h3 id="client-report">Report Concern</h3>
-			<p>From the Account Overview page you can submit an issue if you consider that there is something unsual going on. All you have to do is:</p>
+			<p>From the Account Overview page you can submit an issue if you consider that there is something unsual going on. To do this you need to:</p>
 			<ul> 
 				<li>Select the account where the issue is present</li>
 				<li>Give a title to your problem</li>
 				<li>Describe the problem in more detail</li>
-				<img class="img-responsive" src="images/client activities/report_issue.png" /> 
 				<li> After you have sent the report, a bank clerk will receive it and you will be contacted shortly. </li>
 			</ul>
 
+				<p>The below screenshot shows the interface that is used to report a concern</p>
+				<p><img class="img-responsive" src="images/client activities/report_issue.png" /> </p>
+
 
 			<h3 id="client-logout">Log out</h3>
-			<p> Logging out simply logs you out of the bank website and redirects you to the Login page in case you want to login again </p>
-		</ol>
+			<p>To log out you can press the <b>Log Out</b> button at the top of the page.
+			This will log you out and redirect you to the main login page if you wish to login later.</p>
 
 		<h2 id="adminPages"> Admin pages </h2>
 
