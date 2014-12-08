@@ -107,6 +107,7 @@
 							</ul>
 						</li>
 						<li><a href="#libraries">External Libraries</a></li>
+						<li><a href="#references">References</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -125,7 +126,7 @@
 
 			<p>
 				Doctrine provides us with an object relational mapping in PHP.
-				When learning to use Doctrine we referred to its "Getting Started with Doctrine"<a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/tutorials/getting-started.html">[ref]</a> guide.
+				When learning to use Doctrine we referred to its "Getting Started with Doctrine"<a href="#ref-1">[1]</a> guide.
 				This allows us to access the database using PHP objects and have Doctrine write the data back to a database.
 				An example of one of the mapping files <code>Entity/Options.php</code> is below.
 			</p>
@@ -175,14 +176,14 @@ $em->flush();
 			<h3 id="doctrine-sql"> Server side validation (SQL Injection)</h3>
 
 			<p>
-				Doctrine handles SQL injection problems in many of its functions<a href="http://doctrine-dbal.readthedocs.org/en/latest/reference/security.html#sql-injection-safe-and-unsafe-apis-for-user-input">[ref]</a>.
+				Doctrine handles SQL injection problems in many of its functions<a href="#ref-2">[2]</a>.
 				When you are using the objects in the above manner Doctrine will escape all user input for you.
-				It also provides prepared statements when you wish to use their own Doctrine Query Language (DQL) or SQL<a href="http://doctrine-dbal.readthedocs.org/en/latest/reference/security.html#right-prepared-statements">[ref]</a>.
+				It also provides prepared statements when you wish to use their own Doctrine Query Language (DQL) or SQL<a href="#ref-3">[3]</a>.
 			</p>
 
 			<h3 id="doctrine-schema">Generated Database schema (ORM) </h3>
 			<p>
-				Doctrine provides tools to synchronise your database structure to the DocBlock annotations<a href="http://doctrine-orm.readthedocs.org/en/latest/reference/tools.html#database-schema-generation">[ref]</a>.
+				Doctrine provides tools to synchronise your database structure to the DocBlock annotations<a href="#ref-4">[4]</a>.
 				We have used this to generate and update the database as we have been working.
 				Consequently we have not had to design the tables using conventional table creation tools.
 				This has sped up development as we just maintain the DocBlock annotations and use the tool to synchronise the database.<br />
@@ -212,9 +213,9 @@ $em->flush();
 			<h3 id="doctrine-transactions"> Transaction consistency, ACID properties </h3>
 
 			<p>
-				Doctrine has transaction handling already built in<a href="http://doctrine-orm.readthedocs.org/en/latest/reference/transactions-and-concurrency.html">[ref]</a>.
+				Doctrine has transaction handling already built in<a href="#ref-5">[5]</a>.
 				Each time an entity is modified or persisted then it is queued.
-				When you call flush<a href="http://doctrine-orm.readthedocs.org/en/latest/reference/working-with-objects.html#persisting-entities">[ref]</a> on the Entity Manager then it will run the SQL operations in one transaction.
+				When you call flush<a href="#ref-6">[6]</a> on the Entity Manager then it will run the SQL operations in one transaction.
 				This gives you transaction consistency without having to do it yourself.
 			</p>
 
@@ -313,7 +314,7 @@ $em->flush();
 
 			<h2 id="bootstrap">Bootstrap</h2>
 			<p>
-				We have used Twitter Bootstrap system to style the website and utilising some of their design patterns.
+				We have used Twitter Bootstrap<a herf="#ref-8">[8]</a> system to style the website and utilising some of their design patterns.
 				This was so that we could focus on getting a site that looked good and worked well on a range a devices to focus on learning in our chosen areas.
 			</p>
 
@@ -448,8 +449,8 @@ function updateTransaction() {
 			</p>
 
 			<p>
-				Here we use the jQuery <code>$.getJSON()</code> method to load the transactions page and then once loaded call the callback function <code>replaceTransactions</code> which updates the information on the page.
-				We tell the page to load this every 10 seconds with <code>setInterval()</code> which will run the update function.
+				Here we use the jQuery <code>$.getJSON()</code> method<a href="#ref-9">[9]</a> to load the transactions page and then once loaded call the callback function <code>replaceTransactions</code> which updates the information on the page.
+				We tell the page to load this every 10 seconds with <code>setInterval()</code><a href="#ref-10">[10]</a> which will run the update function.
 			</p>
 
 			<h3 id="pdfCreation">PDF Statement Creation</h3>
@@ -468,7 +469,7 @@ function updateTransaction() {
 			<h3 id="CSRF">Cross Site Request Forgery</h3>
 
 			<p>
-				Cross site request forgery is where someone uses known details about a website to perform actions on your behalf.
+				Cross site request forgery is where someone uses known details about a website to perform actions on your behalf.<a href="#ref-11">[11]</a>
 				An example would be making you visit a URL which then performs something you didn't want to happen.
 				A typical solution to stop this is to include tokens or nonces (Numbers used once) into page loads and require these tokens each page request.
 				This is invisible to the user but means that hackers will not be able to guess the tokens and therefore make requests to the page.
@@ -495,7 +496,7 @@ function generateLogoutToken() {
 			<h3 id="xss">Cross Site Scripting</h3>
 
 			<p>
-				To prevent Cross Site Scripting you need to ensure that user input is properly escaped.
+				To prevent Cross Site Scripting you need to ensure that user input is properly escaped.<a href="#ref-12">[12]</a>
 				Therefore anywhere untrustworthy user input is to be displayed we need to escape it and stop it being executed.
 			</p>
 
@@ -618,6 +619,10 @@ function verifyLoginPassword($pass, $hash) {
 
 				<p>Therefore, where possible, we have included these external libraries via a CDN</p>
 
+				<p>
+					We have also looked into caching our custom data with a Content Delivery Network and idenified that cloudflare is in use by a large number of companies and will suite our needs.<a href="#ref-13">[13]</a>
+				</p>
+
 
 			<h2 id="projectMang">Project Management</h2>
 
@@ -627,7 +632,7 @@ function verifyLoginPassword($pass, $hash) {
 
 			<h3 id="codingStandards">Coding Standards</h3>
 			<p>
-				While programming this website we tried to, for the most part, adhere to PSR-1 basic coding standards<a href="http://www.php-fig.org/psr/psr-1/">[ref]</a>.
+				While programming this website we tried to, for the most part, adhere to PSR-1 basic coding standards<a href="#ref-7">[7]</a>.
 				This has hopefully kept our PHP relatively similar and therefore it is easy to pick up each others code.
 			</p>
 
@@ -757,6 +762,37 @@ public function testValidLogin($hashs) {
 						This was helpful as it stores which version you have been doing development with and means that anyone who wish's to continue the project will be able to get the precise version we used.
 						<br /><a href="https://getcomposer.org/">[website]</a>
 					</li>
+				</ul>
+
+			</p>
+
+			<h2 id="references">References</h2>
+
+			<p>
+				<ul>
+					<li id="ref-1">[1] - Getting Started with Doctrine - Doctrine - <a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/tutorials/getting-started.html">http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/tutorials/getting-started.html</a></li>
+					<li id="ref-2">[2] SQL Injection: Safe and Unsafe APIs for User Input - Doctrine - <a href="http://doctrine-dbal.readthedocs.org/en/latest/reference/security.html#sql-injection-safe-and-unsafe-apis-for-user-input">
+						http://doctrine-dbal.readthedocs.org/en/latest/reference/security.html#sql-injection-safe-and-unsafe-apis-for-user-input</a></li>
+
+					<li id="ref-3">[3] - Right: Prepared Statements - Doctrine - <a href="http://doctrine-dbal.readthedocs.org/en/latest/reference/security.html#right-prepared-statements">
+						http://doctrine-dbal.readthedocs.org/en/latest/reference/security.html#right-prepared-statements</a></li>
+
+					<li id="ref-4">[4] - Database Schema Generation - Doctrine - <a href="http://doctrine-orm.readthedocs.org/en/latest/reference/tools.html#database-schema-generation">
+						http://doctrine-orm.readthedocs.org/en/latest/reference/tools.html#database-schema-generation</a></li>
+
+					<li id="ref-5">[5] Transactions and Concurrency - Doctrine - <a href="http://doctrine-orm.readthedocs.org/en/latest/reference/transactions-and-concurrency.html">
+						http://doctrine-orm.readthedocs.org/en/latest/reference/transactions-and-concurrency.html</a></li>
+
+					<li id="ref-6">[6] - Persisting Entities - Doctrine - <a href="http://doctrine-orm.readthedocs.org/en/latest/reference/working-with-objects.html#persisting-entities">
+						http://doctrine-orm.readthedocs.org/en/latest/reference/working-with-objects.html#persisting-entities</a></li>
+
+					<li id="ref-7">[7] - PSR-1 - Basic Coding Standard - <a href="http://www.php-fig.org/psr/psr-1/">http://www.php-fig.org/psr/psr-1/</a></li>
+					<li id="ref-8">[8] - Bootstrap - <a href="http://getbootstrap.com/">http://getbootstrap.com/</a></li>
+					<li id="ref-9">[9] - jQuery.getJSON() | jQuery API Documentation - <a href="http://api.jquery.com/jquery.getjson/">http://api.jquery.com/jquery.getjson/</a></li>
+					<li id="ref-10">[10] - WindowTimers.setInterval() - Web API Interfaces | MDN - <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers.setInterval">https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers.setInterval</a></li>
+					<li id="ref-11">[11] - Cross-Site Request Forgery (CSRF) Prevention Cheat Sheet - OWASP - <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29_Prevention_Cheat_Sheet">https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29_Prevention_Cheat_Sheet</a></li>
+					<li id="ref-12">[12] - Cross-site Scripting (XSS) - OWASP - <a href="https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29">https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29</a></li>
+					<li id="ref-13">[13] - Overview | CloudFlare - <a href="https://www.cloudflare.com/overview">https://www.cloudflare.com/overview</a></li>
 				</ul>
 
 			</p>
