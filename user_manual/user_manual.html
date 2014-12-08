@@ -107,20 +107,20 @@
 
 			<h3 id="client-login">How to login</h3>
 
-			<p>We have made the assumption that in order to get your login credentials, you must obtain them from the bank.
-					Once you get your login details, you can go the login screen. Note that unless you are logged in, you cannot see
-					anything but the Login and About us pages
+			<p>We have made the assumption that you must obtain your login details from the bank.
+					Once you get your details you will be able to login. Note that unless you are logged in, you cannot see
+					anything but the Login and About us pages links at the top of the page.
 			</p>
 			<p>
 				<img class="img-responsive" src="images/client activities/header_when_not_logged.png" />
 			</p>
 
-				<p>The following screen shows the login screen where you have to put your username and password</p>
+				<p>The following screen shows the login screen to insert your username and password</p>
 
 				<p><img class="img-responsive" src="images/client activities/login_screen.png" /></p>
 
 
-				<p>If you cannot login or forget your password, you are encouraged to go to the About us page and see our contact details</p>
+				<p>If you cannot login or have forgotten your password, you are encouraged to go to the About us page and see our contact details</p>
 				<p><img class="img-responsive" src="images/client activities/login_invalid.png" /></p>
 
 
@@ -135,19 +135,19 @@
 
 
 			<h3 id="client-open">Open Account</h3>
-				<p>Opening an account is as easy as giving a name of the account and specifying the type (such as savings, loan, etc)</p>
+				<p>Opening an account is easy and you can do this by giving a name for the account and specifying the type (such as savings, loan, etc)</p>
 
 				<p><img class="img-responsive" src="images/client activities/open_new_acc.png" /></p>
 
-				<p>After opening the new account, you are redirected to the Account Overview page where you can view your newly created account. Every new account has initial balance of 0£. (Mention that to get some money, you need to fiddle with DB or is that too technical?)</p>
+				<p>After opening the new account, you are redirected to the Account Overview page where you can view your newly created account. Every new account has initial balance of £0</p>
 
 				<p><img class="img-responsive" src="images/client activities/view_new_accounts.png" /></p>
 
 			
 			<h3 id="client-transfer">Transfer money</h3>
 
-				<p>After you have set up your accounts, you can finally transfer money between your accounts or even to other accounts, registered in the bank. To do the transfer (regardless whether it is between your accounts or to another person's account), you must know the <b> id </b> of the recipient.
-					In the example below John Smith is sending 200£ from his daily account ( <b> id: 1 </b> ) to his savings ( <b> id: 2 </b> )
+				<p>After you have set up your accounts, you can finally transfer money between your accounts or even to other accounts, registered in the bank. To perform this transfer (regardless whether it is between your accounts or to another person's account), you must know the <b> id </b> of the recipient's account (This is similar to the sort code/bank account ID in a real bank).
+					In the example below John Smith is sending £200 from his daily account ( <b> id: 1 </b> ) to his savings ( <b> id: 2 </b> )
 				</p>
 
 					<p><img class="img-responsive" src="images/client activities/transfer.png" /> </p>
@@ -158,11 +158,11 @@
 						<ul>
 							<li> Send money to non-existing destination. This is why you must know the account id of the recipient, <br /><br />
 							<img class="img-responsive" src="images/client activities/invalid_dest.png" /> <br /><br /></li>
-							<li> Send more money than you have in the account from which you are sending. <br /><br />
+							<li> Send more money than you have in the account you are sending from. <br /><br />
 							<img class="img-responsive" src="images/client activities/insufficient_src.png" /> <br /><br /></li>
 
 
-							<li> Send negative amount of money. <br /><br />
+							<li> Send negative amounts of money. <br /><br />
 							<img class="img-responsive" src="images/client activities/negative_transfer.png" /><br /><br /> </li>
 
 							<li> Leave any of the fields blank. <br /><br />
@@ -201,7 +201,7 @@
 				<li> After you have sent the report, a bank clerk will receive it and you will be contacted shortly. </li>
 			</ul>
 
-				<p>The below screenshot shows the interface that is used to report a concern</p>
+				<p>The below screenshot shows the interface used to report a concern</p>
 				<p><img class="img-responsive" src="images/client activities/report_issue.png" /> </p>
 
 
@@ -238,7 +238,7 @@
 
 				<h3 id="admin-changePermissions">Change Permissions</h3>
 				<p>This allows the admin to change the permissions of different roles, e.g what  capabilities would the user, the clerk, the manager and the admin have.
-					However, as this is not a full website, this feature is not implemented.</p>
+					However, as this is not a full website, this feature is not implemented hower this is only a matter of changing fields in the database.</p>
 				<img class="img-responsive" src="images/admin activities/change_permission.png" /> <br />
 
 				<h3 id="admin-viewIssues">View Issues</h3>
