@@ -168,7 +168,7 @@ $em->flush();
 				One of the decisions we had to make was to choose the format that Doctrine uses to detail information about the tables.
 				Doctrine allows you to define this using PHP DocBlock comments, XML, YML and PHP objects.
 				We reviewed these formats and decided on DocBlock comments.
-				XML allowed you to validate the table structure using an XML validator which was very useful however it removed the PHP class from the table structure.
+				XML allowed you to validate the table structure using an XML validator which was very useful. However, it removed the PHP class from the table structure.
 				The same problem occurred for YML and the PHP definitions, you removed the structure of the table from the class structure.
 				When changing the details you had to change the XML and then the PHP class. This was open to errors where only one was changed.
 				Therefore we decided to use DocBlock annotations to keep the table structure close to the PHP classes to ensure no issues occurred where only one area was changed.
@@ -201,7 +201,7 @@ $em->flush();
 				This uses crows foot notation to demonstrate the foreign keys.
 			<ul>
 				<li>Fields that are the primary key for the table have a yellow key.</li>
-				<li>Fields that are a foreign key have a purple icon.</li>
+				<li>Fields that are a foreign key have a red icon.</li>
 				<li>Fields that are required have a blue icon.</li>
 				<li>Fields that are not required have a white icon.</li>
 			</ul>
@@ -288,7 +288,7 @@ $em->flush();
 				We considered that there may be a case where you will want to give a user a specific permission for a specific job and designed a basic "override permission" table which gave the user any addition permissions they needed.
 				After some discussion this was considered messy and causes problems similar to where each user is assigned a set of permissions.<br />
 
-				Our proposed solution for if a user needs a new permission is to create a new role.
+				Our proposed solution if a user needs a new permission is to create a new role.
 			</p>
 
 			<h3 id="role-chosenStructure">Our Chosen Structure</h3>
