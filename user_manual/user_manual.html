@@ -185,7 +185,7 @@
 				<p><img class="img-responsive" src="images/client activities/transaction_dec.png" /> </p>
 				<p>You can navigate back and forth the months and see the statement for whichever month you are interested in. For instance, John Smith has gone back a month and is viewing his statement for November, when he had more activity on his account:</p>
 				<p><img class="img-responsive" src="images/client activities/transactions_nov.png" /> </p>
-				<p>Finally, you can view a printable pdf of your monthly statement and download it </p>
+				<p id="pdf_print_paragraph">Finally, you can view a printable pdf of your monthly statement and download it </p>
 				<p><img class="img-responsive" src="images/client activities/pdf_statement.png" /> </p>
 
 				<p>An example of this statement is <a href="statement_example.pdf">here</a></p>
@@ -225,17 +225,14 @@
 
 			<img class="img-responsive" src="images/admin activities/user_notAuthorized.png" /> <br />  
 			<p> The admin page gives access to the following: </p>
-
-
 				<h3 id="admin-assignUsers">Assign Users</h3>
-				<p>This allows the admin to change what roles a user has. E.g. promoting a user from a normal user to a bank clerk,
-					promoting clerk to manager or demoting manager to clerk.
-					However, as this is not a full website, this feature is not implemented.</p>
+				<p>This allows the admin to change what roles a user has. For example: </p>
+					<ul>
+						<li> Promoting a bank client to a bank clerk, </li>
+						<li> Promoting clerk to manager or demoting manager to clerk. </li>
+					</ul>
+					<p>However, as this is not a full website, this feature is not implemented.</p>
 					<img class="img-responsive" src="images/admin activities/change_role.png" /> <br />
-
-				<h3 id="admin-viewRoles">View Roles</h3>
-				<p> This page shows the admin the list of available roles and a short description of the role: </p>
-				<img class="img-responsive" src="images/admin activities/view_roles.png" /> <br />
 
 				<h3 id="admin-changePermissions">Change Permissions</h3>
 				<p>This allows the admin to change the permissions of different roles, e.g what  capabilities would the user, the clerk, the manager and the admin have.
@@ -268,7 +265,7 @@
 
 				<p>
 					The customer will want to use the all basic functionality of the banking application.
-					From the brief both Customers have been combined into one user story.
+					The two customer stories that we identified in the brief, are combined into one user story, which has the following sub-categories:
 				</p>
 
 				<p>
@@ -277,7 +274,7 @@
 					<li>Create a bank account - The <a href="#client-account">above instructions</a> demonstrates a user can create a bank account.</li>
 					<li>Send and receive money - The <a href="#client-transfer">above instructions</a> demonstrates a user can send and receive money.</li>
 					<li>View statements - The <a href="#client-transactions">above instruction</a> demonstrates how a user can view each months statement.</li>
-					<li>Print statements - The <a href="#client-transactions">above instructions</a> demonstrates how a user can print off their statement for review.</li>
+					<li>Print statements - The <a href="#pdf_print_paragraph">above instructions</a> demonstrates how a user can print off their statement for review.</li>
 					<li>Report issues - The <a href="#client-report">above instruction</a> demonstrates how a user can report an issue and tells them how it is resolved.</li>
 					</ul>
 				</p>
@@ -286,14 +283,14 @@
 
 				<p>
 					The Bank Manger will want the ability to use the application to monitor and resolve issues.
-					From the brief both Bank Manager and have been combined into one user story.
+					From the brief both Bank Manager and Clerk user stories have been combined into one user story.
 				</p>
 
 				<p>
 					<ul>
-					<li>Review and close issues - The <a href="#admin-viewIssues">above instruction</a> demonstrates how a user can review and close the issues. They are expected to have resolved them by contacting the customer before marking them as resolved.</li>
-					<li>Alter/disable accounts - The <a href="#admin-assignUsers">above instruction</a> demonstrates how a user can alter accounts.</li>
-					<li>Change User Roles - The <a href="#admin-assignUsers">above instruction</a> demonstrates how a user can also change what role a user can have.</li>
+					<li>Review and close issues - The <a href="#admin-viewIssues">above instruction</a> demonstrates how a manager can review and close the issues. They are expected to have resolved them by contacting the customer before marking them as resolved.</li>
+					<li>Alter/disable accounts - The <a href="#admin-assignUsers">above instruction</a> demonstrates how a manager can alter accounts.</li>
+					<li>Change User Roles - The <a href="#admin-assignUsers">above instruction</a> demonstrates how a manager can also change what role a user can have.</li>
 					</ul>
 				</p>
 
@@ -302,7 +299,7 @@
 				<p>The admin will want the ability to perform administrative tasks relating to the site such as shutting it down when needed.</p>
 
 				<ul>
-					<li>Perform all functions that previous uses cases can - This is demonstrated above by showing system features</li>
+					<li>Perform all functions that all other users can (demonstrated above) </li>
 					<li>Change site options - The <a href="#admin-viewSiteOptions">above instruction</a> demonstrates how an admin can change site options. Specifically they will be able to turn on maintenance mode.</li>
 				</ul>
 
