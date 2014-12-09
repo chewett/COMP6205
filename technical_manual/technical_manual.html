@@ -491,7 +491,7 @@ function generateLogoutToken() {
 			<p>
 
 				The token is regenerated at every page load.
-				To implement this on all forms we will put a hidden field into each containing a randomly generated token.
+				To implement this on all forms we will put a hidden field into each, this will contain a randomly generated token.
 				For the form submission to be successful it will be required that this token is valid.
 				Since this is not guessable this stops people using Cross site request forgery and protects the user from this.
 			</p>
@@ -614,7 +614,7 @@ function verifyLoginPassword($pass, $hash) {
 				<li>
 					Google provide http and HTTPS versions of this file and the URL we have linked to does not start with a protocol definition.
 					Instead we use <code> src="//ajax.googleapis.com/...</code>.
-					This means that it will use whatever protocol the page uses it will request the content as.
+					This means that it will use whatever protocol the page uses.
 					This stops us having to write code to dynamically determine what protocol we are using or serving insecure http content alongside secured HTTPS content.
 				</li>
 			</ul>
