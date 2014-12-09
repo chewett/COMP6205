@@ -489,8 +489,7 @@ function generateLogoutToken() {
 }</pre>
 			</p>
 			<p>
-				Every page load the token is regenerated so that it is kept constantly changing.
-				To implement this onto everything we would put hidden fields in forms before submission which would then submit the token that would allow the form to be submitted.
+				The token is regenerated at every page load. To implement this onto everything we would put hidden fields in forms before submission which would then submit the token that would allow the form to be submitted.
 				Since this is not guessable this stops people using Cross site request forgery and protects the user from this.
 			</p>
 
